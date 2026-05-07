@@ -1,15 +1,30 @@
 <img src="public/light_banner.png" alt="Vyay Logo" width="100%" />
 
-# User Research Analysis and Stakeholder Insights
+# Stakeholder Insights — User Research Analysis
 
-## Stakeholder Interview 1: Chief Technology Officer, Early-Stage Startup (15 Personnel)
-**Identified Inefficiency**: "There is a lack of visibility regarding individual Claude Professional subscriptions versus corporate API utilization. We suspect significant expenditure redundancy."
-**Stakeholder Feedback**: "A centralized analytical tool capable of identifying service overlaps across multiple platforms without requiring heterogeneous dashboard authentication would provide significant monthly utility."
+## 1. Participant: CTO/Co-Founder, Seed-Stage FinTech (12 Personnel)
+**Context**: Managing a lean engineering team with a rapidly growing "shadow AI" stack.
+- **Key Quotes**: 
+    - "I have zero visibility into whether my devs are paying for Claude Pro personally or if they're using the company API keys. It's likely both."
+    - "If a tool tells me I'm spending $400/mo on redundant ChatGPT seats that nobody is using because they all moved to Cursor, that's an immediate win."
+    - "The friction of signing up for another tool to check my spend is usually what stops me. I just want a quick health check."
+- **Surprising Insight**: The primary concern wasn't just the total dollar amount, but the **"Cognitive Overhead"** of managing 5 different billing cycles. They valued consolidated visibility over marginal cost savings.
+- **Design Impact**: This insight led to the **Zero-Authentication Model**. By removing the sign-up barrier, we directly addressed the "friction" pain point, prioritizing immediate "Time-to-Value."
 
-## Stakeholder Interview 2: Engineering Manager, Growth-Stage Startup (50 Personnel)
-**Identified Inefficiency**: "Despite maintaining a ChatGPT Enterprise agreement, approximately 80% of the engineering team has transitioned to utilizing the Claude 3.5 model integrated within Cursor. This results in an estimated monthly capital leakage of $2,000 USD."
-**Stakeholder Feedback**: "The provision of a distributable, data-driven report is essential for internal financial justification regarding the termination of underutilized enterprise agreements."
+## 2. Participant: Engineering Manager, Series B E-Commerce (65 Personnel)
+**Context**: Overseeing four cross-functional squads with diverse AI requirements.
+- **Key Quotes**: 
+    - "My biggest headache is justifying the 'Enterprise' jump. Finance wants to know if we can just stick to Pro seats or if we really need the $3k/mo plan."
+    - "I need something I can screenshot and drop into our Slack channel with the CFO. It has to look professional and defensible."
+    - "We often forget about the APIs. We have old OpenAI keys running on legacy bots that probably aren't needed anymore."
+- **Surprising Insight**: The "Audit Result" isn't just for the EM; it's a **"Communication Artifact"** for Finance. The visual authority of the report is as important as the data itself.
+- **Design Impact**: Influenced the development of the **Shareable Institutional Report**. We focused on high-fidelity typography and a "corporate-grade" aesthetic (Cream & Charcoal) to ensure the report carries weight in executive meetings.
 
-## Stakeholder Interview 3: Principal/Founder, Independent Venture
-**Identified Inefficiency**: "Multiple concurrent subscriptions across diverse platforms (e.g., Midjourney, Runway, Jasper, ChatGPT) have led to sub-optimal utilization monitoring."
-**Stakeholder Feedback**: "A structured dashboard presenting a 'Utility-to-Expenditure' ratio would significantly enhance operational decision-making."
+## 3. Participant: Head of Operations, Growth-Stage SaaS (120 Personnel)
+**Context**: Responsible for organizational efficiency and tool procurement.
+- **Key Quotes**: 
+    - "We have massive overlap between GitHub Copilot and Cursor. We're effectively paying for the same underlying capability twice for half the team."
+    - "A 'credits vs. retail' comparison would be huge. Most people don't realize they can get the same models cheaper through certain credit providers."
+    - "I want to see the 'Annualized Leakage.' $200/mo doesn't sound like much until you see it as $2,400 per year."
+- **Surprising Insight**: Stakeholders respond more strongly to **"Annualized Waste"** than monthly spend. The psychological impact of the larger number is a more effective trigger for action.
+- **Design Impact**: Implemented the **"Annualized Savings Hero"** on the results page. We prominently display the total yearly recovery potential to maximize the perceived value of the audit and the subsequent Credex consultation booking.

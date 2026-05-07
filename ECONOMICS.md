@@ -2,21 +2,40 @@
 
 # Operational Economics — Project Vyay
 
-This document delineates the unit economics and potential monetization strategies for the Vyay platform.
+## 1. Strategic Lead Value Analysis
+Vyay is architected as a premium lead-generation engine for Credex. The primary "economic unit" of the platform is the **Qualified Sales Lead (QSL)**.
+- **Estimated Lead Value**: $500 - $1,500 USD. This valuation is derived from the potential lifetime value (LTV) of a Credex consulting client or a high-volume credit brokerage contract.
+- **Data Enrichment**: By capturing precise tool usage and expenditure data during the audit, we significantly increase the conversion probability of the downstream sales process, as the initial conversation is predicated on verified financial "pain points."
 
-## Operational Expenditures (OpEx)
-- **Infrastructure Hosting**: Vercel (Initial evaluation on base tier; Professional tier at $20/month for production scaling).
-- **Relational Infrastructure**: Supabase (Base tier utilization).
-- **Analytical Inference**: Gemini 2.5 Flash (Optimized for minimal cost per evaluation cycle).
-- **Communication Infrastructure**: Resend (Base tier utilization).
+## 2. Customer Acquisition Cost (CAC) per Channel
+To maintain a high LTV/CAC ratio, we focus on high-efficiency, zero-to-low-cost distribution channels:
+- **Organic Social (LinkedIn/Twitter)**: $0 CAC. Leveraging the viral loop of shared "Savings Reports."
+- **Niche Community Engagement (HN/Reddit)**: $0 CAC. Investment is measured in "Technical Time" rather than capital.
+- **Search Engine Optimization (SEO)**: $5 - $15 CAC (Projected). Targeting long-tail keywords such as "OpenAI credit optimization" or "Claude for Business cost audit."
+- **Paid Professional (LinkedIn Ads)**: $50 - $120 CAC. Reserved for high-tier targeting of VPs of Engineering at Series B+ startups where lead value exceeds $5,000.
 
-**Projected Cost per Evaluation Cycle**: < $0.005 USD.
+## 3. Conversion Funnel Mathematical Model
+Based on initial architectural assumptions and benchmark data for high-utility professional tools:
+1. **Total Traffic (Top of Funnel)**: 10,000 Unique Visitors (UVs)
+2. **Audit Initiation Rate**: 15% (1,500 Audits)
+3. **Audit Completion Rate**: 80% (1,200 Completed Audits) — Optimized by zero-auth model.
+4. **Lead Capture Conversion (Email Opt-in)**: 25% (300 Leads)
+5. **High-Value Lead Identification (Savings > $500/mo)**: 10% (30 Leads)
+6. **Credex Consultation Booking**: 20% of High-Value Leads (6 Booked Consultations)
 
-## Revenue Generation Frameworks
-1. **Strategic Referral Integration**: Integration of referral mechanisms for optimized service providers (e.g., Groq).
-2. **Enterprise Reporting Services**: Provision of high-fidelity PDF reports optimized for compliance and executive review ($49 USD per report).
-3. **Continuous Expenditure Monitoring**: Automated integration with corporate financial platforms (e.g., Ramp, Mercury) for real-time expenditure alerts ($29/month).
-4. **Service Contract Negotiation**: Strategic brokerage of volume discounts for organizations exceeding 50 personnel (commission-based model).
+## 4. The $1M ARR Growth Model (Path to Scale)
+To achieve $1,000,000 in Annual Recurring Revenue, we transition from a pure lead-gen model to a hybrid "Platform + Service" model:
+- **Tier 1: Professional PDF Reporting ($49/Audit)**: Target 500 reports/month = $24,500/mo.
+- **Tier 2: Continuous Monitoring Subscription ($29/mo)**: Target 1,500 active organizations = $43,500/mo.
+- **Tier 3: Enterprise Brokerage Commissions (10% of Savings)**: Target $2,000,000 in total client savings identified and captured per year = $200,000 ARR.
+- **Tier 4: Credex Consulting Retainers (Downstream)**: Target 5 new high-value retainers at $10k/mo = $600,000 ARR.
 
-## Financial Viability Analysis
-Based on a projected cost of $0.005 per evaluation, a volume of 10,000 evaluations per day results in an operational overhead of $50 USD. With a projected 1% conversion rate for premium reporting services, the platform demonstrates significant profitability and fiscal sustainability.
+**Total Projected ARR**: $1,056,000 USD.
+
+## 5. Infrastructure Cost Analysis (OpEx)
+- **Host Infrastructure**: $20/mo (Vercel Pro).
+- **Relational Data**: $0 - $25/mo (Supabase).
+- **Analytical Inference (Gemini)**: $0.005 per audit. At 5,000 audits/mo = $25/mo.
+- **Lead Communications (Resend)**: $0 - $20/mo.
+
+**Total OpEx**: Approximately $90/mo for a platform generating over $80,000 in monthly revenue potential, demonstrating an exceptional gross margin profile.

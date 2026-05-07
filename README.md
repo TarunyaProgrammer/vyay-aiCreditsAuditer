@@ -2,54 +2,50 @@
 
 # Vyay — AI Spend Audit Platform
 
-**Vyay** is a professional-grade spend audit platform developed for engineering teams and enterprise startups. The system identifies redundant AI subscriptions, oversized service plans, and cost-effective alternatives with high efficiency.
+**Vyay** is a high-velocity expenditure audit utility designed for engineering leadership and founders to optimize AI infrastructure costs. The platform provides a deterministic analytical engine to identify service redundancies and plan sub-optimalities, delivering actionable financial insights in under 60 seconds.
 
-## Executive Summary
-Modern organizations frequently incur unnecessary expenses due to unmanaged AI subscriptions across various platforms, including ChatGPT, Claude, Cursor, and GitHub Copilot. Engineering departments often maintain overlapping service features or underutilized premium tiers.
+**Deployed URL**: [https://vyay-ai-credits-auditer.vercel.app/](https://vyay-ai-credits-auditer.vercel.app/)
 
-Vyay provides a deterministic, data-driven audit process to optimize resource allocation and recover capital.
+## Platform Visuals
+<p align="center">
+  <img src="https://via.placeholder.com/800x450.png?text=Landing+Page+Dashboard" alt="Landing Page" width="32%" />
+  <img src="https://via.placeholder.com/800x450.png?text=Multi-Step+Audit+Interface" alt="Audit Form" width="32%" />
+  <img src="https://via.placeholder.com/800x450.png?text=Analytical+Results+Reporting" alt="Results Page" width="32%" />
+</p>
 
-## Core Capabilities
-- **Frictionless Audit Process**: No authentication required to minimize time-to-value.
-- **Deterministic Analysis**: Audit logic based on validated pricing data and feature mapping.
-- **Cost Optimization**: Automated identification of open-source or lower-cost alternatives.
-- **Reporting and Distribution**: Generation of public URLs for stakeholder review and financial reporting.
-- **Mobile Compatibility**: Optimized interface for cross-device accessibility.
+## Quickstart Guide
+
+### Prerequisites
+- Node.js (v18.0.0 or higher)
+- npm or yarn
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Initialize the development environment:
+   ```bash
+   npm run dev
+   ```
+
+## Strategic Trade-off Decisions
+
+1. **Authentication Model (Deferred)**: We intentionally omitted a traditional authentication layer to eliminate user friction. This "Time-to-Value" prioritization ensures a 60-second completion target, maximizing initial lead conversion.
+2. **State Management (Zustand)**: Selected over Redux or Context for its minimalist architectural footprint and superior performance in managing the multi-stage transient state of the audit form.
+3. **Audit Logic (Deterministic over Stochastic)**: We utilized hardcoded rule-based logic for audit calculations rather than LLM inference. This ensures 100% mathematical accuracy and defensibility, which is critical for financial reporting.
+4. **Styling Framework (Tailwind CSS + shadcn/ui)**: Leveraged for rapid, consistent component development. This allowed us to focus effort on the audit engine's complexity while maintaining a premium, "wow-factor" visual aesthetic.
+5. **Data Persistence (Supabase)**: Opted for Supabase to handle the generation of unique, shareable report IDs. This provides a robust relational backend without the overhead of maintaining a custom server-side infrastructure.
 
 ## Technical Specifications
-- **Frontend**: React, Vite, TypeScript, Tailwind CSS, shadcn/ui
-- **State Management**: React Router, Zustand, Zod
-- **Backend Infrastructure**: Supabase
-- **Artificial Intelligence**: Gemini 2.5 Flash API
-- **Communication Services**: Resend
-- **Quality Assurance**: Vitest, React Testing Library
-
-## System Directory Structure
-```text
-src/
-├── app/          # Application providers and global configuration
-├── pages/        # Route-level components
-├── components/   # UI components (layout, landing, audit, result)
-├── features/     # Feature-specific business logic
-├── services/     # External service integrations
-├── store/        # State management
-├── rules/        # Audit logic and business rules
-├── data/         # Static pricing and tool definitions
-├── hooks/        # Reusable application hooks
-├── types/        # TypeScript type definitions
-└── utils/        # Utility functions
-```
-
-## System Architecture
-Vyay utilizes a deterministic rule engine integrated with LLM-assisted analysis to process complex spend patterns. Data is ingested via a multi-step audit interface, processed through the rule engine, and persisted in Supabase for secure retrieval and distribution.
-
-## Strategic Decisions
-- **Authentication Model**: Authentication was intentionally omitted to maximize user conversion and immediate utility.
-- **State Architecture**: Zustand was selected for its minimalist footprint and efficiency in managing complex form states.
-- **Styling Framework**: Tailwind CSS was utilized to ensure a high-performance, standardized UI consistent with modern design principles.
-
-## Deployment Profile
-The application is deployed via Vercel, utilizing Supabase for backend data persistence and management.
+- **Frontend**: React, Vite, TypeScript, Tailwind CSS
+- **Infrastructure**: Vercel (Deployment), Supabase (Persistence)
+- **Analytical Intelligence**: Gemini 2.5 Flash API (Summary generation)
+- **Communications**: Resend (Transactional Email)
 
 ---
-Developed for professional engineering organizations.
+Developed by **Tarunya** for the Credex Web Development Internship Assignment.
