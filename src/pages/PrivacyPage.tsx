@@ -1,0 +1,1 @@
+export default function PrivacyPage() { return <div className='container mx-auto px-4 py-24'><h1 className='text-5xl font-serif mb-8'>Privacy Policy</h1><p className='text-xl text-muted-foreground max-w-2xl font-sans'>We do not store your raw financial data. Audits are performed deterministically based on your inputs.</p></div>; }

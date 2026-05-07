@@ -1,0 +1,1 @@
+export default function AboutPage() { return <div className='container mx-auto px-4 py-24'><h1 className='text-5xl font-serif mb-8'>About Vyay</h1><p className='text-xl text-muted-foreground max-w-2xl font-sans'>Vyay is a production-grade spend audit platform for small engineering teams and startups.</p></div>; }
