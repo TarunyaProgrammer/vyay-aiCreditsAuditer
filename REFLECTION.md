@@ -1,4 +1,4 @@
-<img src="public/logo_light.png" alt="Vyay Logo" width="200" />
+<img src="public/light_banner.png" alt="Vyay Logo" width="100%" />
 
 # Strategic Reflection — Project Vyay
 
