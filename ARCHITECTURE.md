@@ -1,49 +1,51 @@
+<img src="public/logo_light.png" alt="Vyay Logo" width="200" />
+
 # Vyay System Architecture
 
-This document outlines the technical design and data flow of the Vyay platform.
+This document delineates the technical architecture and data flow specifications of the Vyay platform.
 
-## 🏗 System Overview
+## System Overview
 
 ```mermaid
 graph TD
-    User((User)) -->|Inputs Spend Data| WebApp[React Frontend]
-    WebApp -->|Zod Validation| FormLogic[Audit Flow]
-    FormLogic -->|Triggers| AuditEngine[Deterministic Rule Engine]
-    AuditEngine -->|Calculates| Results[Audit Result]
-    Results -->|Persists| Supabase[(Supabase DB)]
-    Results -->|UI Display| ResultPage[Result View]
+    User((User)) -->|Data Ingestion| WebApp[React Frontend]
+    WebApp -->|Validation Layer| FormLogic[Audit Interface]
+    FormLogic -->|Execution| AuditEngine[Deterministic Rule Engine]
+    AuditEngine -->|Evaluation| Results[Audit Result Set]
+    Results -->|Persistence| Supabase[(Supabase Infrastructure)]
+    Results -->|Presentation| ResultPage[Reporting Interface]
     
-    AuditEngine -.->|Complex Analysis| Gemini[Gemini 2.5 Flash API]
-    ResultPage -->|Sharing| PublicLink[Public Result URL]
-    ResultPage -->|Email| Resend[Resend API]
+    AuditEngine -.->|Analytical Processing| Gemini[Gemini 2.5 Flash API]
+    ResultPage -->|Distribution| PublicLink[Public Report URL]
+    ResultPage -->|Notification| Resend[Resend Service]
 ```
 
-## 🔄 User Flow
-1. **Landing**: User lands on a high-conversion page explaining the value prop.
-2. **Audit Flow**: A multi-step form (using `react-router` for steps) collects tool usage.
-3. **Analysis**: The rule engine matches inputs against `data/pricing.ts` and `rules/*.ts`.
-4. **Result**: A beautiful, shareable dashboard showing "Total Leaking", "Savings Found", and "Action Plan".
+## User Experience Workflow
+1. **Landing Interface**: Initial user engagement via a value-proposition-oriented interface.
+2. **Audit Interface**: A structured, multi-stage data collection process managed via React Router.
+3. **Analytical Processing**: The deterministic engine evaluates inputs against standardized pricing datasets and business rules.
+4. **Reporting**: Generation of a comprehensive dashboard highlighting financial leakages, identified savings, and strategic action plans.
 
-## 📊 Data Flow
-- **Input**: `AuditInput` object containing an array of `ToolInput`.
-- **Processing**: Rules process the array to find duplicates (e.g., Cursor + VS Code Copilot) or oversized plans (e.g., ChatGPT Enterprise for 2 people).
-- **Output**: `AuditResult` containing summary metrics and a list of `Recommendation` objects.
+## Data Governance and Flow
+- **Input Specification**: `AuditInput` schema encompassing an array of `ToolInput` parameters.
+- **Processing Logic**: Systematic evaluation to identify service redundancies (e.g., simultaneous Cursor and GitHub Copilot subscriptions) or sub-optimal service tiers.
+- **Output Specification**: `AuditResult` object containing key performance indicators and a comprehensive set of `Recommendation` entities.
 
-## 🛠 Why This Stack?
-- **Vite/React**: Industry standard for fast, interactive SPAs.
-- **Supabase**: Rapid backend setup with built-in Auth (for future) and Postgres.
-- **Gemini 2.5 Flash**: Low latency, high performance for text-based spend analysis.
-- **Zustand**: Minimalist state management for multi-step forms.
+## Technology Rationale
+- **Vite/React**: Selected for high-performance, component-based application development.
+- **Supabase**: Utilized for rapid backend deployment and scalable relational data management.
+- **Gemini 2.5 Flash**: Integrated for low-latency, high-performance analytical processing of spend patterns.
+- **Zustand**: Implemented for efficient, non-boilerplate state management within complex interfaces.
 
-## 🚫 Why No Authentication?
-Vyay is a **utility tool**, not a platform. The goal is to provide value in < 60 seconds. Requiring a login adds a friction point that would drop conversion by 40-60%. We use unique IDs and public URLs for sharing, similar to tools like Ray.so or Carbon.
+## Authentication Strategy
+Vyay is architected as a high-velocity utility. Authentication was intentionally excluded to eliminate user friction and maximize immediate service utility. Data security and sharing are managed via unique identifiers and secure public endpoints, consistent with industry-standard utility tools.
 
-## 📈 Scalability Considerations
-- **10k Audits/Day**: The rule engine is purely functional and client-side or Edge-based, minimizing server load. Supabase handles concurrent database writes efficiently.
-- **Open Graph**: Each `/result/:id` will have dynamic OG tags for Twitter/LinkedIn sharing, optimized via Vercel Edge Functions or Supabase Meta tags.
+## Scalability and Performance
+- **High Volume Throughput**: The audit engine is architected for client-side or edge execution to minimize server overhead. Supabase provides the necessary concurrency for high-frequency data persistence.
+- **Metadata Optimization**: Dynamic Open Graph metadata is generated for each report to facilitate professional distribution across corporate communication channels.
 
-## 🧠 Audit Engine Structure
-The engine is split into:
-1. **Matchers**: Map user input to known tools.
-2. **Analyzers**: Identify overlaps and oversized tiers.
-3. **Mappers**: Generate human-readable recommendations.
+## Audit Engine Framework
+The engine architecture is divided into three primary modules:
+1. **Normalization Layer**: Maps heterogeneous user inputs to standardized tool definitions.
+2. **Analytical Engine**: Executes business rules to identify service overlaps and tier inefficiencies.
+3. **Reporting Layer**: Synthesizes analytical outputs into structured, human-readable strategic recommendations.

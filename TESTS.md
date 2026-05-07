@@ -1,38 +1,40 @@
-# Testing Strategy — Vyay
+<img src="public/logo_light.png" alt="Vyay Logo" width="200" />
 
-Vyay prioritizes reliability in its deterministic audit engine. This document outlines our testing philosophy and structure.
+# Quality Assurance and Testing Strategy — Vyay
 
-## 🧪 Testing Stack
-- **Framework**: Vitest
-- **DOM Testing**: React Testing Library
-- **Mocks**: MSW (Mock Service Worker) for Supabase/Gemini API calls
+Vyay emphasizes system reliability and accuracy within its deterministic audit engine. This document specifies the comprehensive testing methodology and architectural framework.
 
-## 🎯 Coverage Goals
-- **Audit Engine**: 100% coverage on core rules (`src/rules/*.ts`).
-- **Form Logic**: Coverage for multi-step navigation and validation.
-- **Critical Paths**:
-  - Empty audit submission.
-  - Multi-tool overlap detection.
-  - Public result retrieval.
+## Testing Framework and Tools
+- **Core Framework**: Vitest
+- **Interface Testing**: React Testing Library
+- **Service Virtualization**: Mock Service Worker (MSW) for Supabase and Gemini API simulations.
 
-## 📂 Test Structure
+## Quality Assurance Objectives
+- **Audit Engine**: Maintain 100% code coverage for core business logic within `src/rules/*.ts`.
+- **Interface Logic**: Validate multi-stage navigation sequences and data validation protocols.
+- **Critical Business Paths**:
+  - Null-input audit submissions.
+  - Multi-service redundancy identification.
+  - Public reporting retrieval and resolution.
+
+## Test Repository Structure
 ```text
 tests/
 ├── unit/
-│   ├── rules/          # Audit logic tests
-│   └── utils/          # Helper function tests
-├── components/         # UI component tests
-└── integration/        # End-to-end flows
+│   ├── rules/          # Business logic validation
+│   └── utils/          # Utility function validation
+├── components/         # User interface component validation
+└── integration/        # End-to-end workflow validation
 ```
 
-## 🛠 Running Tests
+## Execution Protocol
 ```bash
 npm run test
 ```
 
-## 📝 Test Case Example (Draft)
+## Technical Specification Example (Draft)
 ```typescript
-it('should identify overlap between Cursor and GitHub Copilot', () => {
+it('should identify redundancy between Cursor and GitHub Copilot subscriptions', () => {
   const input = [
     { toolId: 'cursor', tier: 'pro', userCount: 1 },
     { toolId: 'github-copilot', tier: 'individual', userCount: 1 }

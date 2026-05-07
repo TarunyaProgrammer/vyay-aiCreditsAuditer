@@ -1,56 +1,55 @@
+<img src="public/logo_light.png" alt="Vyay Logo" width="200" />
+
 # Vyay — AI Spend Audit Platform
 
-**Vyay** (Sanskrit for "Spend") is a production-quality spend audit platform built for small engineering teams and startups. It identifies overlapping AI tools, oversized plans, and cheaper alternatives in under 60 seconds.
+**Vyay** is a professional-grade spend audit platform developed for engineering teams and enterprise startups. The system identifies redundant AI subscriptions, oversized service plans, and cost-effective alternatives with high efficiency.
 
-## 🚀 Problem Statement
-Startups today are leaking cash through "Shadow AI" — unmanaged subscriptions to ChatGPT, Claude, Cursor, GitHub Copilot, and various API keys. Engineering teams often pay for overlapping features or tiered plans that are 80% underutilized.
+## Executive Summary
+Modern organizations frequently incur unnecessary expenses due to unmanaged AI subscriptions across various platforms, including ChatGPT, Claude, Cursor, and GitHub Copilot. Engineering departments often maintain overlapping service features or underutilized premium tiers.
 
-Vyay provides a fast, trust-based, and deterministic audit to reclaim that spend.
+Vyay provides a deterministic, data-driven audit process to optimize resource allocation and recover capital.
 
-## ✨ Key Features
-- **Zero-Friction Audit**: No authentication required. Just input your tools and get results.
-- **Deterministic Logic**: Audit rules based on real pricing data and feature overlaps.
-- **Cheaper Alternatives**: Intelligent mapping to open-source or lower-cost AI providers.
-- **Shareable Reports**: Public URLs for audit results to share with finance or leadership.
-- **Mobile Optimized**: Review your team's spend on the go.
+## Core Capabilities
+- **Frictionless Audit Process**: No authentication required to minimize time-to-value.
+- **Deterministic Analysis**: Audit logic based on validated pricing data and feature mapping.
+- **Cost Optimization**: Automated identification of open-source or lower-cost alternatives.
+- **Reporting and Distribution**: Generation of public URLs for stakeholder review and financial reporting.
+- **Mobile Compatibility**: Optimized interface for cross-device accessibility.
 
-## 🛠 Tech Stack
+## Technical Specifications
 - **Frontend**: React, Vite, TypeScript, Tailwind CSS, shadcn/ui
-- **State & Logic**: React Router, Zustand, Zod
-- **Backend**: Supabase
-- **AI**: Gemini 2.5 Flash API
-- **Email**: Resend
-- **Testing**: Vitest, React Testing Library
+- **State Management**: React Router, Zustand, Zod
+- **Backend Infrastructure**: Supabase
+- **Artificial Intelligence**: Gemini 2.5 Flash API
+- **Communication Services**: Resend
+- **Quality Assurance**: Vitest, React Testing Library
 
-## 📂 Project Structure
+## System Directory Structure
 ```text
 src/
-├── app/          # App providers and global config
-├── pages/        # Route components
+├── app/          # Application providers and global configuration
+├── pages/        # Route-level components
 ├── components/   # UI components (layout, landing, audit, result)
-├── features/     # Feature-specific logic (audit engine, sharing)
-├── services/     # External API integrations (Supabase, Gemini)
-├── store/        # Zustand state management
-├── rules/        # Audit logic & business rules
-├── data/         # Static pricing & tool data
-├── hooks/        # Reusable React hooks
-├── types/        # TypeScript definitions
-└── utils/        # Helper functions
+├── features/     # Feature-specific business logic
+├── services/     # External service integrations
+├── store/        # State management
+├── rules/        # Audit logic and business rules
+├── data/         # Static pricing and tool definitions
+├── hooks/        # Reusable application hooks
+├── types/        # TypeScript type definitions
+└── utils/        # Utility functions
 ```
 
-## 🏗 Planned Architecture
-Vyay uses a **deterministic rule engine** coupled with **LLM-assisted analysis** for complex spend patterns. Data flows from a multi-step audit form into the rule engine, which generates a report stored in Supabase and shared via a unique ID.
+## System Architecture
+Vyay utilizes a deterministic rule engine integrated with LLM-assisted analysis to process complex spend patterns. Data is ingested via a multi-step audit interface, processed through the rule engine, and persisted in Supabase for secure retrieval and distribution.
 
-## 🤝 Decisions & Tradeoffs
-- **No Auth**: We prioritized "Time-to-Value". Forcing a login for a 60-second audit is a conversion killer.
-- **Zustand over Redux**: Simpler state management for a tool-focused application.
-- **Tailwind CSS**: Rapid UI development with a premium "glassmorphic" aesthetic.
+## Strategic Decisions
+- **Authentication Model**: Authentication was intentionally omitted to maximize user conversion and immediate utility.
+- **State Architecture**: Zustand was selected for its minimalist footprint and efficiency in managing complex form states.
+- **Styling Framework**: Tailwind CSS was utilized to ensure a high-performance, standardized UI consistent with modern design principles.
 
-## 📸 Screenshots
-*(Coming Soon — Placeholder for Hero Section)*
-
-## 🚀 Deployment
-Vyay is deployed on **Vercel** with Supabase handling the backend.
+## Deployment Profile
+The application is deployed via Vercel, utilizing Supabase for backend data persistence and management.
 
 ---
-Built with 💡 for the modern engineering team.
+Developed for professional engineering organizations.

@@ -1,20 +1,22 @@
-# Economics of Vyay
+<img src="public/logo_light.png" alt="Vyay Logo" width="200" />
 
-This document explores the unit economics and potential monetization of the Vyay platform.
+# Operational Economics — Project Vyay
 
-## 💰 Operational Costs (OpEx)
-- **Hosting**: Vercel (Free tier initially / Pro at $20/mo).
-- **Database**: Supabase (Free tier initially).
-- **AI Inference**: Gemini 2.5 Flash (Extremely low cost per audit).
-- **Email**: Resend (Free tier initially).
+This document delineates the unit economics and potential monetization strategies for the Vyay platform.
 
-**Estimated Cost per Audit**: < $0.005.
+## Operational Expenditures (OpEx)
+- **Infrastructure Hosting**: Vercel (Initial evaluation on base tier; Professional tier at $20/month for production scaling).
+- **Relational Infrastructure**: Supabase (Base tier utilization).
+- **Analytical Inference**: Gemini 2.5 Flash (Optimized for minimal cost per evaluation cycle).
+- **Communication Infrastructure**: Resend (Base tier utilization).
 
-## 📈 Potential Revenue Models
-1. **Lead Generation**: Affiliate links to recommended tools (e.g., "Switch to Groq").
-2. **Premium Reports**: Enhanced PDF reports for Enterprise compliance/board meetings ($49 one-time).
-3. **Continuous Monitoring**: Connect to company card (Ramp/Mercury) for real-time spend alerts ($29/mo).
-4. **Tool Negotiation**: Act as a proxy to negotiate volume discounts for teams > 50 people (20% of savings).
+**Projected Cost per Evaluation Cycle**: < $0.005 USD.
 
-## 📊 Business Viability
-At a cost of $0.005 per audit, 10,000 audits/day costs only $50/day. If 1% of users buy a $49 premium report, the tool is highly profitable.
+## Revenue Generation Frameworks
+1. **Strategic Referral Integration**: Integration of referral mechanisms for optimized service providers (e.g., Groq).
+2. **Enterprise Reporting Services**: Provision of high-fidelity PDF reports optimized for compliance and executive review ($49 USD per report).
+3. **Continuous Expenditure Monitoring**: Automated integration with corporate financial platforms (e.g., Ramp, Mercury) for real-time expenditure alerts ($29/month).
+4. **Service Contract Negotiation**: Strategic brokerage of volume discounts for organizations exceeding 50 personnel (commission-based model).
+
+## Financial Viability Analysis
+Based on a projected cost of $0.005 per evaluation, a volume of 10,000 evaluations per day results in an operational overhead of $50 USD. With a projected 1% conversion rate for premium reporting services, the platform demonstrates significant profitability and fiscal sustainability.

@@ -1,23 +1,25 @@
+<img src="public/logo_light.png" alt="Vyay Logo" width="200" />
+
 # Go-To-Market (GTM) Strategy — Vyay
 
-Vyay is a tool for **Engineering Managers (EMs)** and **Founders** at seed to Series B startups.
+Vyay is positioned as a strategic utility for **Engineering Leadership** and **Founders** at Seed to Series B startups.
 
-## 🎯 Target Audience
-- **Primary**: Engineering Managers who are under pressure to cut "cloud/tool spend".
-- **Secondary**: Solo-founders using multiple AI tools to move fast but noticing subscription creep.
+## Target Demographics
+- **Primary**: Engineering Managers focused on operational efficiency and cloud expenditure optimization.
+- **Secondary**: Founders and Principals seeking to mitigate subscription proliferation within high-growth environments.
 
-## 🚀 Distribution Channels
-1. **Product Hunt**: Launch as a "Free utility for the AI era".
-2. **LinkedIn/Twitter**: Share screenshots of "Audit Results" (The "Wow" visual factor).
-3. **Engineering Communities**: Hacker News, Reddit (r/startups, r/programming), and niche Slack/Discord groups.
-4. **Partner Ecosystems**: Reach out to "Alternative" tool providers (e.g., Groq, Perplexity) to be featured as a recommended alternative.
+## Distribution Channels
+1. **Product Aggregators**: Launch via platforms such as Product Hunt as a high-utility professional tool.
+2. **Professional Networks**: Utilize LinkedIn and specialized corporate channels to distribute reporting insights and analytical results.
+3. **Professional Communities**: Engage with stakeholders on Hacker News, specialized subreddits (r/startups, r/programming), and enterprise-level engineering groups.
+4. **Strategic Partnerships**: Collaborate with alternative service providers (e.g., Groq, Perplexity) to establish Vyay as a preferred optimization partner.
 
-## 📈 Growth Loops
-- **Shareability**: Each audit generates a beautiful, branded public URL. When an EM shares this with their CFO, the CFO sees the Vyay brand.
-- **"Savings Found" Badge**: Allow users to share a small card showing "We just saved $X/mo using Vyay".
+## Growth and Engagement Mechanisms
+- **Institutional Shareability**: Each audit generates a professionally branded report URL, facilitating seamless distribution to financial stakeholders and leadership.
+- **Performance Benchmarking**: Enable users to share high-level savings insights to demonstrate organizational efficiency gains.
 
-## 💎 Positioning
-"The 60-second health check for your AI stack."
-- **Cheap**: Free.
-- **Fast**: No login.
-- **Trustworthy**: Deterministic rules + public pricing data.
+## Strategic Positioning
+"The comprehensive health assessment for organizational AI infrastructure."
+- **Financial Model**: Zero-cost utility for initial audit.
+- **Velocity**: High-speed processing with zero user authentication requirements.
+- **Integrity**: Deterministic analysis based on validated pricing datasets.

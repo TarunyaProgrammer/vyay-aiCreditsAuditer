@@ -1,21 +1,23 @@
-# Reflection — Vyay Project
+<img src="public/logo_light.png" alt="Vyay Logo" width="200" />
 
-## 1. Product Thinking
-*Why does this product exist? What is the core problem it solves?*
-[Placeholder for answer]
+# Strategic Reflection — Project Vyay
 
-## 2. Engineering Decisions
-*Describe a decision you reversed mid-week. Why?*
-Initially, I considered an overengineered architecture with a full authentication suite (Supabase Auth, RBAC) and a centralized dashboard. However, realizing the "60-second audit" promise, I simplified the scope significantly. I prioritized execution quality and immediate value over technical sophistication that would likely hinder user adoption.
+## 1. Product Strategy and Value Proposition
+*Analyze the rationale for the product's existence and the primary market problem it addresses.*
+[Awaiting comprehensive analysis]
 
-## 3. Technical Challenges
-*What was the hardest technical part of the build?*
-[Placeholder for answer]
+## 2. Engineering and Architectural Decision-Making
+*Detail a significant architectural pivot or strategic decision encountered during development.*
+The initial technical specification included a complex authentication and authorization framework (Supabase Auth, RBAC) and a centralized administrative dashboard. However, to align with the primary objective of delivering high-velocity financial insights, the architectural scope was refined. We prioritized execution excellence and immediate value delivery over excessive technical complexity, ensuring a more streamlined user experience and higher adoption potential.
 
-## 4. AI & Automation
-*How did you use AI to build this?*
-[Placeholder for answer]
+## 3. Technical Implementation Challenges
+*Identify the most significant technical obstacles encountered during the implementation phase.*
+[Awaiting technical analysis]
 
-## 5. Startup Mindset
-*If you had 48 hours more, what would you add?*
-[Placeholder for answer]
+## 4. Artificial Intelligence Integration
+*Describe the strategic utilization of AI and automated systems within the project's development lifecycle.*
+[Awaiting integration analysis]
+
+## 5. Entrepreneurial Vision and Future Roadmap
+*Delineate additional strategic features or enhancements planned for future development iterations.*
+[Awaiting roadmap analysis]
