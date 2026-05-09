@@ -50,6 +50,9 @@ Vyay is built on a **Deterministic Financial Reasoning** model. Unlike simple AI
    npm run dev
    ```
 
+### Environment Variables
+For Day 3, no environment variables are required. The audit engine is fully deterministic. For upcoming features (Persistence/AI), refer to `.env.example`.
+
 ## Strategic Trade-off Decisions
 
 1. **Authentication Model (Deferred)**: We intentionally omitted a traditional authentication layer to eliminate user friction. This "Time-to-Value" prioritization ensures a 60-second completion target.
