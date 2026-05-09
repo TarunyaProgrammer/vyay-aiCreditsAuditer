@@ -7,45 +7,48 @@ import { TrendingDown, Users, Zap, Shield, ChevronRight, HelpCircle, Plus, Info 
 export const HeroSection = () => {
   return (
     <section className="relative min-h-screen overflow-hidden flex flex-col">
-      {/* Background Video */}
+      {/* Background Video - Pure Sharpness */}
       <video
         autoPlay
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover z-0"
       >
         <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260508_215831_c6a8989c-d716-4d8d-8745-e972a2eec711.mp4" type="video/mp4" />
       </video>
 
-      {/* Overlay to ensure readability and match our theme */}
-      <div className="absolute inset-0 bg-background/30 backdrop-blur-[2px] z-0" />
+      {/* Strategic Gradient Overlay: Sharp at top, readable at bottom */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent z-10" />
       
       {/* Hero Content (Bottom-Left Aligned) */}
-      <div className="relative z-10 flex-1 flex items-end pb-12 sm:pb-24 px-6 sm:px-12 md:px-20 lg:px-28">
-        <div className="max-w-2xl space-y-6">
-          <div className="space-y-4">
-            <a href="#" className="inline-flex items-center gap-2 text-[12px] font-medium text-primary hover:opacity-80 transition-opacity group">
-              Seen on Shark Tank in India <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5">→</span>
-            </a>
+      <div className="relative z-20 flex-1 flex items-end pb-16 sm:pb-32 px-6 sm:px-12 md:px-20 lg:px-28">
+        <div className="max-w-3xl space-y-8">
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <span className="w-8 h-[1px] bg-primary/30" />
+              <a href="#" className="text-[11px] font-sans uppercase tracking-[0.3em] font-bold text-primary hover:opacity-70 transition-opacity">
+                Seen on Shark Tank in India
+              </a>
+            </div>
             
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.1] font-serif italic tracking-tight text-foreground">
+            <h1 className="text-5xl sm:text-7xl lg:text-8xl leading-[0.95] font-serif italic tracking-tighter text-foreground">
               Optimize AI Expenditure <br />
-              <span className="opacity-50">Without Scaling Back.</span>
+              <span className="opacity-40 font-sans not-italic text-[0.4em] uppercase tracking-[0.2em] block mt-4">Without Scaling Back.</span>
             </h1>
             
-            <p className="text-sm sm:text-base text-foreground/70 max-w-md leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-lg leading-relaxed font-sans">
               The deterministic audit engine for engineering teams to identify tool redundancy and plan sub-optimality in under 60 seconds.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row gap-6 pt-4">
             <Link to="/audit">
-              <Button size="xl" className="group shadow-2xl shadow-primary/20">
-                Initiate Strategic Audit <span className="inline-block transition-transform duration-200 group-hover:translate-x-1 ml-2">→</span>
+              <Button size="xl" className="group shadow-2xl shadow-primary/20 rounded-full px-10">
+                Initiate Strategic Audit <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform ml-2" />
               </Button>
             </Link>
-            <Button variant="outline" size="xl" className="bg-background/20 backdrop-blur-md border-foreground/10">
+            <Button variant="outline" size="xl" className="rounded-full px-10 border-foreground/10 hover:bg-foreground hover:text-background transition-all">
               View Market Reference
             </Button>
           </div>
@@ -58,43 +61,46 @@ export const HeroSection = () => {
 // Problem Section
 export const ProblemSection = () => {
   return (
-    <section className="py-24 bg-foreground/5">
+    <section className="py-32 bg-foreground/5 relative overflow-hidden">
       <div className="container mx-auto px-6">
-        <SectionHeading 
-          title="The AI Spending Paradox" 
-          subtitle="As AI velocity increases, so does the 'Hidden Spend' of redundant subscriptions and misaligned enterprise tiers."
-        />
+        <div className="max-w-3xl mb-24">
+          <Badge variant="primary" className="mb-6 bg-primary/5 text-primary border-primary/10 uppercase tracking-widest text-[10px]">Strategic Analysis</Badge>
+          <h2 className="text-5xl md:text-7xl font-serif italic mb-8 leading-[1] tracking-tighter">
+            The AI Spending Paradox.
+          </h2>
+          <p className="text-muted-foreground text-xl leading-relaxed font-sans max-w-2xl">
+            As AI velocity increases, so does the "Hidden Spend" of redundant subscriptions and misaligned enterprise tiers. Vyay exposes these inefficiencies instantly.
+          </p>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <Card className="space-y-4 border-l-4 border-l-primary/30">
-            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-4">
-              <Plus size={24} />
-            </div>
-            <h3 className="text-2xl font-serif italic">Subscription Chaos</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Teams often pay for multiple IDE agents (Cursor + Copilot) and reasoning tools simultaneously, creating $100s in monthly waste per seat.
-            </p>
-          </Card>
-          
-          <Card className="space-y-4 border-l-4 border-l-primary/30">
-            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-4">
-              <Users size={24} />
-            </div>
-            <h3 className="text-2xl font-serif italic">Tier Mismatch</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Small startups frequently default to "Enterprise" or "Team" tiers with 5-seat minimums when individual Pro seats would suffice.
-            </p>
-          </Card>
-          
-          <Card className="space-y-4 border-l-4 border-l-primary/30">
-            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-4">
-              <TrendingDown size={24} />
-            </div>
-            <h3 className="text-2xl font-serif italic">Invisible Inflation</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Without a centralized audit, AI costs inflate silently month-over-month, eating into runway that could be used for headcount.
-            </p>
-          </Card>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {[
+            { 
+              title: 'Subscription Chaos', 
+              desc: 'Teams often pay for multiple IDE agents (Cursor + Copilot) and reasoning tools simultaneously, creating $100s in monthly waste per seat.',
+              icon: <Plus size={24} />
+            },
+            { 
+              title: 'Tier Mismatch', 
+              desc: 'Small startups frequently default to "Enterprise" or "Team" tiers with 5-seat minimums when individual Pro seats would suffice.',
+              icon: <Users size={24} />
+            },
+            { 
+              title: 'Invisible Inflation', 
+              desc: 'Without a centralized audit, AI costs inflate silently month-over-month, eating into runway that could be used for headcount.',
+              icon: <TrendingDown size={24} />
+            }
+          ].map((item, i) => (
+            <Card key={i} className="group p-10 bg-background border-none shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] transition-all duration-500 rounded-[2.5rem]">
+              <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
+                {item.icon}
+              </div>
+              <h3 className="text-3xl font-serif italic mb-4">{item.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed font-sans">
+                {item.desc}
+              </p>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
@@ -125,17 +131,20 @@ export const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-24">
+    <section className="py-32">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
           {steps.map((step) => (
-            <div key={step.id} className="group">
-              <div className="text-[80px] font-serif italic text-foreground/5 leading-none mb-[-40px] transition-all group-hover:text-primary/10">
+            <div key={step.id} className="group relative">
+              <div className="text-[120px] font-serif italic text-foreground/5 leading-none mb-[-60px] transition-all group-hover:text-primary/5 select-none">
                 {step.id}
               </div>
-              <div className="space-y-4 relative z-10 pl-4 border-l border-foreground/10 group-hover:border-primary/30 transition-all">
-                <h3 className="text-2xl font-serif italic">{step.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
+              <div className="space-y-6 relative z-10 pl-8 border-l border-foreground/5 group-hover:border-primary/20 transition-all duration-500">
+                <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary/50 mb-4">
+                  {step.icon}
+                </div>
+                <h3 className="text-3xl font-serif italic tracking-tight">{step.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed font-sans">{step.desc}</p>
               </div>
             </div>
           ))}
