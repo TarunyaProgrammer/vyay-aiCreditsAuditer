@@ -75,7 +75,7 @@ export const SUPPORTED_TOOLS: AuditTool[] = [
   },
 ];
 
-// Internal reference for deterministic logic hooks
+// Deterministic logic ke hooks ke liye internal reference
 export const pricingData = {
   cursor: {
     hobby: { monthly: 0, seats: 'individual' },

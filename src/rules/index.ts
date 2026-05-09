@@ -8,7 +8,7 @@ import { checkOptimizedStack } from './optimized-stack';
 export const runAudit = (input: AuditInput): AuditResult => {
   let recommendations: Recommendation[] = [];
 
-  // Run all modular rules
+  // Saare modular rules ko ek ek karke chalao
   recommendations = [
     ...checkOversizedPlans(input),
     ...checkDuplicateTooling(input),
@@ -16,19 +16,19 @@ export const runAudit = (input: AuditInput): AuditResult => {
     ...checkRetailOptimization(input),
   ];
 
-  // Calculate savings
+  // Savings calculate karo
   const totalMonthlySpend = input.tools.reduce((sum, t) => sum + t.monthlySpend, 0);
   const potentialSavings = recommendations.reduce((sum, r) => sum + r.estimatedSavings, 0);
 
-  // If minimal savings found, run the "Optimized Stack" rule
+  // Agar savings kam hain, toh "Optimized Stack" rule check karo
   if (potentialSavings === 0 || (potentialSavings / totalMonthlySpend) < 0.05) {
     recommendations.push(...checkOptimizedStack(input, potentialSavings));
   }
 
-  // Calculate efficiency metrics
+  // Efficiency metrics calculate ho rahi hain
   const overlapScore = Math.min(100, (potentialSavings / (totalMonthlySpend || 1)) * 100);
   
-  // Determine Grade
+  // Kitni savings ho rahi hai uske basis pe grade decide karo
   let efficiencyGrade: 'A' | 'B' | 'C' | 'D' | 'F' = 'A';
   if (overlapScore > 40) efficiencyGrade = 'F';
   else if (overlapScore > 30) efficiencyGrade = 'D';

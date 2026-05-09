@@ -20,7 +20,7 @@ export interface AuditTool {
   logoUrl?: string;
   plans: {
     name: string;
-    price: number; // monthly per user (or flat rate)
+    price: number; // monthly per user ya phir flat rate
     billing: 'monthly' | 'yearly';
     features: string[];
   }[];
@@ -47,7 +47,7 @@ export interface Recommendation {
   title: string;
   description: string;
   estimatedSavings: number;
-  confidence: 'high' | 'medium' | 'low'; // New: confidence scoring
+  confidence: 'high' | 'medium' | 'low'; // Confidence scoring yahan ho rahi hai
   actionUrl?: string;
   alternativeToolId?: string;
 }
@@ -61,7 +61,7 @@ export interface AuditResult {
   metrics: {
     toolCount: number;
     highestSpendTool: string;
-    overlapScore: number; // 0-100
+    overlapScore: number; // Score 0 se 100 ke beech mein
     efficiencyGrade: 'A' | 'B' | 'C' | 'D' | 'F';
   };
 }

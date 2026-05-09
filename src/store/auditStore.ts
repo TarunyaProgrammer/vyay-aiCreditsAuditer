@@ -3,16 +3,16 @@ import { persist } from 'zustand/middleware';
 import { AuditInput, AuditResult } from '../types';
 
 interface AuditState {
-  // Current step in the multi-step form
+  // Form ka current step track karne ke liye
   step: number;
   
-  // User Input
+  // User ka input data
   input: AuditInput;
   
-  // Results from the audit engine
+  // Audit engine se jo result milega
   result: AuditResult | null;
   
-  // Actions
+  // Saare actions yahan hain
   setStep: (step: number) => void;
   nextStep: () => void;
   prevStep: () => void;

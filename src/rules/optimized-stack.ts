@@ -3,7 +3,7 @@ import { AuditInput, Recommendation } from '../types';
 export const checkOptimizedStack = (input: AuditInput, totalSavings: number): Recommendation[] => {
   const recommendations: Recommendation[] = [];
 
-  // Rule: Low Waste Threshold
+  // Rule: Kam waste detection (efficiency validation)
   const totalSpend = input.tools.reduce((sum, t) => sum + t.monthlySpend, 0);
   const wastePercentage = totalSpend > 0 ? (totalSavings / totalSpend) : 0;
 
@@ -19,7 +19,7 @@ export const checkOptimizedStack = (input: AuditInput, totalSavings: number): Re
     });
   }
 
-  // Rule: Single Tool Strategy
+  // Rule: Jab team sirf ek tool use kar rahi ho
   if (input.tools.length === 1 && input.tools[0].monthlySpend > 0) {
     recommendations.push({
       id: `optimized-single-vendor-${Date.now()}`,

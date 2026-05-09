@@ -4,7 +4,7 @@ export const checkOverlapRules = (input: AuditInput): Recommendation[] => {
   const recommendations: Recommendation[] = [];
   const toolIds = input.tools.map(t => t.toolId);
 
-  // 1. Triple Overlap (Reasoning Stack Saturation)
+  // 1. Triple Overlap check: Jab 3 se zyada AI tools use ho rahe hon
   const reasoningTools = ['chatgpt', 'claude', 'perplexity', 'gemini'];
   const activeReasoningTools = toolIds.filter(id => reasoningTools.includes(id));
   
@@ -24,7 +24,7 @@ export const checkOverlapRules = (input: AuditInput): Recommendation[] => {
     });
   }
 
-  // 2. Specific Dual Overlap (ChatGPT + Claude)
+  // 2. ChatGPT aur Claude ka dual overlap check karo
   if (toolIds.includes('chatgpt') && toolIds.includes('claude')) {
     recommendations.push({
       id: `dual-overlap-reasoning-${Date.now()}`,

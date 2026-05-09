@@ -4,7 +4,7 @@ export const checkDuplicateTooling = (input: AuditInput): Recommendation[] => {
   const recommendations: Recommendation[] = [];
   const toolIds = input.tools.map(t => t.toolId);
 
-  // 1. Coding Tool Redundancy (Cursor + Copilot)
+  // 1. Coding Tools check: Cursor aur Copilot dono ek saath redundancy hai
   if (toolIds.includes('cursor') && toolIds.includes('github-copilot')) {
     const copilotInput = input.tools.find(t => t.toolId === 'github-copilot');
     recommendations.push({
@@ -18,7 +18,7 @@ export const checkDuplicateTooling = (input: AuditInput): Recommendation[] => {
     });
   }
 
-  // 2. Cursor + Windsurf Overlap
+  // 2. Cursor aur Windsurf bhi same capabilities dete hain
   if (toolIds.includes('cursor') && toolIds.includes('windsurf')) {
     recommendations.push({
       id: `redundant-coding-windsurf-${Date.now()}`,

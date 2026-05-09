@@ -3,8 +3,8 @@ import { AuditInput, Recommendation } from '../types';
 export const checkRetailOptimization = (input: AuditInput): Recommendation[] => {
   const recommendations: Recommendation[] = [];
   
-  // Rule: High Reasoning Tool Spend
-  // If total reasoning tool spend > $200/mo, suggest credit-based consolidation
+  // Rule: High reasoning tools pe karcha check karo
+  // Agar Reasoning spend $200 se zyada hai, toh API consolidation suggest karo
   const reasoningTools = ['chatgpt', 'claude', 'perplexity', 'gemini'];
   const reasoningSpend = input.tools
     .filter(t => reasoningTools.includes(t.toolId))
@@ -22,7 +22,7 @@ export const checkRetailOptimization = (input: AuditInput): Recommendation[] => 
     });
   }
 
-  // Rule: High Seat Count on Consumer Plans
+  // Rule: Consumer plans pe zyada seats check karo
   const highSeatTools = input.tools.filter(t => t.userCount > 20 && t.tier === 'pro');
   for (const tool of highSeatTools) {
     recommendations.push({

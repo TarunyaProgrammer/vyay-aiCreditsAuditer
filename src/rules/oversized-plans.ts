@@ -3,8 +3,7 @@ import { AuditInput, Recommendation } from '../types';
 export const checkOversizedPlans = (input: AuditInput): Recommendation[] => {
   const recommendations: Recommendation[] = [];
 
-  // 1. Small Team Overpaying for Team Plans
-  // If team size < 5, ChatGPT Team ($25-30) or Claude Team ($25, min 5) might be overkill.
+  // 1. Agar team size 5 se kam hai, toh Team plans shayad mehnge hain
   const teamTierTools = input.tools.filter(t => t.tier === 'team');
   
   for (const tool of teamTierTools) {
@@ -27,7 +26,7 @@ export const checkOversizedPlans = (input: AuditInput): Recommendation[] => {
     }
   }
 
-  // 2. Enterprise Mismatch
+  // 2. Enterprise Tier check: Choti teams ke liye Enterprise zaroori nahi hota
   const enterpriseTools = input.tools.filter(t => t.tier === 'enterprise');
   if (enterpriseTools.length > 0 && input.teamSize < 20) {
     for (const tool of enterpriseTools) {
