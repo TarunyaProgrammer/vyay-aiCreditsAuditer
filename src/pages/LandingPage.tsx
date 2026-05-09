@@ -34,7 +34,7 @@ const ExampleAuditCard = () => {
               <div className="flex justify-between items-start mb-16">
                 <div className="space-y-1">
                   <p className="text-[10px] font-sans uppercase tracking-[0.4em] opacity-40 font-bold">Strategic Snapshot</p>
-                  <h3 className="text-4xl font-serif italic tracking-tight">Series A Audit</h3>
+                  <h3 className="text-4xl font-serif italic tracking-tight">Growth Stage Audit</h3>
                 </div>
                 <Zap className="text-primary fill-primary" size={40} />
               </div>
