@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuditStore } from '../store/auditStore';
 import { runAudit } from '../rules';
 import { SUPPORTED_TOOLS } from '../data/pricing';
-import { Button, Card, SectionHeading, Badge } from '../components/shared';
+import { Button, Card, SectionHeading, Badge } from '../components/shared/SharedComponents';
 import { AuditInputSchema, ToolInputSchema } from '../lib/validation';
 import { ArrowRight, ArrowLeft, Plus, Trash2, Zap, Info, Calculator, Users } from 'lucide-react';
 import { ToolInput } from '../types';

@@ -1,6 +1,6 @@
 import React from 'react';
-import { HeroSection, ProblemSection, HowItWorks, FAQSection } from '../components/landing';
-import { Card, Button, Badge } from '../components/shared';
+import { HeroSection, ProblemSection, HowItWorks, FAQSection } from '../components/landing/LandingComponents';
+import { Card, Button, Badge } from '../components/shared/SharedComponents';
 import { TrendingDown, ChevronRight, Zap } from 'lucide-react';
 
 const ExampleAuditCard = () => {
