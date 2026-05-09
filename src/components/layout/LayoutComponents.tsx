@@ -42,9 +42,8 @@ export const Footer = () => {
           {/* Brand & CTA */}
           <div className="lg:col-span-6 space-y-10">
             <div className="space-y-6">
-              <Link to="/" className="flex items-center gap-3">
+              <Link to="/" className="flex items-center">
                 <img src="/logo_light.png" alt="Vyay Logo" className="h-10 w-auto object-contain" />
-                <span className="text-3xl font-serif italic tracking-tighter">Vyay</span>
               </Link>
               <h3 className="text-4xl md:text-5xl font-serif italic leading-[1.1] tracking-tight max-w-md">
                 Ready to recapture your <br />
