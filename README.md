@@ -13,12 +13,22 @@
   <img src="https://via.placeholder.com/800x450.png?text=Analytical+Results+Reporting" alt="Results Page" width="32%" />
 </p>
 
-## Project Status: Day 2 Complete
+## Project Status: Day 3 Complete
 - [x] **Architecture Redux**: Implemented a feature-oriented directory structure.
-- [x] **Design System**: Established a shared component library (`src/components/shared`) with a McKinsey-style aesthetic.
-- [x] **Dynamic Audit UX**: Realized a 3-step dynamic audit flow with Zod validation.
-- [x] **Market Data Integrity**: Unified official pricing data into a deterministic reference engine.
-- [x] **Testing Foundation**: Initialized Vitest and React Testing Library setup.
+- [x] **Deterministic Audit Engine**: 100% rule-based reasoning for financial defensibility.
+- [x] **Modular Rule Architecture**: Separate logic for oversized plans, tool overlap, and redundancy.
+- [x] **Executive Dashboard**: Cinematic result page with confidence scoring and annual recovery projections.
+- [x] **Automated Test Suite**: 5+ core engine tests covering diverse organizational profiles.
+
+## Strategic Architecture
+
+Vyay is built on a **Deterministic Financial Reasoning** model. Unlike simple AI-prompting tools, our engine uses modular, traceable rules to ensure every recommendation is financially sound.
+
+### Audit Logic Hierarchy
+1. **Oversized Plans**: Detects Enterprise/Team tier mismatches for small sub-teams.
+2. **Tool Overlap**: Identifies reasoning stack saturation (e.g., ChatGPT + Claude + Perplexity).
+3. **Duplicate Capabilities**: Flags redundant coding assistants (e.g., Cursor + Copilot).
+4. **Optimized Baseline**: Validates and acknowledges efficient expenditure.
 
 ## Quickstart Guide
 

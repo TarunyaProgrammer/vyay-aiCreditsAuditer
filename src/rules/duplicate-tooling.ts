@@ -8,36 +8,26 @@ export const checkDuplicateTooling = (input: AuditInput): Recommendation[] => {
   if (toolIds.includes('cursor') && toolIds.includes('github-copilot')) {
     const copilotInput = input.tools.find(t => t.toolId === 'github-copilot');
     recommendations.push({
-      id: `redundant-copilot-${Date.now()}`,
+      id: `redundant-coding-copilot-${Date.now()}`,
       toolId: 'github-copilot',
       type: 'redundant',
       title: 'Consolidate IDE Intelligence',
-      description: 'You are using both Cursor and GitHub Copilot. Cursor includes built-in Copilot-like features. Removing Copilot could improve workflow focus and save capital.',
+      description: 'You are using both Cursor and GitHub Copilot. Since Cursor has deep native integration for autocomplete and chat, GitHub Copilot is largely redundant for this workflow.',
       estimatedSavings: copilotInput?.monthlySpend || 10,
       confidence: 'high',
     });
   }
 
-  // 2. Triple Overlap (Reasoning Stack Saturation)
-  const reasoningTools = ['chatgpt', 'claude', 'perplexity', 'gemini'];
-  const activeReasoningTools = toolIds.filter(id => reasoningTools.includes(id));
-  
-  if (activeReasoningTools.length >= 3) {
-    // Recommend consolidating to the most efficient/preferred tool
-    const leastExpensiveToolId = activeReasoningTools.sort((a, b) => {
-      const spendA = input.tools.find(t => t.toolId === a)?.monthlySpend || 0;
-      const spendB = input.tools.find(t => t.toolId === b)?.monthlySpend || 0;
-      return spendA - spendB;
-    })[0];
-
+  // 2. Cursor + Windsurf Overlap
+  if (toolIds.includes('cursor') && toolIds.includes('windsurf')) {
     recommendations.push({
-      id: `overlap-stack-${Date.now()}`,
-      toolId: leastExpensiveToolId,
-      type: 'alternative',
-      title: 'Stack Saturation Detected',
-      description: `Your team is paying for ${activeReasoningTools.length} general-purpose reasoning tools simultaneously. We recommend consolidating to 1-2 primary vendors to reduce cognitive overhead and redundant spend.`,
-      estimatedSavings: 20 * (activeReasoningTools.length - 2), // Assume $20/mo per tool
-      confidence: 'medium',
+      id: `redundant-coding-windsurf-${Date.now()}`,
+      toolId: 'windsurf',
+      type: 'redundant',
+      title: 'Redundant AI IDE Stack',
+      description: 'Cursor and Windsurf are both agent-first AI IDEs. We recommend selecting a single primary editor to ensure consistent context management and avoid double-billing.',
+      estimatedSavings: 20,
+      confidence: 'high',
     });
   }
 
