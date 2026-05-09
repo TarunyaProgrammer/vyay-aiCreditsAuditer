@@ -35,88 +35,70 @@ export const Navbar = () => {
 
 export const Footer = () => {
   return (
-    <footer className="bg-background border-t border-foreground/5 pt-32 pb-12 overflow-hidden">
-      <div className="container mx-auto px-6">
-        {/* Top Section: CTA & Links */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-32">
-          {/* Brand & CTA */}
-          <div className="lg:col-span-6 space-y-10">
-            <div className="space-y-6">
-              <Link to="/" className="flex items-center">
-                <img src="/logo_light.png" alt="Vyay Logo" className="h-10 w-auto object-contain" />
-              </Link>
-              <h3 className="text-4xl md:text-5xl font-serif italic leading-[1.1] tracking-tight max-w-md">
-                Ready to recapture your <br />
-                <span className="text-primary">AI Infrastructure Capital?</span>
-              </h3>
-            </div>
-            
-            <div className="flex flex-wrap gap-4">
-              <Link to="/audit">
-                <Button size="xl" className="rounded-full px-10 shadow-2xl shadow-primary/20">
-                  Start Free Audit <ArrowRight size={18} className="ml-2" />
-                </Button>
-              </Link>
-              <a href="https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer" className="inline-flex items-center justify-center rounded-full border border-foreground/10 px-10 h-14 font-medium hover:bg-foreground hover:text-background transition-all">
-                <Github size={20} className="mr-2" /> GitHub
-              </a>
-            </div>
+    <footer className="bg-background pb-12 pt-24 px-6 overflow-hidden">
+      <div className="container mx-auto">
+        <div className="relative bg-foreground text-background rounded-[3rem] p-12 md:p-20 overflow-hidden shadow-2xl">
+          {/* Corner Accents */}
+          <div className="absolute top-8 left-8 w-2 h-2 rounded-full bg-background/20" />
+          <div className="absolute top-8 right-8 w-2 h-2 rounded-full bg-background/20" />
+          <div className="absolute bottom-8 left-8 w-2 h-2 rounded-full bg-background/20" />
+          <div className="absolute bottom-8 right-8 w-2 h-2 rounded-full bg-background/20" />
+
+          {/* Large Watermark */}
+          <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 pointer-events-none select-none">
+            <h2 className="text-[25vw] font-serif italic text-background/[0.03] leading-none tracking-tighter">
+              vyay.
+            </h2>
           </div>
 
-          {/* Quick Links */}
-          <div className="lg:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-12 lg:pl-12">
-            <div className="space-y-6">
-              <h4 className="font-sans uppercase tracking-[0.2em] text-[10px] font-bold text-muted-foreground">Platform</h4>
-              <ul className="space-y-4 text-[13px] font-medium">
-                <li><Link to="/audit" className="hover:text-primary transition-colors">Audit Engine</Link></li>
-                <li><Link to="/pricing" className="hover:text-primary transition-colors">Market Reference</Link></li>
-                <li><Link to="/about" className="hover:text-primary transition-colors">Methodology</Link></li>
-              </ul>
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16">
+            {/* Contacts Section */}
+            <div className="lg:col-span-6 space-y-8">
+              <div className="space-y-4">
+                <h3 className="text-4xl md:text-5xl font-serif italic tracking-tight">Intelligence</h3>
+                <a href="mailto:intelligence@vyay.ai" className="text-xl md:text-2xl font-serif italic text-primary hover:opacity-80 transition-opacity underline decoration-primary/30 underline-offset-8">
+                  intelligence@vyay.ai ↗
+                </a>
+              </div>
+              
+              <div className="pt-8 flex flex-wrap gap-6">
+                <Link to="/audit">
+                  <Button variant="outline" className="border-background/10 hover:bg-background hover:text-foreground rounded-full px-8">
+                    Initiate Audit
+                  </Button>
+                </Link>
+                <a href="https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer" className="inline-flex items-center gap-2 text-sm font-medium hover:opacity-70 transition-opacity">
+                  <Github size={18} /> GitHub Repository ↗
+                </a>
+              </div>
             </div>
-            <div className="space-y-6">
-              <h4 className="font-sans uppercase tracking-[0.2em] text-[10px] font-bold text-muted-foreground">Resources</h4>
-              <ul className="space-y-4 text-[13px] font-medium">
-                <li><Link to="/docs" className="hover:text-primary transition-colors">Documentation</Link></li>
-                <li><Link to="/blog" className="hover:text-primary transition-colors">Audit Case Studies</Link></li>
-                <li><Link to="/tools" className="hover:text-primary transition-colors">Free Utility Suite</Link></li>
-              </ul>
-            </div>
-            <div className="space-y-6">
-              <h4 className="font-sans uppercase tracking-[0.2em] text-[10px] font-bold text-muted-foreground">Legal</h4>
-              <ul className="space-y-4 text-[13px] font-medium">
-                <li><Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-                <li><Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        {/* Massive Logo Signature */}
-        <div className="relative mb-24 pointer-events-none select-none">
-          <h2 className="text-[20vw] font-serif italic text-foreground/[0.03] leading-none tracking-tighter text-center translate-y-12">
-            Vyay.
-          </h2>
-          <div className="absolute inset-0 flex items-center justify-center translate-y-8">
-            <img src="/logo_light.png" alt="" className="w-[10vw] h-auto object-contain opacity-[0.05]" />
-          </div>
-        </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-12 border-t border-foreground/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-            <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wider">
-              © 2026 Vyay Intelligence
-            </p>
-            <span className="hidden md:block w-1 h-1 rounded-full bg-foreground/10" />
-            <p className="text-[11px] text-muted-foreground">
-              Built for Credex Web Development Internship
-            </p>
+            {/* Links Section */}
+            <div className="lg:col-span-6 flex flex-col justify-between items-start lg:items-end">
+              <div className="text-[10px] font-sans uppercase tracking-[0.4em] opacity-40 font-bold mb-12">
+                © 2026 VYAY STUDIO
+              </div>
+              
+              <div className="flex flex-wrap justify-start lg:justify-end gap-x-8 gap-y-4">
+                <Link to="/pricing" className="text-sm font-medium hover:text-primary transition-colors">Pricing ↗</Link>
+                <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors">Methodology ↗</Link>
+                <Link to="/privacy" className="text-sm font-medium hover:text-primary transition-colors">Privacy ↗</Link>
+                <Link to="/terms" className="text-sm font-medium hover:text-primary transition-colors">Terms ↗</Link>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <Shield size={14} className="text-primary/40" />
-            <p className="text-[11px] text-muted-foreground italic font-medium">
-              Deterministic data points as of May 09, 2026
+          
+          {/* Tagline */}
+          <div className="relative z-10 mt-32 flex flex-col md:flex-row justify-between items-end gap-6 pt-12 border-t border-background/5">
+            <p className="text-xs opacity-40 max-w-xs leading-relaxed italic">
+              Deterministic AI infrastructure auditing for engineering leadership. Built for the Credex Web Development Internship.
             </p>
+            <div className="flex items-center gap-3">
+              <Shield size={14} className="text-primary/40" />
+              <p className="text-[10px] uppercase tracking-widest opacity-40 font-bold">
+                May 09, 2026 Snapshot
+              </p>
+            </div>
           </div>
         </div>
       </div>
