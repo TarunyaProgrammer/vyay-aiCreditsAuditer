@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { HeroSection, ProblemSection, HowItWorks, FAQSection } from '../components/landing/LandingComponents';
 import { Card, Button, Badge } from '../components/shared/SharedComponents';
 import { TrendingDown, ChevronRight, Zap } from 'lucide-react';
