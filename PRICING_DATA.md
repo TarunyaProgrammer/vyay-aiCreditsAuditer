@@ -2,33 +2,54 @@
 
 # Service Pricing Data — Market Reference Repository
 
-Every figure in this repository is cited to official vendor documentation. Vyay utilizes these deterministic figures for all audit calculations.
+Every figure in this repository is cited to official vendor documentation. Vyay utilizes these deterministic figures for all audit calculations. We distinguish between **Official** vendor rates and **Community-Observed** pricing.
 
-| Tool | Tier | Monthly Price | Verification Date | Source URL |
-| :--- | :--- | :--- | :--- | :--- |
-| **Cursor** | Pro | $20/mo | 2026-05-07 | [cursor.com/pricing](https://www.cursor.com/pricing) |
-| **Cursor** | Business | $40/user/mo | 2026-05-07 | [cursor.com/pricing](https://www.cursor.com/pricing) |
-| **GitHub Copilot** | Individual | $10/mo | 2026-05-07 | [github.com/features/copilot#pricing](https://github.com/features/copilot#pricing) |
-| **GitHub Copilot** | Business | $19/user/mo | 2026-05-07 | [github.com/features/copilot#pricing](https://github.com/features/copilot#pricing) |
-| **GitHub Copilot** | Enterprise | $39/user/mo | 2026-05-07 | [github.com/features/copilot#pricing](https://github.com/features/copilot#pricing) |
-| **ChatGPT** | Plus | $20/mo | 2026-05-07 | [openai.com/chatgpt/pricing](https://openai.com/chatgpt/pricing) |
-| **ChatGPT** | Team | $30/user/mo | 2026-05-07 | [openai.com/chatgpt/pricing](https://openai.com/chatgpt/pricing) |
-| **Claude** | Pro | $20/mo | 2026-05-07 | [anthropic.com/claude](https://www.anthropic.com/claude) |
-| **Claude** | Team | $30/user/mo | 2026-05-07 | [anthropic.com/claude](https://www.anthropic.com/claude) |
-| **Gemini** | Business | $20/user/mo | 2026-05-07 | [gemini.google.com/business](https://gemini.google.com/business/pricing) |
-| **Windsurf** | Pro | $20/mo | 2026-05-07 | [codeium.com/windsurf](https://codeium.com/windsurf) |
+## IDE & Coding Intelligence
 
-## API Model Pricing (Per 1M Tokens)
+### Cursor
+| Plan | Price | Verification Date | Source URL |
+| :--- | :--- | :--- | :--- |
+| **Hobby** | Free | 2026-05-09 | [cursor.com/pricing](https://cursor.com/pricing) |
+| **Pro** | $20/mo | 2026-05-09 | [cursor.com/pricing](https://cursor.com/pricing) |
+| **Business / Teams** | $40/user/mo | 2026-05-09 | [cursor.com/pricing](https://cursor.com/pricing) |
+| **Enterprise** | Custom | 2026-05-09 | [cursor.com/pricing](https://cursor.com/pricing) |
 
-| Model | Input Cost | Output Cost | Verification Date | Source URL |
-| :--- | :--- | :--- | :--- | :--- |
-| **GPT-4o** | $5.00 | $15.00 | 2026-05-07 | [openai.com/api/pricing](https://openai.com/api/pricing) |
-| **GPT-4o-mini** | $0.15 | $0.60 | 2026-05-07 | [openai.com/api/pricing](https://openai.com/api/pricing) |
-| **Claude 3.5 Sonnet** | $3.00 | $15.00 | 2026-05-07 | [anthropic.com/pricing](https://www.anthropic.com/pricing) |
-| **Claude 3.5 Haiku** | $0.25 | $1.25 | 2026-05-07 | [anthropic.com/pricing](https://www.anthropic.com/pricing) |
-| **Gemini 1.5 Flash** | $0.075 | $0.30 | 2026-05-07 | [ai.google.dev/pricing](https://ai.google.dev/pricing) |
+### GitHub Copilot
+| Plan | Price | Verification Date | Source URL |
+| :--- | :--- | :--- | :--- |
+| **Free** | $0 | 2026-05-09 | [github.com/features/copilot](https://github.com/features/copilot/plans) |
+| **Individual** | $10/mo | 2026-05-09 | [github.com/features/copilot](https://github.com/features/copilot/plans) |
+| **Business** | $19/user/mo | 2026-05-09 | [github.com/features/copilot](https://github.com/features/copilot/plans) |
+| **Enterprise** | $39/user/mo | 2026-05-09 | [github.com/features/copilot](https://github.com/features/copilot/plans) |
 
-## Deterministic Rule Logic hooks
-1. **Redundancy Hook**: If `Cursor Pro` and `GitHub Copilot` are both active, recommend `Deactivate Copilot` (Save $10/mo).
-2. **Tier Efficiency Hook**: If `Team Size` < 5 and `Claude Team` is active (min 5 seats), recommend `Claude Pro` individual seats (Save $90/mo).
-3. **Credit Substitution Hook**: If `API Spend` > $100/mo on GPT-4o, recommend `OpenRouter Credits` or `Groq Llama 3` (Projected Save 30-70%).
+## General Purpose Reasoning (Chat)
+
+### ChatGPT
+| Plan | Price | Verification Date | Source URL |
+| :--- | :--- | :--- | :--- |
+| **Free** | $0 | 2026-05-09 | [openai.com/chatgpt/pricing](https://chatgpt.com/pricing/) |
+| **Plus** | $20/mo | 2026-05-09 | [openai.com/chatgpt/pricing](https://chatgpt.com/pricing/) |
+| **Pro** | $200/mo | 2026-05-09 | [openai.com/chatgpt/pricing](https://chatgpt.com/pricing/) |
+| **Team** | $25-30/user/mo | 2026-05-09 | [openai.com/chatgpt/pricing](https://chatgpt.com/pricing/) |
+| **Enterprise** | Custom | 2026-05-09 | [openai.com/chatgpt/pricing](https://chatgpt.com/pricing/) |
+
+### Claude
+| Plan | Price | Verification Date | Source URL |
+| :--- | :--- | :--- | :--- |
+| **Free** | $0 | 2026-05-09 | [anthropic.com/claude](https://claude.com/pricing) |
+| **Pro** | $20/mo | 2026-05-09 | [anthropic.com/claude](https://claude.com/pricing) |
+| **Team** | $25/user/mo | 2026-05-09 | [anthropic.com/claude](https://claude.com/pricing) |
+| **Enterprise** | Custom | 2026-05-09 | [anthropic.com/claude](https://claude.com/pricing) |
+
+### Perplexity
+| Plan | Price | Verification Date | Source URL |
+| :--- | :--- | :--- | :--- |
+| **Free** | $0 | 2026-05-09 | [perplexity.ai/pro](https://www.perplexity.ai/pro) |
+| **Pro** | $20/mo | 2026-05-09 | [perplexity.ai/pro](https://www.perplexity.ai/pro) |
+| **Enterprise** | Custom | 2026-05-09 | [perplexity.ai/pro](https://www.perplexity.ai/pro) |
+
+## Deterministic Value Efficiency Logic
+1. **Redundancy Hook**: If `Cursor Pro` and `GitHub Copilot` are both active, recommend `Deactivate Copilot` (Redundant IDE intelligence).
+2. **Small Team Efficiency**: If `Team Size` < 5 and `Team` plans (Claude/ChatGPT) are active, evaluate if individual `Pro` seats offer better value.
+3. **Triple Overlap**: If 3+ reasoning tools (ChatGPT, Claude, Gemini, Perplexity) are paid simultaneously, flag for "Stack Saturation."
+4. **Enterprise Mismatch**: Flag "Enterprise" tier usage for teams < 20 members as potential administrative overspend.
