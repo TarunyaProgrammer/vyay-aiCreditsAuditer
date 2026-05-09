@@ -5,7 +5,7 @@ import { SUPPORTED_TOOLS } from '../data/pricing';
 import { Button, Card, Badge, SectionHeading } from '../components/shared/SharedComponents';
 import { 
   TrendingDown, Download, Share2, AlertCircle, 
-  CheckCircle2, ChevronRight, RefreshCw, Zap,
+  CheckCircle2, ChevronRight, RefreshCw,
   BarChart3, ShieldCheck, Target
 } from 'lucide-react';
 

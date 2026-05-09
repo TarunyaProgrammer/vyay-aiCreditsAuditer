@@ -100,7 +100,7 @@ const AuditPage = () => {
 
               <label className="block space-y-2">
                 <span className="text-xs font-sans uppercase tracking-[0.2em] font-bold text-muted-foreground flex items-center gap-2">
-                  <Zap size={14} /> Primary Use Case
+                  <img src="/logo_light.png" alt="" className="h-3 w-auto object-contain mr-1 inline-block" /> Primary Use Case
                 </span>
                 <select 
                   value={input.useCase}
@@ -251,7 +251,7 @@ const AuditPage = () => {
                 <p className="text-[10px] font-sans uppercase tracking-widest text-primary/70 font-bold mb-1">Estimated Monthly Audit Base</p>
                 <p className="text-4xl font-serif text-primary tracking-tighter">${input.tools.reduce((s, t) => s + t.monthlySpend, 0).toLocaleString()}</p>
               </div>
-              <Zap size={40} className="text-primary opacity-20 fill-primary" />
+              <img src="/logo_light.png" alt="" className="h-10 w-auto object-contain opacity-20" />
             </div>
           </Card>
           
@@ -260,7 +260,7 @@ const AuditPage = () => {
               <ArrowLeft size={20} /> Back
             </Button>
             <Button className="flex-[2]" onClick={handleStartAudit} size="lg">
-              Execute Strategic Audit <Zap size={20} className="fill-current" />
+              Execute Strategic Audit <img src="/logo_light.png" alt="" className="h-5 w-auto object-contain brightness-0 invert" />
             </Button>
           </div>
         </div>
