@@ -51,12 +51,14 @@ export const Card = ({
   children, 
   className, 
   padding = 'md',
-  interactive = false 
+  interactive = false,
+  style
 }: { 
   children: React.ReactNode; 
   className?: string; 
   padding?: 'none' | 'sm' | 'md' | 'lg';
   interactive?: boolean;
+  style?: React.CSSProperties;
 }) => {
   const paddings = {
     none: 'p-0',
@@ -66,12 +68,15 @@ export const Card = ({
   };
 
   return (
-    <div className={cn(
-      'rounded-[2rem] border border-foreground/10 bg-foreground/5 overflow-hidden transition-all duration-500',
-      interactive && 'hover:border-primary/30 hover:bg-primary/5 cursor-pointer',
-      paddings[padding],
-      className
-    )}>
+    <div 
+      style={style}
+      className={cn(
+        'rounded-[2rem] border border-foreground/10 bg-foreground/5 overflow-hidden transition-all duration-500',
+        interactive && 'hover:border-primary/30 hover:bg-primary/5 cursor-pointer',
+        paddings[padding],
+        className
+      )}
+    >
       {children}
     </div>
   );
