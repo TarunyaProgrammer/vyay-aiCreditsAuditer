@@ -6,33 +6,51 @@ import { TrendingDown, Users, Zap, Shield, ChevronRight, HelpCircle, Plus, Info 
 // Hero Section
 export const HeroSection = () => {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <div className="container mx-auto px-6 text-center relative z-10">
-        <Badge variant="primary" className="mb-6">v0.1.0 Strategic Alpha</Badge>
-        <h1 className="text-6xl md:text-8xl font-serif italic mb-8 tracking-tighter leading-[0.9]">
-          Optimize AI Expenditure <br /> 
-          <span className="text-muted-foreground opacity-50">Without Scaling Back.</span>
-        </h1>
-        <p className="text-muted-foreground text-xl md:text-2xl max-w-2xl mx-auto mb-12 leading-relaxed">
-          The deterministic audit engine for engineering teams to identify tool redundancy and plan sub-optimality in under 60 seconds.
-        </p>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-          <Link to="/audit">
-            <Button size="xl" className="w-full md:w-auto shadow-2xl shadow-primary/20">Initiate Free Audit</Button>
-          </Link>
-          <Button variant="outline" size="xl" className="w-full md:w-auto">View Market Data</Button>
-        </div>
+    <section className="relative min-h-screen overflow-hidden flex flex-col">
+      {/* Background Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260508_215831_c6a8989c-d716-4d8d-8745-e972a2eec711.mp4" type="video/mp4" />
+      </video>
 
-        <div className="mt-24 flex flex-wrap justify-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
-          <span className="font-serif text-2xl">Cursor</span>
-          <span className="font-serif text-2xl">ChatGPT</span>
-          <span className="font-serif text-2xl">Claude</span>
-          <span className="font-serif text-2xl">Copilot</span>
-          <span className="font-serif text-2xl">Perplexity</span>
+      {/* Overlay to ensure readability and match our theme */}
+      <div className="absolute inset-0 bg-background/30 backdrop-blur-[2px] z-0" />
+      
+      {/* Hero Content (Bottom-Left Aligned) */}
+      <div className="relative z-10 flex-1 flex items-end pb-12 sm:pb-24 px-6 sm:px-12 md:px-20 lg:px-28">
+        <div className="max-w-2xl space-y-6">
+          <div className="space-y-4">
+            <a href="#" className="inline-flex items-center gap-2 text-[12px] font-medium text-primary hover:opacity-80 transition-opacity group">
+              Seen on Shark Tank in India <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+            </a>
+            
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.1] font-serif italic tracking-tight text-foreground">
+              Optimize AI Expenditure <br />
+              <span className="opacity-50">Without Scaling Back.</span>
+            </h1>
+            
+            <p className="text-sm sm:text-base text-foreground/70 max-w-md leading-relaxed">
+              The deterministic audit engine for engineering teams to identify tool redundancy and plan sub-optimality in under 60 seconds.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 pt-2">
+            <Link to="/audit">
+              <Button size="xl" className="group shadow-2xl shadow-primary/20">
+                Initiate Strategic Audit <span className="inline-block transition-transform duration-200 group-hover:translate-x-1 ml-2">→</span>
+              </Button>
+            </Link>
+            <Button variant="outline" size="xl" className="bg-background/20 backdrop-blur-md border-foreground/10">
+              View Market Reference
+            </Button>
+          </div>
         </div>
       </div>
-
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10 animate-pulse" />
     </section>
   );
 };

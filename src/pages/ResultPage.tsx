@@ -42,7 +42,7 @@ const ResultPage = () => {
   };
 
   return (
-    <div className="container mx-auto px-6 py-24 max-w-5xl animate-in fade-in duration-1000">
+    <div className="container mx-auto px-6 pt-32 pb-24 max-w-5xl animate-in fade-in duration-1000">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16">
         <div className="space-y-4">

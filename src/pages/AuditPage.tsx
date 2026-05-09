@@ -65,7 +65,7 @@ const AuditPage = () => {
   };
 
   return (
-    <div className="container mx-auto px-6 py-24 max-w-4xl">
+    <div className="container mx-auto px-6 pt-32 pb-24 max-w-4xl">
       <div className="mb-16 flex justify-center gap-4">
         {[1, 2, 3].map((s) => (
           <div key={s} className="flex items-center gap-2">
