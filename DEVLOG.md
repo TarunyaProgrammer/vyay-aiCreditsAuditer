@@ -2,27 +2,33 @@
 
 # Project Development Log — Vyay
 
-## Day 1: Foundation, Branding, and Professionalization — 2026-05-07
+### Day 1: Understanding the Problem & Architecture Reduction
+- **Initial Goal**: Build a full-stack AI audit dashboard with auth and user profiles.
+- **Pivot**: Realized that for a lead-gen tool, "Time-to-Value" is the only metric that matters. Authentication is friction. Removed the planned auth layer to focus on a 60-second "Anonymous-to-Insight" flow.
+- **Blocked**: Struggled with balancing "startup realism" (keep it simple) vs "assignment scope" (show off complexity). Decided that engineering restraint is the better signal.
+- **Next**: Lock down the UX trust foundation.
 
-**Total Effort:** 6.0 Hours
+### Day 2: Building Product Foundations & Trust
+- **Focus**: Calm design and validation quality.
+- **Insight**: B2B financial tools don't need "loud" AI branding. They need to look like an Excel sheet and a McKinsey report had a child.
+- **Activities**: Implemented the core layout, typography (Inter/Outfit), and the initial landing "hook."
+- **Learning**: Restrained UI decisions (less color, better spacing) actually increase perceived trustworthiness in financial tooling.
 
-**Activities Completed:**
-- **Infrastructure Initialization**: Scaffolding the React/Vite/TypeScript architecture and establishing the feature-oriented directory structure.
-- **Branding and Asset Migration**: Moving logos and favicons to the `public/` directory and integrating high-fidelity banners across all documentation.
-- **Global Documentation Audit**: Rewriting all 12 mandatory markdown files to ensure compliance with Credex's "Professional/Corporate" tone requirements. This included the removal of all informal language and emojis.
-- **Architectural Specification**: Finalizing `ARCHITECTURE.md` with a focus on client-side deterministic logic and edge-based scalability for 10k audits/day.
-- **Strategy Formulation**: Developing the GTM, Economics, and Metrics documents to align with the "Entrepreneurial Thinking" grading criteria.
-- **Initial Deployment**: Successfully deployed the landing interface to Vercel and verified the production build pipeline.
-- **Stakeholder Research**: Synthesizing initial stakeholder insights into `USER_INTERVIEWS.md` to guide the UI/UX design of the audit form.
+### Day 3: Audit Logic & Deterministic Integrity
+- **Focus**: Turning UX into believable logic.
+- **Challenge**: Initially considered using LLMs to "guess" savings. Discarded this quickly—financial credibility requires deterministic, explainable math.
+- **Blocker**: Some recommendation rules (like tool switching) sounded good on paper but were hard to defend for teams under 5 people. Refined the rules to be conservative and defensible.
+- **Activities**: Built the `src/rules` engine. Logic now identifies oversized plans and tool overlaps (e.g., Cursor + Copilot) with 100% accuracy.
 
-**Key Technical Insights:**
-- **Friction vs. Security**: The strategic decision to omit authentication was validated through stakeholder research, identifying "sign-up fatigue" as a primary conversion blocker for busy EMs.
-- **Deterministic Integrity**: Decided on a strict separation between mathematical audit logic (hardcoded) and narrative analysis (AI-generated) to maintain 100% accuracy in savings identification.
+### Day 4: Making the Product Feel "Real"
+- **Focus**: Persistence and shareability.
+- **Insight**: The product felt "fake" until I could share a result URL.
+- **Activities**: Integrated Supabase for report storage. Implemented unique ID generation for shareable reports.
+- **Realization**: Open Graph previews and public URLs changed the feel from a "demo" to a "real internet product."
+- **Refinement**: Simplified the backend coupling—stayed with a flat schema for speed.
 
-**Impediments / Status:**
-- All Phase 1 foundation objectives satisfied. No technical blockers identified.
-
-**Objectives for Next Phase:**
-- Implementation of the multi-stage **Audit Input Form** with Zustand state persistence.
-- Development of the **Core Audit Engine** rule-set based on the research in `PRICING_DATA.md`.
-- Finalizing the **Lead Capture** integration with Supabase and Resend.
+### Day 5: Polishing & Commercial Validation
+- **Focus**: Economics, GTM, and Accessibility.
+- **Learning**: Writing the GTM and Economics docs exposed flaws in my earlier assumptions about "perceived savings." Adjusted the result summaries to emphasize *strategic* value, not just dollar amounts.
+- **Activities**: Final accessibility audit, documentation polish, and verifying the lead capture funnel.
+- **Status**: Deployment stabilized. Product is operationally ready for professional review.
