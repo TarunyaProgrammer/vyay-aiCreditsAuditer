@@ -2,7 +2,7 @@
 
 # AI Prompt Engineering Specifications — Vyay
 
-## 1. Core Audit Summary Prompt (Gemini 2.5 Flash)
+## 1. Core Audit Summary Prompt (Gemini 1.5 Flash)
 **Objective**: Generate a ~100-word professional narrative summary of the audit results to provide a human-centric layer over the deterministic math.
 
 ### System Prompt
@@ -13,17 +13,24 @@ TASK:
 Analyze the provided Audit Data and generate a professional, high-impact summary (~100 words).
 
 CONSTRAINTS:
-1. Tone: Corporate, analytical, objective, and urgent.
-2. Focus: Highlight total annualized savings and the single most critical service redundancy.
-3. Call to Action: Subtly suggest that complex optimizations (e.g., migration to credits or enterprise brokerage) require expert consultation.
+1. Tone: Corporate, analytical, objective, and practical. Avoid hype words like "revolutionary" or "game-changing".
+2. Focus: Highlight the total annualized savings and the primary areas of inefficiency.
+3. Call to Action: Subtly suggest that complex optimizations like credits migration require expert consultation.
 4. Format: Plain text, single paragraph.
 
 INPUT DATA:
-{{audit_results_json}}
+{
+  "totalMonthlySpend": number,
+  "potentialMonthlySavings": number,
+  "potentialAnnualSavings": number,
+  "recommendationCount": number,
+  "efficiencyGrade": string,
+  "recommendations": string[]
+}
 ```
 
 ### Strategic Rationale
-We utilized a **"Senior Infrastructure Economist"** persona to ensure the output remains focused on fiscal impact rather than just technical features. By specifying an **"Urgent"** tone, we increase the probability of the lead engaging with the Credex consultation CTA. The constraint of **"~100 words"** ensures the summary fits perfectly within the reporting dashboard without overwhelming the user.
+We utilized a **"Senior Infrastructure Economist"** persona to ensure the output remains focused on fiscal impact rather than just technical features. By specifying a **"Practical"** tone and banning hype words, we ensure the advice feels grounded in reality and professional for enterprise stakeholders. The constraint of **"~100 words"** ensures the summary fits perfectly within the reporting dashboard without overwhelming the user.
 
 ## 2. Iterative Development: What Didn't Work
 During the prompt engineering phase, the following strategies were tested and subsequently rejected:
@@ -34,4 +41,4 @@ During the prompt engineering phase, the following strategies were tested and su
 
 ## 3. Graceful Failure Protocol
 In the event of an API failure or timeout, the system is configured to fallback to a **Deterministic Template**:
-> "Based on our analysis of your [Team Size] engineering team, we have identified significant optimization potential within your [Primary Tool] utilization. Your current configuration demonstrates a potential annualized capital leakage of [Total Savings]. We recommend an immediate review of your service redundancies to preserve operational capital."
+> "Based on our analysis, your current AI stack demonstrates a potential annualized capital recovery of $[Annual Savings]. Our deterministic engine identified [Count] key optimization vectors, primarily focused on service redundancy and tier alignment. Implementing these recommendations will significantly improve your operational efficiency grade from its current [Grade] status. We recommend a strategic review of your multi-vendor reasoning stack to preserve growth capital."
