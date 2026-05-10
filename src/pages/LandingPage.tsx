@@ -62,7 +62,7 @@ const ExampleAuditCard = () => {
                 </div>
               </div>
               
-              <div className="absolute -right-12 -bottom-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
+              <div className="absolute -right-12 -bottom-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl" aria-hidden="true" />
             </Card>
           </div>
         </div>
@@ -73,13 +73,13 @@ const ExampleAuditCard = () => {
 
 const LandingPage = () => {
   return (
-    <div className="flex flex-col">
+    <main className="flex flex-col">
       <HeroSection />
       <ProblemSection />
       <HowItWorks />
       <ExampleAuditCard />
       <FAQSection />
-    </div>
+    </main>
   );
 };
 

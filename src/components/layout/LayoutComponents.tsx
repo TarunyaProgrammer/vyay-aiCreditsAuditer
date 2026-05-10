@@ -8,23 +8,24 @@ export const Navbar = () => {
   const isAudit = location.pathname.includes('/audit');
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center pt-6 px-4 gap-3 pointer-events-none">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center pt-6 px-4 gap-3 pointer-events-none" aria-label="Global Navigation">
       <div className="flex items-center gap-2 pointer-events-auto">
         {/* Left Pill: Logo */}
         <Link 
           to="/" 
           className="flex items-center justify-center rounded-full w-12 h-12 bg-background border border-foreground/5 shadow-sm hover:scale-105 transition-transform overflow-hidden p-2"
+          aria-label="Vyay Home"
         >
-          <img src="/logo_light.png" alt="Vyay Logo" className="w-full h-full object-contain" />
+          <img src="/logo_light.png" alt="" className="w-full h-full object-contain" aria-hidden="true" width="48" height="48" />
         </Link>
 
         {/* Right Pill: Links */}
-        <div className="flex items-center gap-8 rounded-2xl px-8 py-3 bg-background border border-foreground/5 shadow-sm">
-          <Link to="/" className="text-[13px] font-medium hover:text-primary transition-colors">Strategy</Link>
-          <Link to="/pricing" className="text-[13px] font-medium hover:text-primary transition-colors">Market Data</Link>
+        <div className="flex items-center gap-8 rounded-2xl px-8 py-3 bg-background border border-foreground/5 shadow-sm" role="list">
+          <Link to="/" className="text-[13px] font-medium hover:text-primary transition-colors" role="listitem">Strategy</Link>
+          <Link to="/pricing" className="text-[13px] font-medium hover:text-primary transition-colors" role="listitem">Market Data</Link>
           {!isAudit && (
-            <Link to="/audit" className="text-[13px] font-medium text-primary hover:opacity-80 transition-opacity flex items-center gap-1 group">
-              Initiate Audit <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+            <Link to="/audit" className="text-[13px] font-medium text-primary hover:opacity-80 transition-opacity flex items-center gap-1 group" role="listitem">
+              Initiate Audit <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
             </Link>
           )}
         </div>
@@ -35,17 +36,17 @@ export const Navbar = () => {
 
 export const Footer = () => {
   return (
-    <footer className="bg-background pb-12 pt-24 px-6 overflow-hidden">
+    <footer className="bg-background pb-12 pt-24 px-6 overflow-hidden" aria-label="Site Footer">
       <div className="container mx-auto">
         <div className="relative bg-foreground text-background rounded-[3rem] p-12 md:p-20 overflow-hidden shadow-2xl">
           {/* Corner Accents */}
-          <div className="absolute top-8 left-8 w-2 h-2 rounded-full bg-background/20" />
-          <div className="absolute top-8 right-8 w-2 h-2 rounded-full bg-background/20" />
-          <div className="absolute bottom-8 left-8 w-2 h-2 rounded-full bg-background/20" />
-          <div className="absolute bottom-8 right-8 w-2 h-2 rounded-full bg-background/20" />
+          <div className="absolute top-8 left-8 w-2 h-2 rounded-full bg-background/20" aria-hidden="true" />
+          <div className="absolute top-8 right-8 w-2 h-2 rounded-full bg-background/20" aria-hidden="true" />
+          <div className="absolute bottom-8 left-8 w-2 h-2 rounded-full bg-background/20" aria-hidden="true" />
+          <div className="absolute bottom-8 right-8 w-2 h-2 rounded-full bg-background/20" aria-hidden="true" />
 
           {/* Large Watermark */}
-          <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 pointer-events-none select-none">
+          <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 pointer-events-none select-none" aria-hidden="true">
             <h2 className="text-[25vw] font-serif italic text-background/[0.03] leading-none tracking-tighter">
               vyay.
             </h2>
@@ -56,23 +57,31 @@ export const Footer = () => {
             <div className="lg:col-span-6 space-y-8">
               <div className="space-y-4">
                 <h3 className="text-4xl md:text-5xl font-serif italic tracking-tight">Intelligence</h3>
-                <a href="mailto:intelligence@vyay.ai" className="text-xl md:text-2xl font-serif italic text-primary hover:opacity-80 transition-opacity underline decoration-primary/30 underline-offset-8">
+                <a 
+                  href="mailto:intelligence@vyay.ai" 
+                  className="text-xl md:text-2xl font-serif italic text-primary hover:opacity-80 transition-opacity underline decoration-primary/30 underline-offset-8"
+                  aria-label="Contact intelligence team at intelligence@vyay.ai"
+                >
                   intelligence@vyay.ai ↗
                 </a>
               </div>
               
               <div className="pt-8 flex flex-wrap gap-6">
                 <Link to="/audit">
-                  <Button variant="outline" className="border-background/10 hover:bg-background hover:text-foreground rounded-full px-8">
+                  <Button variant="outline" className="border-background/10 hover:bg-background hover:text-foreground rounded-full px-8" aria-label="Initiate new audit">
                     Initiate Audit
                   </Button>
                 </Link>
-                <a href="https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer" className="inline-flex items-center gap-2 text-sm font-medium hover:opacity-70 transition-opacity">
-                  <Github size={18} /> GitHub Repository ↗
+                <a 
+                  href="https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer" 
+                  className="inline-flex items-center gap-2 text-sm font-medium hover:opacity-70 transition-opacity"
+                  aria-label="Visit Vyay GitHub Repository"
+                >
+                  <Github size={18} aria-hidden="true" /> GitHub Repository ↗
                 </a>
               </div>
             </div>
-
+...
             {/* Links Section */}
             <div className="lg:col-span-6 flex flex-col justify-between items-start lg:items-end">
               <div className="text-[10px] font-sans uppercase tracking-[0.4em] opacity-40 font-bold mb-12">
@@ -90,11 +99,16 @@ export const Footer = () => {
           
           {/* Tagline */}
           <div className="relative z-10 mt-32 flex flex-col md:flex-row justify-between items-end gap-6 pt-12 border-t border-background/5">
-            <p className="text-xs opacity-40 max-w-xs leading-relaxed italic">
-              Deterministic AI infrastructure auditing for engineering leadership. Built for the Credex Web Development Internship.
-            </p>
+            <div className="space-y-4">
+              <Link to="/" aria-label="Vyay Home">
+                <img src="/logo_light.png" alt="" className="h-8 w-auto object-contain opacity-20 hover:opacity-100 transition-opacity" aria-hidden="true" width="80" height="32" loading="lazy" />
+              </Link>
+              <p className="text-xs opacity-40 max-w-xs leading-relaxed italic">
+                Deterministic AI infrastructure auditing for engineering leadership. Built for the Credex Web Development Internship.
+              </p>
+            </div>
             <div className="flex items-center gap-3">
-              <Shield size={14} className="text-primary/40" />
+              <Shield size={14} className="text-primary/40" aria-hidden="true" />
               <p className="text-[10px] uppercase tracking-widest opacity-40 font-bold">
                 May 09, 2026 Snapshot
               </p>

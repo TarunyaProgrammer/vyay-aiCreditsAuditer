@@ -54,6 +54,7 @@ export interface Recommendation {
 
 export interface AuditResult {
   id: string;
+  publicId?: string; // Supabase public identifier
   createdAt: string;
   totalMonthlySpend: number;
   potentialSavings: number;
@@ -61,9 +62,10 @@ export interface AuditResult {
   metrics: {
     toolCount: number;
     highestSpendTool: string;
-    overlapScore: number; // Score 0 se 100 ke beech mein
+    overlapScore: number;
     efficiencyGrade: 'A' | 'B' | 'C' | 'D' | 'F';
   };
+  aiSummary?: string; // Gemini generated summary
 }
 
 export interface LeadCapture {

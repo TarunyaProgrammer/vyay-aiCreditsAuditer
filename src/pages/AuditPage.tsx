@@ -53,15 +53,44 @@ const AuditPage = () => {
     updateInput({ tools: newTools });
   };
 
-  const handleStartAudit = () => {
-    const result = AuditInputSchema.safeParse(input);
-    if (!result.success) {
-      setErrors(result.error.flatten().fieldErrors);
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const handleStartAudit = async () => {
+    const validationResult = AuditInputSchema.safeParse(input);
+    if (!validationResult.success) {
+      setErrors(validationResult.error.flatten().fieldErrors);
       return;
     }
-    const auditResult = runAudit(input);
-    setResult(auditResult);
-    navigate(`/result/${auditResult.id}`);
+
+    setIsProcessing(true);
+    try {
+      // 1. Run deterministic engine
+      const auditResult = runAudit(input);
+      
+      // 2. Generate AI Summary (stochastic layer)
+      const { aiService } = await import('../services/aiService');
+      const aiSummary = await aiService.generateSummary(auditResult);
+      auditResult.aiSummary = aiSummary;
+
+      // 3. Persist to Supabase
+      const { auditService } = await import('../services/auditService');
+      const publicId = await auditService.saveAudit(input, auditResult);
+      
+      if (publicId) {
+        auditResult.publicId = publicId;
+      }
+
+      setResult(auditResult);
+      navigate(`/result/${publicId || auditResult.id}`);
+    } catch (error) {
+      console.error('Audit execution failed:', error);
+      // Fallback: still show results even if persistence/AI fails
+      const auditResult = runAudit(input);
+      setResult(auditResult);
+      navigate(`/result/${auditResult.id}`);
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   return (
@@ -84,25 +113,39 @@ const AuditPage = () => {
           
           <Card className="max-w-xl mx-auto space-y-8">
             <div className="space-y-4">
-              <label className="block space-y-2">
-                <span className="text-xs font-sans uppercase tracking-[0.2em] font-bold text-muted-foreground flex items-center gap-2">
-                  <Users size={14} /> Engineering Team Size
-                </span>
+              <div className="space-y-2">
+                <label 
+                  htmlFor="teamSize"
+                  className="text-xs font-sans uppercase tracking-[0.2em] font-bold text-muted-foreground flex items-center gap-2"
+                >
+                  <Users size={14} aria-hidden="true" /> Engineering Team Size
+                </label>
                 <input 
+                  id="teamSize"
                   type="number" 
                   value={input.teamSize}
                   onChange={(e) => updateInput({ teamSize: parseInt(e.target.value) || 0 })}
                   className={`w-full bg-background border-2 ${errors.teamSize ? 'border-red-500/50' : 'border-foreground/10'} rounded-2xl p-6 text-3xl font-serif focus:border-primary outline-none transition-all`}
                   min="1"
+                  aria-invalid={!!errors.teamSize}
+                  aria-describedby={errors.teamSize ? "teamSize-error" : undefined}
                 />
-                {errors.teamSize && <p className="text-red-500 text-xs font-medium">{errors.teamSize[0]}</p>}
-              </label>
+                {errors.teamSize && (
+                  <p id="teamSize-error" className="text-red-500 text-xs font-medium" role="alert">
+                    {errors.teamSize[0]}
+                  </p>
+                )}
+              </div>
 
-              <label className="block space-y-2">
-                <span className="text-xs font-sans uppercase tracking-[0.2em] font-bold text-muted-foreground flex items-center gap-2">
-                  <img src="/logo_light.png" alt="" className="h-3 w-auto object-contain mr-1 inline-block" /> Primary Use Case
-                </span>
+              <div className="space-y-2">
+                <label 
+                  htmlFor="useCase"
+                  className="text-xs font-sans uppercase tracking-[0.2em] font-bold text-muted-foreground flex items-center gap-2"
+                >
+                  <img src="/logo_light.png" alt="" aria-hidden="true" className="h-3 w-auto object-contain mr-1 inline-block" /> Primary Use Case
+                </label>
                 <select 
+                  id="useCase"
                   value={input.useCase}
                   onChange={(e) => updateInput({ useCase: e.target.value })}
                   className="w-full bg-background border-2 border-foreground/10 rounded-2xl p-4 text-lg font-serif outline-none focus:border-primary transition-all"
@@ -112,7 +155,7 @@ const AuditPage = () => {
                   <option value="enterprise">Enterprise Systems</option>
                   <option value="agency">Development Agency</option>
                 </select>
-              </label>
+              </div>
             </div>
 
             <div className="p-4 rounded-xl bg-primary/5 border border-primary/10 flex gap-4">
@@ -150,8 +193,14 @@ const AuditPage = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                   <div className="space-y-2">
-                    <span className="text-[10px] font-sans uppercase tracking-widest text-muted-foreground font-bold">Tool</span>
+                    <label 
+                      htmlFor={`tool-${index}`}
+                      className="text-[10px] font-sans uppercase tracking-widest text-muted-foreground font-bold"
+                    >
+                      Tool
+                    </label>
                     <select 
+                      id={`tool-${index}`}
                       value={tool.toolId}
                       onChange={(e) => updateTool(index, { toolId: e.target.value })}
                       className="w-full bg-background border border-foreground/10 rounded-xl p-3 text-sm outline-none focus:border-primary"
@@ -163,8 +212,14 @@ const AuditPage = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <span className="text-[10px] font-sans uppercase tracking-widest text-muted-foreground font-bold">Tier</span>
+                    <label 
+                      htmlFor={`tier-${index}`}
+                      className="text-[10px] font-sans uppercase tracking-widest text-muted-foreground font-bold"
+                    >
+                      Tier
+                    </label>
                     <select 
+                      id={`tier-${index}`}
                       value={tool.tier}
                       onChange={(e) => updateTool(index, { tier: e.target.value })}
                       className="w-full bg-background border border-foreground/10 rounded-xl p-3 text-sm outline-none focus:border-primary"
@@ -176,10 +231,16 @@ const AuditPage = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <span className="text-[10px] font-sans uppercase tracking-widest text-muted-foreground font-bold">Monthly Spend</span>
+                    <label 
+                      htmlFor={`spend-${index}`}
+                      className="text-[10px] font-sans uppercase tracking-widest text-muted-foreground font-bold"
+                    >
+                      Monthly Spend
+                    </label>
                     <div className="relative">
-                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground text-xs">$</span>
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground text-xs" aria-hidden="true">$</span>
                       <input 
+                        id={`spend-${index}`}
                         type="number" 
                         value={tool.monthlySpend}
                         onChange={(e) => updateTool(index, { monthlySpend: parseFloat(e.target.value) || 0 })}
@@ -189,8 +250,14 @@ const AuditPage = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <span className="text-[10px] font-sans uppercase tracking-widest text-muted-foreground font-bold">Seats</span>
+                    <label 
+                      htmlFor={`seats-${index}`}
+                      className="text-[10px] font-sans uppercase tracking-widest text-muted-foreground font-bold"
+                    >
+                      Seats
+                    </label>
                     <input 
+                      id={`seats-${index}`}
                       type="number" 
                       value={tool.userCount}
                       onChange={(e) => updateTool(index, { userCount: parseInt(e.target.value) || 0 })}
@@ -204,8 +271,9 @@ const AuditPage = () => {
             <button 
               onClick={addTool}
               className="w-full border-2 border-dashed border-foreground/10 rounded-[2rem] p-8 flex items-center justify-center gap-2 text-muted-foreground hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all"
+              aria-label="Add a new service to your audit inventory"
             >
-              <Plus size={20} /> Add Service to Inventory
+              <Plus size={20} aria-hidden="true" /> Add Service to Inventory
             </button>
             {errors.tools && <p className="text-red-500 text-xs text-center">{errors.tools[0]}</p>}
           </div>
@@ -259,8 +327,23 @@ const AuditPage = () => {
             <Button variant="outline" className="flex-1" onClick={prevStep}>
               <ArrowLeft size={20} /> Back
             </Button>
-            <Button className="flex-[2]" onClick={handleStartAudit} size="lg">
-              Execute Strategic Audit <img src="/logo_light.png" alt="" className="h-5 w-auto object-contain brightness-0 invert" />
+            <Button 
+              className="flex-[2]" 
+              onClick={handleStartAudit} 
+              size="lg"
+              disabled={isProcessing}
+              aria-label={isProcessing ? 'Processing your strategic audit' : 'Execute the strategic audit engine'}
+            >
+              {isProcessing ? (
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" aria-hidden="true" />
+                  Processing Intelligence...
+                </div>
+              ) : (
+                <div className="flex items-center gap-2">
+                  Execute Strategic Audit <img src="/logo_light.png" alt="" className="h-5 w-auto object-contain brightness-0 invert" aria-hidden="true" />
+                </div>
+              )}
             </Button>
           </div>
         </div>

@@ -12,16 +12,17 @@ export const Button = ({
   className, 
   variant = 'primary', 
   size = 'md',
+  'aria-label': ariaLabel,
   ...props 
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & { 
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg' | 'xl';
 }) => {
   const variants = {
-    primary: 'bg-foreground text-background hover:opacity-90',
-    secondary: 'bg-primary text-primary-foreground hover:opacity-90',
-    outline: 'border-2 border-foreground/10 hover:border-foreground/20 bg-transparent',
-    ghost: 'hover:bg-foreground/5 bg-transparent text-muted-foreground hover:text-foreground',
+    primary: 'bg-foreground text-background hover:opacity-90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 outline-none',
+    secondary: 'bg-primary text-primary-foreground hover:opacity-90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 outline-none',
+    outline: 'border-2 border-foreground/10 hover:border-foreground/20 bg-transparent focus-visible:border-primary outline-none',
+    ghost: 'hover:bg-foreground/5 bg-transparent text-muted-foreground hover:text-foreground focus-visible:bg-foreground/10 outline-none',
   };
   
   const sizes = {
@@ -39,6 +40,7 @@ export const Button = ({
         sizes[size],
         className
       )}
+      aria-label={ariaLabel}
       {...props}
     >
       {children}
@@ -52,12 +54,16 @@ export const Card = ({
   className, 
   padding = 'md',
   interactive = false,
+  role,
+  'aria-label': ariaLabel,
   style
 }: { 
   children: React.ReactNode; 
   className?: string; 
   padding?: 'none' | 'sm' | 'md' | 'lg';
   interactive?: boolean;
+  role?: string;
+  'aria-label'?: string;
   style?: React.CSSProperties;
 }) => {
   const paddings = {
@@ -70,9 +76,12 @@ export const Card = ({
   return (
     <div 
       style={style}
+      role={role || (interactive ? 'button' : undefined)}
+      aria-label={ariaLabel}
+      tabIndex={interactive ? 0 : undefined}
       className={cn(
         'rounded-[2rem] border border-foreground/10 bg-foreground/5 overflow-hidden transition-all duration-500',
-        interactive && 'hover:border-primary/30 hover:bg-primary/5 cursor-pointer',
+        interactive && 'hover:border-primary/30 hover:bg-primary/5 cursor-pointer focus-visible:border-primary outline-none',
         paddings[padding],
         className
       )}

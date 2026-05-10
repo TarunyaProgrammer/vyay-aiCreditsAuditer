@@ -12,7 +12,7 @@ describe('LandingPage', () => {
     );
     
     expect(screen.getByText(/Optimize AI Expenditure/i)).toBeInTheDocument();
-    expect(screen.getByText(/Initiate Free Audit/i)).toBeInTheDocument();
+    expect(screen.getByText(/Initiate Strategic Audit/i)).toBeInTheDocument();
   });
 
   it('renders the problem section', () => {

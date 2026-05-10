@@ -26,7 +26,7 @@ export const HeroSection = () => {
         <div className="max-w-3xl space-y-8">
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <span className="w-8 h-[1px] bg-primary/30" />
+              <span className="w-8 h-[1px] bg-primary/30" aria-hidden="true" />
               <a href="#" className="text-[11px] font-sans uppercase tracking-[0.3em] font-bold text-primary hover:opacity-70 transition-opacity">
                 Strategic Alpha v0.1.0
               </a>
@@ -44,12 +44,12 @@ export const HeroSection = () => {
 
           <div className="flex flex-col sm:flex-row gap-6 pt-4">
             <Link to="/audit">
-              <Button size="xl" className="group shadow-2xl shadow-primary/20 rounded-full px-10">
-                Initiate Strategic Audit <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform ml-2" />
+              <Button size="xl" className="group shadow-2xl shadow-primary/20 rounded-full px-10" aria-label="Initiate Strategic Audit">
+                Initiate Strategic Audit <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform ml-2" aria-hidden="true" />
               </Button>
             </Link>
             <Link to="/pricing">
-              <Button variant="outline" size="xl" className="rounded-full px-10 border-foreground/10 hover:bg-foreground hover:text-background transition-all">
+              <Button variant="outline" size="xl" className="rounded-full px-10 border-foreground/10 hover:bg-foreground hover:text-background transition-all" aria-label="View Market Reference">
                 View Market Reference
               </Button>
             </Link>
