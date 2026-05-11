@@ -13,10 +13,10 @@ export const Navbar = () => {
         {/* Left Pill: Logo */}
         <Link 
           to="/" 
-          className="flex items-center justify-center rounded-full w-12 h-12 bg-background border border-foreground/5 shadow-sm hover:scale-105 transition-transform overflow-hidden p-2"
+          className="flex items-center justify-center rounded-full px-4 h-12 bg-background border border-foreground/5 shadow-sm hover:scale-105 transition-transform overflow-hidden"
           aria-label="Vyay Home"
         >
-          <Logo iconOnly className="w-8 h-8" />
+          <Logo className="px-1" />
         </Link>
 
         {/* Right Pill: Links */}
