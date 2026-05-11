@@ -90,9 +90,15 @@ const PricingPage = () => {
                       </td>
                       <td className="p-8">
                         <div className="flex items-center gap-2">
-                          <div className={`w-2 h-2 rounded-full ${plan.price > 50 ? 'bg-orange-500' : 'bg-success'}`} aria-hidden="true" />
+                          <div className={`w-2 h-2 rounded-full ${
+                            plan.price === 0 ? 'bg-success' : 
+                            plan.price >= 30 ? 'bg-orange-500' : 
+                            'bg-primary'
+                          }`} aria-hidden="true" />
                           <span className="text-sm opacity-60">
-                            {plan.price > 50 ? 'High Optimization Potential' : 'Standard Efficiency'}
+                            {plan.price === 0 ? 'Fully Optimized' : 
+                             plan.price >= 30 ? 'High Optimization Potential' : 
+                             'Standard Efficiency'}
                           </span>
                         </div>
                       </td>
