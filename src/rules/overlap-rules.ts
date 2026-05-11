@@ -9,9 +9,6 @@ export const checkOverlapRules = (input: AuditInput): Recommendation[] => {
   const activeReasoningTools = toolIds.filter(id => reasoningTools.includes(id));
   
   if (activeReasoningTools.length >= 3) {
-    const totalReasoningSpend = input.tools
-      .filter(t => activeReasoningTools.includes(t.toolId))
-      .reduce((sum, t) => sum + t.monthlySpend, 0);
 
     recommendations.push({
       id: `overlap-saturation-${Date.now()}`,

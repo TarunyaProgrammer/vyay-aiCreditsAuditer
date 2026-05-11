@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, SectionHeading, Badge } from '../shared/SharedComponents';
-import { TrendingDown, Users, Zap, Shield, ChevronRight, HelpCircle, Plus, Info } from 'lucide-react';
+import { TrendingDown, Users, Zap, Shield, ChevronRight, HelpCircle, Plus } from 'lucide-react';
 
 // Hero Section
 export const HeroSection = () => {

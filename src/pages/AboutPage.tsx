@@ -1,6 +1,6 @@
 import React from 'react';
 import { SectionHeading, Card, Badge } from '../components/shared/SharedComponents';
-import { Target, Zap, Shield, TrendingUp } from 'lucide-react';
+import { Target, Zap, Shield } from 'lucide-react';
 
 const AboutPage = () => {
   return (

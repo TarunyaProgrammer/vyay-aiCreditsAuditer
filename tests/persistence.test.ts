@@ -1,6 +1,6 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { auditService } from '../src/services/auditService';
-import { supabase } from '../src/lib/supabase';
+import { AuditInput, AuditResult } from '../src/types';
 
 vi.mock('../src/lib/supabase', () => ({
   supabase: {
@@ -36,7 +36,7 @@ describe('auditService persistence', () => {
     const input = { teamSize: 5, tools: [] };
     const result = { potentialSavings: 200, totalMonthlySpend: 1000, recommendations: [], metrics: {} };
     
-    const publicId = await auditService.saveAudit(input as any, result as any);
+    const publicId = await auditService.saveAudit(input as unknown as AuditInput, result as unknown as AuditResult);
     expect(publicId).toBe('test-uuid');
   });
 

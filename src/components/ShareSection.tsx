@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Button } from './shared/SharedComponents';
+import { Button } from './shared/SharedComponents';
 import { Link2, Twitter, Linkedin, Check } from 'lucide-react';
 
 interface ShareSectionProps {

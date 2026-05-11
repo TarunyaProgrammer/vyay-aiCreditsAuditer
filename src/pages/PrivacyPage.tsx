@@ -1,6 +1,6 @@
 import React from 'react';
 import { SectionHeading } from '../components/shared/SharedComponents';
-import { Shield, EyeOff, Lock, Globe } from 'lucide-react';
+import { EyeOff, Lock, Globe } from 'lucide-react';
 
 const PrivacyPage = () => {
   return (

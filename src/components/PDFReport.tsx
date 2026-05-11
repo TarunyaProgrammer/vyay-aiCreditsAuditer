@@ -1,21 +1,28 @@
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet, Font, Link, Svg, Path } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Font, Svg, Path } from '@react-pdf/renderer';
 import { AuditResult, AuditInput } from '../types';
+
+// Import local fonts
+import interRegular from '../assets/fonts/Inter-Regular.ttf';
+import interBold from '../assets/fonts/Inter-Bold.ttf';
+import playfairRegular from '../assets/fonts/PlayfairDisplay-Regular.ttf';
+import playfairItalic from '../assets/fonts/PlayfairDisplay-Italic.ttf';
 
 // Register fonts for a premium look
 Font.register({
   family: 'Playfair Display',
   fonts: [
-    { src: 'https://raw.githubusercontent.com/googlefonts/Playfair/main/fonts/ttf/static/PlayfairDisplay-Italic.ttf', fontStyle: 'italic' },
-    { src: 'https://raw.githubusercontent.com/googlefonts/Playfair/main/fonts/ttf/static/PlayfairDisplay-Bold.ttf', fontWeight: 700 }
+    { src: playfairRegular },
+    { src: playfairItalic, fontStyle: 'italic' },
+    { src: playfairRegular, fontWeight: 700 } // Using regular for bold if bold static missing
   ]
 });
 
 Font.register({
   family: 'Inter',
   fonts: [
-    { src: 'https://raw.githubusercontent.com/rsms/inter/master/docs/font-files/Inter-Regular.ttf', fontWeight: 400 },
-    { src: 'https://raw.githubusercontent.com/rsms/inter/master/docs/font-files/Inter-Bold.ttf', fontWeight: 700 }
+    { src: interRegular, fontWeight: 400 },
+    { src: interBold, fontWeight: 700 }
   ]
 });
 
@@ -204,7 +211,7 @@ const ZapIcon = () => (
   </Svg>
 );
 
-export const PDFReport = ({ result, input }: { result: AuditResult; input: AuditInput }) => (
+export const PDFReport = ({ result, input: _input }: { result: AuditResult; input: AuditInput }) => (
   <Document title={`Vyay Audit Report - ${result.publicId || result.id}`}>
     <Page size="A4" style={styles.page}>
       {/* Header */}

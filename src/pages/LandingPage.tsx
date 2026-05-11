@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { HeroSection, ProblemSection, HowItWorks, FAQSection } from '../components/landing/LandingComponents';
 import { Card, Button, Badge, Logo } from '../components/shared/SharedComponents';
-import { TrendingDown, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 const ExampleAuditCard = () => {
   return (

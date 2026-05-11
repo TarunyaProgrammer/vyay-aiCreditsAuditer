@@ -6,10 +6,8 @@ import { checkRetailOptimization } from './retail-optimization';
 import { checkOptimizedStack } from './optimized-stack';
 
 export const runAudit = (input: AuditInput): AuditResult => {
-  let recommendations: Recommendation[] = [];
-
   // Saare modular rules ko ek ek karke chalao
-  recommendations = [
+  const recommendations: Recommendation[] = [
     ...checkOversizedPlans(input),
     ...checkDuplicateTooling(input),
     ...checkOverlapRules(input),

@@ -4,14 +4,14 @@ import { useAuditStore } from '../store/auditStore';
 import { runAudit } from '../rules';
 import { SUPPORTED_TOOLS } from '../data/pricing';
 import { Button, Card, SectionHeading, Badge, Logo } from '../components/shared/SharedComponents';
-import { AuditInputSchema, ToolInputSchema } from '../lib/validation';
-import { ArrowRight, ArrowLeft, Plus, Trash2, Zap, Info, Calculator, Users } from 'lucide-react';
+import { AuditInputSchema } from '../lib/validation';
+import { ArrowRight, ArrowLeft, Plus, Trash2, Info, Calculator, Users } from 'lucide-react';
 import { ToolInput } from '../types';
 
 const AuditPage = () => {
   const navigate = useNavigate();
   const { step, nextStep, prevStep, input, updateInput, setResult } = useAuditStore();
-  const [errors, setErrors] = useState<any>({});
+  const [errors, setErrors] = useState<Record<string, string[] | undefined>>({});
 
   const validateStep = () => {
     if (step === 1) {

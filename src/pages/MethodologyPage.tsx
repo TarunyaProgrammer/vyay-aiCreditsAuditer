@@ -1,5 +1,5 @@
 import React from 'react';
-import { SectionHeading, Card, Badge } from '../components/shared/SharedComponents';
+import { SectionHeading } from '../components/shared/SharedComponents';
 import { Database, Cpu, ShieldCheck, Scale } from 'lucide-react';
 
 const MethodologyPage = () => {

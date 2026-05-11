@@ -6,12 +6,12 @@ import { Button, Card, Badge, SectionHeading } from '../components/shared/Shared
 import { 
   TrendingDown, Download, AlertCircle, 
   ChevronRight, RefreshCw,
-  ShieldCheck, Target, Sparkles, Clock
+  ShieldCheck, Target, Sparkles
 } from 'lucide-react';
 import { LeadCapture } from '../components/LeadCapture';
 import { ShareSection } from '../components/ShareSection';
 import { auditService } from '../services/auditService';
-import { AuditResult, AuditInput } from '../types';
+import { AuditResult } from '../types';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { PDFReport } from '../components/PDFReport';
 
