@@ -32,7 +32,7 @@ const MethodologyPage = () => {
           </p>
           <div className="bg-foreground/5 p-8 rounded-3xl border border-foreground/5 font-mono text-sm space-y-2">
             <p className="text-primary font-bold opacity-70">// Logic Sample</p>
-            <p>if (tool.users >= plan.minUsers && tool.monthlySpend > plan.marketRate) {"{"}</p>
+            <p>if (tool.users &gt;= plan.minUsers &amp;&amp; tool.monthlySpend &gt; plan.marketRate) {"{"}</p>
             <p className="pl-6">recommend("Downgrade to " + plan.name, savings);</p>
             <p>{"}"}</p>
           </div>
