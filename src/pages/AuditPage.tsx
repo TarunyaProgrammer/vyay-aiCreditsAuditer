@@ -33,6 +33,16 @@ const AuditPage = () => {
     if (validateStep()) nextStep();
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !isProcessing) {
+      if (step < 3) {
+        handleNext();
+      } else {
+        handleStartAudit();
+      }
+    }
+  };
+
   const addTool = () => {
     const newTool: ToolInput = {
       toolId: SUPPORTED_TOOLS[0].id,
@@ -94,8 +104,8 @@ const AuditPage = () => {
   };
 
   return (
-    <div className="container mx-auto px-6 pt-32 pb-24 max-w-4xl">
-      <div className="mb-16 flex justify-center gap-4">
+    <div className="container mx-auto px-6 pt-32 pb-24 max-w-4xl" onKeyDown={handleKeyDown}>
+      <div className="mb-16 flex justify-center gap-4" role="progressbar" aria-valuenow={step} aria-valuemin={1} aria-valuemax={3}>
         {[1, 2, 3].map((s) => (
           <div key={s} className="flex items-center gap-2">
             <div className={`w-3 h-3 rounded-full ${step >= s ? 'bg-primary' : 'bg-foreground/10'}`} />
@@ -149,6 +159,7 @@ const AuditPage = () => {
                   value={input.useCase}
                   onChange={(e) => updateInput({ useCase: e.target.value })}
                   className="w-full bg-background border-2 border-foreground/10 rounded-2xl p-4 text-lg font-serif outline-none focus:border-primary transition-all"
+                  aria-label="Select primary use case"
                 >
                   <option value="early-stage">Early Stage Startup</option>
                   <option value="growth">Growth Engineering</option>
@@ -204,6 +215,7 @@ const AuditPage = () => {
                       value={tool.toolId}
                       onChange={(e) => updateTool(index, { toolId: e.target.value })}
                       className="w-full bg-background border border-foreground/10 rounded-xl p-3 text-sm outline-none focus:border-primary"
+                      aria-label="Select AI tool"
                     >
                       {SUPPORTED_TOOLS.map(t => (
                         <option key={t.id} value={t.id}>{t.name}</option>
@@ -223,6 +235,7 @@ const AuditPage = () => {
                       value={tool.tier}
                       onChange={(e) => updateTool(index, { tier: e.target.value })}
                       className="w-full bg-background border border-foreground/10 rounded-xl p-3 text-sm outline-none focus:border-primary"
+                      aria-label="Select tool tier"
                     >
                       {SUPPORTED_TOOLS.find(t => t.id === tool.toolId)?.plans.map(p => (
                         <option key={p.name} value={p.name.toLowerCase()}>{p.name}</option>
@@ -282,7 +295,7 @@ const AuditPage = () => {
             <Button variant="outline" className="flex-1" onClick={prevStep}>
               <ArrowLeft size={20} /> Back
             </Button>
-            <Button className="flex-[2]" onClick={handleNext}>
+            <Button className="flex-[2]" onClick={handleNext} aria-label="Proceed to final review">
               Review Audit Context <ArrowRight size={20} />
             </Button>
           </div>

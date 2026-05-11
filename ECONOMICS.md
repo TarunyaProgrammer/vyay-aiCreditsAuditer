@@ -25,12 +25,12 @@ Based on initial architectural assumptions and benchmark data for high-utility p
 
 ## 4. The $1M ARR Growth Model (Path to Scale)
 To achieve $1,000,000 in Annual Recurring Revenue, we transition from a pure lead-gen model to a hybrid "Platform + Service" model:
-- **Tier 1: Professional PDF Reporting ($49/Audit)**: Target 500 reports/month = $24,500/mo.
-- **Tier 2: Continuous Monitoring Subscription ($29/mo)**: Target 1,500 active organizations = $43,500/mo.
-- **Tier 3: Enterprise Brokerage Commissions (10% of Savings)**: Target $2,000,000 in total client savings identified and captured per year = $200,000 ARR.
-- **Tier 4: Credex Consulting Retainers (Downstream)**: Target 5 new high-value retainers at $10k/mo = $600,000 ARR.
+- **Tier 1: Professional PDF Reporting ($49/Audit)**: Target 200 reports/month = $117,600 ARR.
+- **Tier 2: Continuous Monitoring Subscription ($29/mo)**: Target 850 active organizations = $295,800 ARR.
+- **Tier 3: Enterprise Brokerage Commissions (10% of Savings)**: Target $1,000,000 in identified savings captured per year = $100,000 ARR.
+- **Tier 4: Credex Consulting Retainers (Downstream)**: Target 4 new high-value retainers at $10k/mo = $480,000 ARR.
 
-**Total Projected ARR**: $1,056,000 USD.
+**Total Projected ARR**: $993,400 USD.
 
 ## 5. Infrastructure Cost Analysis (OpEx)
 - **Host Infrastructure**: $20/mo (Vercel Pro).

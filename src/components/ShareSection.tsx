@@ -27,39 +27,37 @@ export const ShareSection: React.FC<ShareSectionProps> = ({ publicId, annualSavi
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col md:flex-row gap-4">
-        <Button 
-          variant="outline" 
-          size="lg" 
-          className="flex-1 gap-3"
-          onClick={copyToClipboard}
-          aria-label={copied ? 'Link copied to clipboard' : 'Copy share link to clipboard'}
-        >
-          {copied ? <Check size={18} className="text-success" aria-hidden="true" /> : <Link2 size={18} aria-hidden="true" />}
-          {copied ? 'Link Copied' : 'Copy Share Link'}
-        </Button>
-        
-        <Button 
-          variant="outline" 
-          size="lg" 
-          className="flex-1 gap-3 hover:bg-[#1DA1F2]/10 hover:text-[#1DA1F2] hover:border-[#1DA1F2]/20"
-          onClick={shareOnX}
-          aria-label="Share on X (formerly Twitter)"
-        >
-          <Twitter size={18} aria-hidden="true" /> Share on X
-        </Button>
+    <div className="flex flex-wrap md:flex-nowrap gap-3">
+      <Button 
+        variant="outline" 
+        size="md" 
+        className="flex-1 gap-2 whitespace-nowrap"
+        onClick={copyToClipboard}
+        aria-label={copied ? 'Link copied to clipboard' : 'Copy share link to clipboard'}
+      >
+        {copied ? <Check size={16} className="text-success" aria-hidden="true" /> : <Link2 size={16} aria-hidden="true" />}
+        {copied ? 'Link Copied' : 'Copy Share Link'}
+      </Button>
+      
+      <Button 
+        variant="outline" 
+        size="md" 
+        className="flex-1 gap-2 whitespace-nowrap hover:bg-[#1DA1F2]/10 hover:text-[#1DA1F2] hover:border-[#1DA1F2]/20"
+        onClick={shareOnX}
+        aria-label="Share on X (formerly Twitter)"
+      >
+        <Twitter size={16} aria-hidden="true" /> Share on X
+      </Button>
 
-        <Button 
-          variant="outline" 
-          size="lg" 
-          className="flex-1 gap-3 hover:bg-[#0077B5]/10 hover:text-[#0077B5] hover:border-[#0077B5]/20"
-          onClick={shareOnLinkedIn}
-          aria-label="Share on LinkedIn"
-        >
-          <Linkedin size={18} aria-hidden="true" /> Share on LinkedIn
-        </Button>
-      </div>
+      <Button 
+        variant="outline" 
+        size="md" 
+        className="flex-1 gap-2 whitespace-nowrap hover:bg-[#0077B5]/10 hover:text-[#0077B5] hover:border-[#0077B5]/20"
+        onClick={shareOnLinkedIn}
+        aria-label="Share on LinkedIn"
+      >
+        <Linkedin size={16} aria-hidden="true" /> Share on LinkedIn
+      </Button>
     </div>
   );
 };

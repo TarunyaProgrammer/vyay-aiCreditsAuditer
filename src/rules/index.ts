@@ -20,13 +20,26 @@ export const runAudit = (input: AuditInput): AuditResult => {
   const totalMonthlySpend = input.tools.reduce((sum, t) => sum + t.monthlySpend, 0);
   const potentialSavings = recommendations.reduce((sum, r) => sum + r.estimatedSavings, 0);
 
+  // Special case: No tools detected
+  if (input.tools.length === 0) {
+    recommendations.push({
+      id: 'empty-stack-init',
+      toolId: 'none',
+      type: 'alternative',
+      title: 'Initialize Strategic AI Stack',
+      description: 'We detected no active AI infrastructure. Start by evaluating a core reasoning tool (ChatGPT/Claude) to establish an operational baseline.',
+      estimatedSavings: 0,
+      confidence: 'high'
+    });
+  }
+
   // Agar savings kam hain, toh "Optimized Stack" rule check karo
-  if (potentialSavings === 0 || (potentialSavings / totalMonthlySpend) < 0.05) {
+  if (totalMonthlySpend > 0 && (potentialSavings === 0 || (potentialSavings / totalMonthlySpend) < 0.05)) {
     recommendations.push(...checkOptimizedStack(input, potentialSavings));
   }
 
   // Efficiency metrics calculate ho rahi hain
-  const overlapScore = Math.min(100, (potentialSavings / (totalMonthlySpend || 1)) * 100);
+  const overlapScore = totalMonthlySpend > 0 ? Math.min(100, (potentialSavings / totalMonthlySpend) * 100) : 0;
   
   // Kitni savings ho rahi hai uske basis pe grade decide karo
   let efficiencyGrade: 'A' | 'B' | 'C' | 'D' | 'F' = 'A';

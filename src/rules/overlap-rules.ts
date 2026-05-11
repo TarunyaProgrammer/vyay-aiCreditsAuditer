@@ -37,5 +37,18 @@ export const checkOverlapRules = (input: AuditInput): Recommendation[] => {
     });
   }
 
+  // 3. Perplexity aur Gemini ka overlap check
+  if (toolIds.includes('perplexity') && toolIds.includes('gemini')) {
+    recommendations.push({
+      id: `search-overlap-${Date.now()}`,
+      toolId: 'perplexity',
+      type: 'redundant',
+      title: 'Redundant Search Intelligence',
+      description: 'You are using both Perplexity and Gemini. Since Gemini now includes deep Google Search integration and reasoning capabilities, Perplexity may be redundant for general search-augmented workflows.',
+      estimatedSavings: 20,
+      confidence: 'medium',
+    });
+  }
+
   return recommendations;
 };

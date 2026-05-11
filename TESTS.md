@@ -9,7 +9,8 @@ Vyay utilizes a deterministic testing suite to ensure the mathematical integrity
 - **UI Validation**: React Testing Library + JSDOM
 - **Schema Validation**: Zod-based contract testing
 
-## 2. Mandatory Audit Engine Test Cases (Min 5)
+## 2. Mandatory Audit Engine Test Cases
+*Located in `tests/audit-engine.test.ts` and `src/rules/audit.spec.ts`*
 
 | Test Case ID | Objective | Expected Outcome |
 | :--- | :--- | :--- |
@@ -19,7 +20,8 @@ Vyay utilizes a deterministic testing suite to ensure the mathematical integrity
 | **TC-04** | API Substitution Logic | Detects high-volume GPT-4o usage and recommends a 30% saving through GPT-4o-mini or a 70% saving via Gemini 1.5 Flash. |
 | **TC-05** | Null/Empty State Handling | Ensures that a submission with zero tools results in an "Optimal Spend" status with no erroneous recommendations generated. |
 
-## 3. Interface and Integration Protocols
+## 3. Interface and Routing Protocols
+*Located in `tests/routing.test.tsx` and `src/pages/LandingPage.spec.tsx`*
 - **State Persistence**: Validates that form data survives page reloads (Zustand/LocalStorage integration).
 - **Navigation Sequence**: Ensures a user cannot bypass the data ingestion stage and jump directly to the results dashboard.
 - **Lead Capture Validation**: Validates that the "Book Consultation" CTA only appears for audits identifying >$500/mo in savings.

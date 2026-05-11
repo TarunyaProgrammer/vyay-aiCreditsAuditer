@@ -83,7 +83,7 @@ export const Footer = () => {
             </div>
 
             {/* Links Section */}
-            <div className="lg:col-span-6 grid grid-cols-2 gap-12 lg:gap-24 items-start lg:justify-end text-left lg:text-right">
+            <div className="lg:col-span-6 grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-16 items-start lg:justify-end text-left lg:text-right">
               <div className="space-y-6">
                 <h4 className="text-[10px] font-sans uppercase tracking-[0.4em] opacity-40 font-bold">Protocol</h4>
                 <div className="flex flex-col gap-4">
@@ -101,28 +101,37 @@ export const Footer = () => {
                   <Link to="/terms" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">Terms</Link>
                 </div>
               </div>
+
+              <div className="space-y-6">
+                <h4 className="text-[10px] font-sans uppercase tracking-[0.4em] opacity-40 font-bold">Social</h4>
+                <div className="flex flex-col gap-4">
+                  <a href="#" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">X / Twitter</a>
+                  <a href="#" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">LinkedIn</a>
+                  <a href="#" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">Product Hunt</a>
+                </div>
+              </div>
             </div>
           </div>
           
           {/* Tagline */}
           <div className="relative z-10 mt-32 flex flex-col md:flex-row justify-between items-end gap-6 pt-12 border-t border-background/5">
             <div className="space-y-4">
-              <Link to="/" aria-label="Vyay Home">
+              <Link to="/" aria-label="Vyay Home" className="focus-visible:ring-2 focus-visible:ring-primary outline-none rounded-lg">
                 <img src="/logo_light.png" alt="" className="h-8 w-auto object-contain opacity-20 hover:opacity-100 transition-opacity" aria-hidden="true" width="80" height="32" loading="lazy" />
               </Link>
               <p className="text-xs opacity-40 max-w-xs leading-relaxed italic">
                 Deterministic AI infrastructure auditing for engineering leadership. Built for the Credex Web Development Internship.
               </p>
             </div>
-            <div className="flex flex-col items-end gap-2">
+            <div className="flex flex-col items-end gap-3">
               <div className="text-[10px] font-sans uppercase tracking-[0.4em] opacity-40 font-bold">
                 © 2026 VYAY STUDIO
               </div>
-              <div className="flex items-center gap-3">
-                <Shield size={14} className="text-primary/40" aria-hidden="true" />
-                <p className="text-[10px] uppercase tracking-widest opacity-40 font-bold">
-                  May 09, 2026 Snapshot
-                </p>
+              <div className="flex items-center gap-3 text-muted-foreground">
+                <Clock size={14} className="opacity-50" aria-hidden="true" />
+                <span className="text-[10px] uppercase tracking-widest font-bold opacity-40">
+                  Audit Snapshot: {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                </span>
               </div>
             </div>
           </div>

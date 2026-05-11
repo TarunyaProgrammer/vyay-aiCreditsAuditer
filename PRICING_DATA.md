@@ -1,55 +1,42 @@
 <img src="public/light_banner.png" alt="Vyay Logo" width="100%" />
 
-# Service Pricing Data — Market Reference Repository
+# Audit Engine Reference: Vendor Pricing & Tiers
 
-Every figure in this repository is cited to official vendor documentation. Vyay utilizes these deterministic figures for all audit calculations. We distinguish between **Official** vendor rates and **Community-Observed** pricing.
+This document serves as the "Source of Truth" for the deterministic audit engine. All logic hooks are calculated against these validated pricing benchmarks.
 
-## IDE & Coding Intelligence
+## 1. Chat & Reasoning Tiers
 
-### Cursor
-| Plan | Price | Verification Date | Source URL |
-| :--- | :--- | :--- | :--- |
-| **Hobby** | Free | 2026-05-09 | [cursor.com/pricing](https://cursor.com/pricing) |
-| **Pro** | $20/mo | 2026-05-09 | [cursor.com/pricing](https://cursor.com/pricing) |
-| **Business / Teams** | $40/user/mo | 2026-05-09 | [cursor.com/pricing](https://cursor.com/pricing) |
-| **Enterprise** | Custom | 2026-05-09 | [cursor.com/pricing](https://cursor.com/pricing) |
+| Vendor | Tier | Price (seat/mo) | Official Source | Verified |
+| :--- | :--- | :--- | :--- | :--- |
+| **ChatGPT** | Plus | $20 | [openai.com/chatgpt/pricing](https://openai.com/chatgpt/pricing) | 2026-05-11 |
+| | Team | $30 | [openai.com/chatgpt/pricing](https://openai.com/chatgpt/pricing) | 2026-05-11 |
+| | Enterprise | $60 (est) | [openai.com/contact-sales](https://openai.com/contact-sales) | 2026-05-11 |
+| **Claude** | Pro | $20 | [anthropic.com/claude/pricing](https://www.anthropic.com/claude/pricing) | 2026-05-11 |
+| | Team | $30 | [anthropic.com/claude/pricing](https://www.anthropic.com/claude/pricing) | 2026-05-11 |
+| **Perplexity** | Pro | $20 | [perplexity.ai/pro](https://www.perplexity.ai/pro) | 2026-05-11 |
+| **Gemini** | Advanced | $20 | [gemini.google.com/pricing](https://gemini.google.com/pricing) | 2026-05-11 |
 
-### GitHub Copilot
-| Plan | Price | Verification Date | Source URL |
-| :--- | :--- | :--- | :--- |
-| **Free** | $0 | 2026-05-09 | [github.com/features/copilot](https://github.com/features/copilot/plans) |
-| **Individual** | $10/mo | 2026-05-09 | [github.com/features/copilot](https://github.com/features/copilot/plans) |
-| **Business** | $19/user/mo | 2026-05-09 | [github.com/features/copilot](https://github.com/features/copilot/plans) |
-| **Enterprise** | $39/user/mo | 2026-05-09 | [github.com/features/copilot](https://github.com/features/copilot/plans) |
+## 2. Engineering & Development Tiers
 
-## General Purpose Reasoning (Chat)
+| Vendor | Tier | Price (seat/mo) | Official Source | Verified |
+| :--- | :--- | :--- | :--- | :--- |
+| **Copilot** | Individual | $10 | [github.com/features/copilot](https://github.com/features/copilot/plans) | 2026-05-11 |
+| | Business | $19 | [github.com/features/copilot](https://github.com/features/copilot/plans) | 2026-05-11 |
+| | Enterprise | $39 | [github.com/features/copilot](https://github.com/features/copilot/plans) | 2026-05-11 |
+| **Cursor** | Pro | $20 | [cursor.com/pricing](https://www.cursor.com/pricing) | 2026-05-11 |
+| | Business | $40 | [cursor.com/pricing](https://www.cursor.com/pricing) | 2026-05-11 |
+| **Windsurf** | Pro | $20 | [codeium.com/windsurf/pricing](https://codeium.com/windsurf/pricing) | 2026-05-11 |
 
-### ChatGPT
-| Plan | Price | Verification Date | Source URL |
-| :--- | :--- | :--- | :--- |
-| **Free** | $0 | 2026-05-09 | [openai.com/chatgpt/pricing](https://chatgpt.com/pricing/) |
-| **Plus** | $20/mo | 2026-05-09 | [openai.com/chatgpt/pricing](https://chatgpt.com/pricing/) |
-| **Pro** | $200/mo | 2026-05-09 | [openai.com/chatgpt/pricing](https://chatgpt.com/pricing/) |
-| **Team** | $25-30/user/mo | 2026-05-09 | [openai.com/chatgpt/pricing](https://chatgpt.com/pricing/) |
-| **Enterprise** | Custom | 2026-05-09 | [openai.com/chatgpt/pricing](https://chatgpt.com/pricing/) |
+## 3. API Pricing Benchmarks (Input/Output)
+*Used for calculating "API Substitution" savings.*
 
-### Claude
-| Plan | Price | Verification Date | Source URL |
-| :--- | :--- | :--- | :--- |
-| **Free** | $0 | 2026-05-09 | [anthropic.com/claude](https://claude.com/pricing) |
-| **Pro** | $20/mo | 2026-05-09 | [anthropic.com/claude](https://claude.com/pricing) |
-| **Team** | $25/user/mo | 2026-05-09 | [anthropic.com/claude](https://claude.com/pricing) |
-| **Enterprise** | Custom | 2026-05-09 | [anthropic.com/claude](https://claude.com/pricing) |
+- **GPT-4o**: $2.50 / 1M input tokens | $10.00 / 1M output tokens ([openai.com/api/pricing](https://openai.com/api/pricing))
+- **Claude 3.5 Sonnet**: $3.00 / 1M input tokens | $15.00 / 1M output tokens ([anthropic.com/pricing](https://www.anthropic.com/pricing))
+- **Gemini 1.5 Flash**: $0.075 / 1M input tokens | $0.30 / 1M output tokens ([ai.google.dev/pricing](https://ai.google.dev/pricing))
 
-### Perplexity
-| Plan | Price | Verification Date | Source URL |
-| :--- | :--- | :--- | :--- |
-| **Free** | $0 | 2026-05-09 | [perplexity.ai/pro](https://www.perplexity.ai/pro) |
-| **Pro** | $20/mo | 2026-05-09 | [perplexity.ai/pro](https://www.perplexity.ai/pro) |
-| **Enterprise** | Custom | 2026-05-09 | [perplexity.ai/pro](https://www.perplexity.ai/pro) |
+## 4. Tier Mismatch Logic (The "CFO Rules")
+- **The "Small Team" Rule**: If `teamSize < 5` AND `tier === 'team'`, suggest downgrade to Pro.
+- **The "Admin Overhead" Rule**: If `userCount > 20` AND `tier === 'pro'`, suggest upgrade to Business for bulk discounting and oversight.
 
-## Deterministic Value Efficiency Logic
-1. **Redundancy Hook**: If `Cursor Pro` and `GitHub Copilot` are both active, recommend `Deactivate Copilot` (Redundant IDE intelligence).
-2. **Small Team Efficiency**: If `Team Size` < 5 and `Team` plans (Claude/ChatGPT) are active, evaluate if individual `Pro` seats offer better value.
-3. **Triple Overlap**: If 3+ reasoning tools (ChatGPT, Claude, Gemini, Perplexity) are paid simultaneously, flag for "Stack Saturation."
-4. **Enterprise Mismatch**: Flag "Enterprise" tier usage for teams < 20 members as potential administrative overspend.
+---
+"Calculated intelligence, verified data."

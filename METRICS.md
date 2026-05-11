@@ -1,25 +1,38 @@
 <img src="public/light_banner.png" alt="Vyay Logo" width="100%" />
 
-# Key Performance Indicators (KPIs) — Project Vyay
+# Measurement & Analytics Strategy
 
-## 1. The North Star Metric: Aggregate Identified Savings (AIS)
-The definitive indicator of Vyay's value proposition is the **Aggregate Identified Savings (AIS)**. This metric tracks the total volume of capital identified as sub-optimally allocated across all completed audit cycles. 
-- **Rationale**: While user volume and retention are important, AIS directly correlates with the "economic pain" we are addressing. A high AIS indicates that we are reaching organizations with significant optimization potential, which are the highest-value leads for the Credex consulting ecosystem.
+To transition Vyay from an MVP to a data-driven growth engine, we focus on three distinct categories of metrics.
 
-## 2. Supporting Input Metrics
-To drive the North Star metric, we monitor three critical input signals:
-1. **Audit Completion Velocity (ACV)**: The mean duration from the first form interaction to the final report generation. Our target is < 60 seconds. A higher ACV indicates frictionless data ingestion, which directly increases the volume of completed audits.
-2. **Report Distribution Rate (RDR)**: The percentage of completed audits where the unique report URL is accessed more than twice. This serves as a proxy for internal organizational sharing (e.g., an EM sharing the report with a CFO), indicating the "viral" institutional utility of the tool.
-3. **Lead-to-Consultation Conversion (LCC)**: The percentage of users identifying >$500/mo in savings who subsequently engage with the "Book a Credex Consultation" CTA. This metric validates the quality of our lead-generation funnel.
+## 1. The North Star Metric
+**Total Potential Savings Identified (TPSI)**: The aggregate dollar amount of inefficiencies uncovered by the platform across all users. This metric validates the platform's core value proposition and utility.
 
-## 3. Instrumentation and Data Strategy
-Our instrumentation plan utilizes a "privacy-first, data-rich" approach:
-- **Event Tracking**: We utilize lightweight event tracking to monitor stage-by-stage drop-off in the audit form.
-- **Analytical Logging**: Every completed audit generates a metadata entry in Supabase (excluding PII) that captures the total savings, tool density, and organization size. This data is synthesized into a weekly "AI Spend State of the Union" report for internal strategy.
-- **Performance Monitoring**: Vercel Analytics is employed to ensure the application maintains its high-performance profile (Lighthouse score targets).
+## 2. Strategic Conversion Funnel
+We track the "Leakage Points" in our high-velocity audit flow:
+- **Initiation Rate**: (Audit Starts / Landing Page UVs) — Targets 15-20%.
+- **Step Completion Velocity**: The average time spent on each stage of the audit wizard. (Target: < 20s per step).
+- **Executive Summary Retention**: Time spent reading the AI-generated synthesis on the result page.
+- **Lead Capture Efficiency**: (Email Opt-ins / Completed Audits) — Target: > 25%.
 
-## 4. Pivot and Intervention Triggers
-We have established the following "Pivot Triggers" to indicate when a strategic shift is required:
-- **Friction Trigger**: If the Audit Completion Rate drops below 60%, we will pivot from a multi-stage form to a single-page "Quick Audit" interface to reduce cognitive load.
-- **Value Trigger**: If the mean AIS per audit remains below $100 for more than 14 consecutive days, we will shift our GTM targeting toward larger, Series B+ organizations where infrastructure complexity is higher.
-- **Conversion Trigger**: If the LCC remains below 2% despite high AIS, we will iterate on the report's "Call to Action" design and the narrative summary generation to better communicate the urgency of the identified savings.
+## 3. Product-Market Fit (PMF) Proxies
+- **Share Coefficient**: The ratio of public report views generated per unique audit. A coefficient > 1.2 indicates strong professional utility and viral potential.
+- **Repeat Audit Rate**: Percentage of users who return to recalibrate their stack within 30 days.
+- **Audit "Lean" Rate**: Percentage of audits that result in a "Fully Optimized" (Grade A) result. High rates suggest a more mature user base or a need for tighter rule thresholds.
+
+## 4. Infrastructure & Reliability (OpEx)
+- **Engine Execution Time**: Client-side logic execution latency (Target: < 100ms).
+- **Gemini Synthesis Latency**: Time to generate the executive summary via API (Target: < 2.5s).
+- **Report Hydration Speed**: Time to load a public report from Supabase (Target: < 800ms).
+
+## 5. Downstream Sales (Credex Internal)
+- **Lead Quality Score**: Automated scoring based on identified savings ($) and team size.
+- **Consultation Conversion**: Percentage of captured leads that book a Credex strategy session.
+
+## 6. Pivot Decision Thresholds
+We define the following "Early Warning" signals that would trigger a strategic pivot or operational recalibration:
+- **Low Engagement**: If the **Audit Initiation Rate** remains below 5% after 2,000 unique visitors, we will pivot from a "Self-Reported Form" to a "Direct File Upload (CSV)" model to further reduce friction.
+- **Poor Lead Quality**: If **High-Value Leads** account for less than 3% of total audits, we will recalibrate the rule engine to target more aggressive enterprise-grade overlaps.
+- **Negative Unit Economics**: If the **CAC** exceeds $200 for paid channels without a corresponding 20% increase in lead value, we will hibernate paid distribution and pivot back to 100% organic/viral distribution.
+
+---
+"We don't just audit spend; we measure the velocity of organizational optimization."

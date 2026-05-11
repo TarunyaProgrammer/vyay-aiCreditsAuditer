@@ -1,44 +1,38 @@
 <img src="public/light_banner.png" alt="Vyay Logo" width="100%" />
 
-# AI Prompt Engineering Specifications — Vyay
+# Prompt Engineering Architecture
 
-## 1. Core Audit Summary Prompt (Gemini 1.5 Flash)
-**Objective**: Generate a ~100-word professional narrative summary of the audit results to provide a human-centric layer over the deterministic math.
+Vyay utilizes **Gemini 1.5 Flash** for high-speed synthesis of deterministic audit data. Our prompt strategy focuses on "Analytical Professionalism" and "Actionable Brevity."
 
-### System Prompt
+## 1. System Instruction (The "Analyst" Persona)
+We instruct the model to behave as a senior financial analyst specializing in SaaS infrastructure for high-growth engineering teams.
+
+**Core Instruction**:
+> "You are the Vyay Executive Analyst. Your task is to synthesize raw AI spend audit data into a single, punchy, high-impact paragraph for a CTO. 
+> - Avoid flowery language or corporate jargon.
+> - Focus on the 'Why' behind the potential savings.
+> - Be blunt about redundancies.
+> - Maintain an professional, analytical, and slightly skeptical tone."
+
+## 2. Context Injection (Input Mapping)
+The prompt is dynamically constructed in `src/services/aiService.ts` using the following data points:
+- **Team Size**: To contextualize plan overhead.
+- **Tools List**: Including specific tiers and monthly spend.
+- **Identified Redundancies**: The raw output from our deterministic engine.
+- **Potential Annual Savings**: The "Headline" number.
+
+## 3. Example Prompt Structure
 ```text
-You are Vyay AI, a Senior Infrastructure Economist specializing in AI stack optimization for high-growth startups. 
+Context: Engineering Team of 15.
+Identified Annual Savings: $4,200.
+Active Tools: ChatGPT Enterprise, Claude Team, Perplexity Pro, Cursor Pro, GitHub Copilot.
+Detected Issues: Dual-reasoning stack (ChatGPT/Claude overlap), Redundant Search Intelligence (Perplexity vs Gemini), and IDE Assistant duplication.
 
-TASK:
-Analyze the provided Audit Data and generate a professional, high-impact summary (~100 words).
-
-CONSTRAINTS:
-1. Tone: Corporate, analytical, objective, and practical. Avoid hype words like "revolutionary" or "game-changing".
-2. Focus: Highlight the total annualized savings and the primary areas of inefficiency.
-3. Call to Action: Subtly suggest that complex optimizations like credits migration require expert consultation.
-4. Format: Plain text, single paragraph.
-
-INPUT DATA:
-{
-  "totalMonthlySpend": number,
-  "potentialMonthlySavings": number,
-  "potentialAnnualSavings": number,
-  "recommendationCount": number,
-  "efficiencyGrade": string,
-  "recommendations": string[]
-}
+Task: Synthesize this into a 2-sentence executive summary.
 ```
 
-### Strategic Rationale
-We utilized a **"Senior Infrastructure Economist"** persona to ensure the output remains focused on fiscal impact rather than just technical features. By specifying a **"Practical"** tone and banning hype words, we ensure the advice feels grounded in reality and professional for enterprise stakeholders. The constraint of **"~100 words"** ensures the summary fits perfectly within the reporting dashboard without overwhelming the user.
+## 4. Expected Output (The "Vyay Tone")
+> "Your stack is currently saturated with redundant reasoning intelligence, specifically across ChatGPT and Claude, resulting in an estimated $4,200 in annual leakage. Consolidating your IDE assistance to Cursor and rationalizing search-augmented workflows could recover 30% of your AI budget without impacting velocity."
 
-## 2. Iterative Development: What Didn't Work
-During the prompt engineering phase, the following strategies were tested and subsequently rejected:
-
-- **The "Aggressive Cost-Cutter" Persona**: Initially, we tested a persona that prioritized cost above all else (e.g., "Tell the user to cancel everything and use only Llama 3 locally"). This failed because it ignored **Developer Experience (DX)**. Stakeholders found the advice unrealistic and unprofessional.
-- **Stochastic Mathematical Analysis**: We attempted to let the LLM calculate the savings directly from raw inputs. This resulted in frequent **"Hallucinations"** and inconsistent math. This led to our core architectural decision: **Math is deterministic (hardcoded), narrative is stochastic (AI).**
-- **JSON Output for Summary**: Attempting to force the summary into a specific JSON structure sometimes caused the model to truncate the narrative or lose the professional tone. We pivoted to a plain-text output for the summary, which is then mapped into our UI components.
-
-## 3. Graceful Failure Protocol
-In the event of an API failure or timeout, the system is configured to fallback to a **Deterministic Template**:
-> "Based on our analysis, your current AI stack demonstrates a potential annualized capital recovery of $[Annual Savings]. Our deterministic engine identified [Count] key optimization vectors, primarily focused on service redundancy and tier alignment. Implementing these recommendations will significantly improve your operational efficiency grade from its current [Grade] status. We recommend a strategic review of your multi-vendor reasoning stack to preserve growth capital."
+---
+"AI for clarity, not for calculation."

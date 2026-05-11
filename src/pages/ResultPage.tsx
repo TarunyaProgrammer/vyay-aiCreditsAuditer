@@ -6,7 +6,7 @@ import { Button, Card, Badge, SectionHeading } from '../components/shared/Shared
 import { 
   TrendingDown, Download, AlertCircle, 
   ChevronRight, RefreshCw,
-  ShieldCheck, Target, Sparkles
+  ShieldCheck, Target, Sparkles, Clock
 } from 'lucide-react';
 import { LeadCapture } from '../components/LeadCapture';
 import { ShareSection } from '../components/ShareSection';
@@ -119,14 +119,14 @@ const ResultPage = () => {
             Deterministic analysis for organizational engineering profiles and AI infrastructure sub-optimality.
           </p>
         </div>
-        <div className="flex gap-4">
+        <div className="flex flex-wrap items-stretch gap-3">
           <ShareSection publicId={result.publicId} annualSavings={annualSavings} />
           <Button 
-            size="lg" 
-            className="shadow-2xl shadow-primary/20 bg-foreground text-background hover:bg-foreground/90"
+            size="md" 
+            className="shadow-2xl shadow-primary/20 bg-foreground text-background hover:bg-foreground/90 h-auto py-2"
             aria-label="Download executive PDF report"
           >
-            <Download size={18} aria-hidden="true" /> Executive PDF
+            <Download size={16} aria-hidden="true" /> <span className="whitespace-nowrap">Executive PDF</span>
           </Button>
         </div>
       </div>
@@ -138,7 +138,7 @@ const ResultPage = () => {
             <div className="flex justify-between items-start">
               <div>
                 <p className="text-[10px] font-sans uppercase tracking-[0.3em] opacity-40 mb-2">Projected Annual Recovery</p>
-                <p className="text-7xl md:text-8xl font-serif italic tracking-tighter text-primary">${annualSavings.toLocaleString()}</p>
+                <p className="text-7xl md:text-8xl font-serif italic tracking-tighter text-background">${annualSavings.toLocaleString()}</p>
               </div>
               <div className="p-4 bg-primary text-background rounded-2xl rotate-12">
                 <TrendingDown size={32} />
@@ -152,7 +152,7 @@ const ResultPage = () => {
               </div>
               <div>
                 <p className="text-[10px] font-sans uppercase tracking-[0.3em] opacity-40 mb-1">Efficiency Grade</p>
-                <p className="text-2xl font-serif text-primary italic">{result.metrics.efficiencyGrade}</p>
+                <p className="text-2xl font-serif text-background italic">{result.metrics.efficiencyGrade}</p>
               </div>
             </div>
           </div>
@@ -187,9 +187,21 @@ const ResultPage = () => {
               <h4 className="font-semibold text-lg font-serif">Executive AI Summary</h4>
               <Badge variant="primary" className="text-[8px] py-0 px-1">Gemini 1.5 Flash</Badge>
             </div>
-            <p className="text-foreground/80 leading-relaxed italic text-lg font-serif">
-              "{result.aiSummary || 'Analysis complete. Generating executive synthesis...'}"
-            </p>
+            {result.aiSummary ? (
+              <p className="text-foreground/80 leading-relaxed italic text-lg font-serif animate-in fade-in duration-700">
+                "{result.aiSummary}"
+              </p>
+            ) : (
+              <div className="space-y-4">
+                <div className="space-y-2 animate-pulse">
+                  <div className="h-4 bg-primary/10 rounded w-full" />
+                  <div className="h-4 bg-primary/10 rounded w-5/6" />
+                </div>
+                <p className="text-muted-foreground text-xs italic opacity-60">
+                  Note: Strategic narrative generation was bypassed due to API latency. Your deterministic metrics remain 100% accurate.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </Card>
@@ -230,9 +242,9 @@ const ResultPage = () => {
                     </div>
                   </div>
                   
-                  <div className="md:w-64 flex items-center">
-                    <Button className="w-full group" size="lg">
-                      Implement Action <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  <div className="md:w-48 flex items-center">
+                    <Button className="w-full group" size="md">
+                      Implement Action <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </div>
                 </div>

@@ -1,72 +1,68 @@
 <img src="public/light_banner.png" alt="Vyay Logo" width="100%" />
 
-# Vyay — AI Spend Audit Platform
+# Vyay — The Strategic AI Infrastructure Auditor
 
-**Vyay** is a high-velocity expenditure audit utility designed for engineering leadership and founders to optimize AI infrastructure costs. The platform provides a deterministic analytical engine to identify service redundancies and plan sub-optimality, delivering actionable financial insights in under 60 seconds.
+**Vyay** is a high-velocity expenditure audit utility designed for engineering leadership and founders to rationalize AI infrastructure costs. Delivering actionable financial intelligence in under 60 seconds, Vyay identifies service redundancies and plan sub-optimality through a 100% deterministic analytical engine.
 
-**Deployed URL**: [https://vyay-ai-credits-auditer.vercel.app/](https://vyay-ai-credits-auditer.vercel.app/)
+**Live Platform**: [https://vyaytarunya.vercel.app/](https://vyaytarunya.vercel.app/)
 
 ## Platform Visuals
 <p align="center">
-  <img src="https://via.placeholder.com/800x450.png?text=Landing+Page+Dashboard" alt="Landing Page" width="32%" />
-  <img src="https://via.placeholder.com/800x450.png?text=Multi-Step+Audit+Interface" alt="Audit Form" width="32%" />
-  <img src="https://via.placeholder.com/800x450.png?text=Analytical+Results+Reporting" alt="Results Page" width="32%" />
+  <img src="public/og_preview.png" alt="Vyay Audit Dashboard" width="100%" />
 </p>
 
-## Project Status: Day 3 Complete
-- [x] **Architecture Redux**: Implemented a feature-oriented directory structure.
+## Technical Decisions & Trade-offs
+
+During the development of Vyay, I prioritized **Time-to-Value** and **Institutional Defensibility**. Below are the 5 core trade-offs made:
+
+1. **Deterministic Logic vs. LLM Reasoning**: I intentionally avoided using AI for the audit math itself. Financial audits require 100% repeatability. By using a hardcoded rule engine based on verified vendor data, we ensure that every recommendation is mathematically sound and CFO-ready.
+2. **Zero-Authentication Model**: To maximize lead generation velocity, I bypassed traditional sign-up walls. The friction of account creation is the primary bounce factor for founders; Vyay provides insight first and requests identity (email) only after value is demonstrated.
+3. **Client-Side Orchestration**: The audit engine executes entirely on the client. This offloads computational overhead from our infrastructure, ensuring near-infinite scalability and sub-100ms execution times without increasing OpEx.
+4. **Zustand Persistence**: I chose Zustand with LocalStorage persistence over database-only state. This allows users to leave and return to their specific audit progress without needing an account, maintaining a high conversion rate in a multi-step wizard.
+5. **Calm Engineering Aesthetic**: I rejected flashy "AI gradients" and excessive animations in favor of a data-dense, industrial-minimalist design (Cream & Charcoal). This aesthetic establishes the "Institutional Trust" required for a financial tool.
+
+## The "Day 7" Launch Readiness Report
 - [x] **Deterministic Audit Engine**: 100% rule-based reasoning for financial defensibility.
-- [x] **Modular Rule Architecture**: Separate logic for oversized plans, tool overlap, and redundancy.
-- [x] **Executive Dashboard**: Cinematic result page with confidence scoring and annual recovery projections.
-- [x] **Automated Test Suite**: 5+ core engine tests covering diverse organizational profiles.
+- [x] **Hybrid AI Synthesis**: Gemini 1.5 Flash integration for human-centric executive summaries.
+- [x] **Zero-Friction Persistence**: Supabase-backed report storage with unique, shareable URLs.
+- [x] **Lead Capture & Distribution**: Transactional email integration via Resend for PDF report delivery.
+- [x] **Operational Transparency**: Comprehensive documentation covering GTM, Economics, and Architecture.
+- [x] **Production Grade**: 90+ Lighthouse accessibility scores and a robust Vitest suite.
 
-## Strategic Architecture
+## Strategic Documentation
 
-Vyay is built on a **Deterministic Financial Reasoning** model. Unlike simple AI-prompting tools, our engine uses modular, traceable rules to ensure every recommendation is financially sound.
+| Document | Description |
+| :--- | :--- |
+| [**ARCHITECTURE.md**](file:///Users/tarunyakesh/Desktop/Internships/credex/PreinternTask1/ARCHITECTURE.md) | Technical deep-dive, Mermaid diagrams, and scaling strategy. |
+| [**GTM.md**](file:///Users/tarunyakesh/Desktop/Internships/credex/PreinternTask1/GTM.md) | Go-to-market strategy and organic growth blueprint. |
+| [**ECONOMICS.md**](file:///Users/tarunyakesh/Desktop/Internships/credex/PreinternTask1/ECONOMICS.md) | Unit economics, LTV/CAC math, and the $1M ARR roadmap. |
+| [**REFLECTION.md**](file:///Users/tarunyakesh/Desktop/Internships/credex/PreinternTask1/REFLECTION.md) | Philosophical analysis on deterministic logic vs AI hype. |
+| [**DEVLOG.md**](file:///Users/tarunyakesh/Desktop/Internships/credex/PreinternTask1/DEVLOG.md) | Day-by-day technical narrative following strict Credex formatting. |
 
-### Audit Logic Hierarchy
-1. **Oversized Plans**: Detects Enterprise/Team tier mismatches for small sub-teams.
-2. **Tool Overlap**: Identifies reasoning stack saturation (e.g., ChatGPT + Claude + Perplexity).
-3. **Duplicate Capabilities**: Flags redundant coding assistants (e.g., Cursor + Copilot).
-4. **Optimized Baseline**: Validates and acknowledges efficient expenditure.
+## Core Technology Stack
+- **Frontend**: React 18, Vite, TypeScript, Tailwind CSS
+- **Intelligence**: Gemini 1.5 Flash (Analytical synthesis)
+- **Data/Persistence**: Supabase (PostgreSQL), Zustand (LocalStorage)
+- **Communications**: Resend (Transactional Email)
+- **Infrastructure**: Vercel (Edge Deployment)
 
-## Quickstart Guide
+## Quickstart
 
-### Prerequisites
-- Node.js (v18.0.0 or higher)
-- npm or yarn
+```bash
+# Clone the repository
+git clone https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer.git
 
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer.git
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Initialize the development environment:
-   ```bash
-   npm run dev
-   ```
+# Install dependencies
+npm install
 
-### Environment Variables
-For Day 3, no environment variables are required. The audit engine is fully deterministic. For upcoming features (Persistence/AI), refer to `.env.example`.
+# Execute development environment
+npm run dev
 
-## Strategic Trade-off Decisions
-
-1. **Authentication Model (Deferred)**: We intentionally omitted a traditional authentication layer to eliminate user friction. This "Time-to-Value" prioritization ensures a 60-second completion target.
-2. **State Management (Zustand)**: Selected for its minimalist footprint and native support for localStorage persistence, critical for form-heavy applications.
-3. **Audit Logic (Deterministic over Stochastic)**: We utilized hardcoded rule-based logic tied to official vendor pricing. This ensures 100% mathematical accuracy and defensibility.
-4. **Validation (Zod)**: Integrated for runtime data integrity, ensuring that audits are only executed against semantically valid inputs.
-5. **Styling (Tailwind CSS)**: Leveraged for rapid, consistent component development with a focus on "calm" data-centric UI.
-
-## Technical Specifications
-- **Frontend**: React 18, Vite, TypeScript, Tailwind CSS, Lucide React
-- **Validation**: Zod (Schema validation)
-- **State**: Zustand (with Persistence)
-- **Testing**: Vitest, React Testing Library
-- **Infrastructure**: Vercel (Deployment), Supabase (Persistence)
+# Execute test suite
+npm test
+```
 
 ---
-Developed by **Tarunya** for the Credex Web Development Internship Assignment.
+Developed by **Tarunya** for the Credex Web Development Internship.
+"Calm technology for engineering budget recalibration."
+
