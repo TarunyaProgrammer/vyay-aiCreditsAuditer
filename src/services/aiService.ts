@@ -10,7 +10,7 @@ export const aiService = {
     }
 
     try {
-      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash-latest' });
+      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
       const prompt = `
         You are Vyay AI, a Senior Infrastructure Economist specializing in AI stack optimization for high-growth startups. 

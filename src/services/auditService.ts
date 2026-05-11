@@ -7,7 +7,7 @@ export const auditService = {
       .from('audits')
       .insert({
         team_size: input.teamSize,
-        primary_use_case: input.useCase,
+        primary_use_case: input.useCase || 'General Engineering Optimization',
         tools_json: input.tools,
         recommendations_json: result.recommendations,
         monthly_savings: result.potentialSavings,
