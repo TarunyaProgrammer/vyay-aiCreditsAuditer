@@ -8,7 +8,7 @@
 
 ## Platform Visuals
 <p align="center">
-  <img src="public/og_preview.png" alt="Vyay Audit Dashboard" width="100%" />
+  <img src="public/Platform_HomePage.png" alt="Vyay Audit Dashboard" width="100%" />
 </p>
 
 ## Technical Decisions & Trade-offs
