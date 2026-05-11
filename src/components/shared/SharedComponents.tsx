@@ -4,14 +4,24 @@ import { twMerge } from 'tailwind-merge';
 
 import { Zap } from 'lucide-react';
 
-export const Logo = ({ className = "h-6 w-6", iconOnly = false }: { className?: string; iconOnly?: boolean }) => (
+export const Logo = ({ 
+  className = "h-6 w-6", 
+  iconOnly = false,
+  hideIcon = false 
+}: { 
+  className?: string; 
+  iconOnly?: boolean;
+  hideIcon?: boolean;
+}) => (
   <div className={cn("flex items-center gap-2", className)}>
-    <div className={cn("flex items-center justify-center rounded-lg", !iconOnly && "p-1.5 bg-primary text-background")}>
-      <Zap 
-        size={iconOnly ? 24 : 16} 
-        fill="currentColor" 
-      />
-    </div>
+    {!hideIcon && (
+      <div className={cn("flex items-center justify-center rounded-lg", !iconOnly && "p-1.5 bg-primary text-background")}>
+        <Zap 
+          size={iconOnly ? 24 : 16} 
+          fill="currentColor" 
+        />
+      </div>
+    )}
     {!iconOnly && <span className="text-xl font-serif italic tracking-tighter text-foreground">Vyay</span>}
   </div>
 );

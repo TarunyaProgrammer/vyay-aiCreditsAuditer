@@ -16,7 +16,7 @@ export const Navbar = () => {
           className="flex items-center justify-center rounded-full px-4 h-12 bg-background border border-foreground/5 shadow-sm hover:scale-105 transition-transform overflow-hidden"
           aria-label="Vyay Home"
         >
-          <Logo className="px-1" />
+          <Logo className="px-1" hideIcon />
         </Link>
 
         {/* Right Pill: Links */}

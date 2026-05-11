@@ -6,16 +6,16 @@ import { AuditResult, AuditInput } from '../types';
 Font.register({
   family: 'Playfair Display',
   fonts: [
-    { src: 'https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/playfairdisplay/PlayfairDisplay-Italic.ttf', fontStyle: 'italic' },
-    { src: 'https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/playfairdisplay/PlayfairDisplay-Bold.ttf', fontWeight: 700 }
+    { src: 'https://raw.githubusercontent.com/googlefonts/Playfair/main/fonts/ttf/static/PlayfairDisplay-Italic.ttf', fontStyle: 'italic' },
+    { src: 'https://raw.githubusercontent.com/googlefonts/Playfair/main/fonts/ttf/static/PlayfairDisplay-Bold.ttf', fontWeight: 700 }
   ]
 });
 
 Font.register({
   family: 'Inter',
   fonts: [
-    { src: 'https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/inter/static/Inter-Regular.ttf', fontWeight: 400 },
-    { src: 'https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/inter/static/Inter-Bold.ttf', fontWeight: 700 }
+    { src: 'https://raw.githubusercontent.com/rsms/inter/master/docs/font-files/Inter-Regular.ttf', fontWeight: 400 },
+    { src: 'https://raw.githubusercontent.com/rsms/inter/master/docs/font-files/Inter-Bold.ttf', fontWeight: 700 }
   ]
 });
 
