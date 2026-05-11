@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuditStore } from '../store/auditStore';
 import { runAudit } from '../rules';
 import { SUPPORTED_TOOLS } from '../data/pricing';
-import { Button, Card, SectionHeading, Badge } from '../components/shared/SharedComponents';
+import { Button, Card, SectionHeading, Badge, Logo } from '../components/shared/SharedComponents';
 import { AuditInputSchema, ToolInputSchema } from '../lib/validation';
 import { ArrowRight, ArrowLeft, Plus, Trash2, Zap, Info, Calculator, Users } from 'lucide-react';
 import { ToolInput } from '../types';
@@ -152,7 +152,7 @@ const AuditPage = () => {
                   htmlFor="useCase"
                   className="text-xs font-sans uppercase tracking-[0.2em] font-bold text-muted-foreground flex items-center gap-2"
                 >
-                  <img src="/logo_light.png" alt="" aria-hidden="true" className="h-3 w-auto object-contain mr-1 inline-block" /> Primary Use Case
+                  <Logo iconOnly className="h-4 w-4 mr-1 inline-block" /> Primary Use Case
                 </label>
                 <select 
                   id="useCase"
@@ -332,7 +332,7 @@ const AuditPage = () => {
                 <p className="text-[10px] font-sans uppercase tracking-widest text-primary/70 font-bold mb-1">Estimated Monthly Audit Base</p>
                 <p className="text-4xl font-serif text-primary tracking-tighter">${input.tools.reduce((s, t) => s + t.monthlySpend, 0).toLocaleString()}</p>
               </div>
-              <img src="/logo_light.png" alt="" className="h-10 w-auto object-contain opacity-20" />
+              <Logo iconOnly className="h-10 w-10 opacity-20" />
             </div>
           </Card>
           
@@ -354,7 +354,7 @@ const AuditPage = () => {
                 </div>
               ) : (
                 <div className="flex items-center gap-2">
-                  Execute Strategic Audit <img src="/logo_light.png" alt="" className="h-5 w-auto object-contain brightness-0 invert" aria-hidden="true" />
+                  Execute Strategic Audit <Logo iconOnly className="h-5 w-5 brightness-0 invert" />
                 </div>
               )}
             </Button>

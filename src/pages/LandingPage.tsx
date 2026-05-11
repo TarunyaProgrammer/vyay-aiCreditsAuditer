@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { HeroSection, ProblemSection, HowItWorks, FAQSection } from '../components/landing/LandingComponents';
-import { Card, Button, Badge } from '../components/shared/SharedComponents';
+import { Card, Button, Badge, Logo } from '../components/shared/SharedComponents';
 import { TrendingDown, ChevronRight } from 'lucide-react';
 
 const ExampleAuditCard = () => {
@@ -36,7 +36,7 @@ const ExampleAuditCard = () => {
                   <p className="text-[10px] font-sans uppercase tracking-[0.4em] opacity-40 font-bold">Strategic Snapshot</p>
                   <h3 className="text-4xl font-serif italic tracking-tight">Growth Stage Audit</h3>
                 </div>
-                <img src="/logo_dark.png" alt="Vyay Logo" className="h-10 w-auto object-contain" />
+                <Logo iconOnly className="h-10 w-10 brightness-0 invert" />
               </div>
 ...
 

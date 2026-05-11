@@ -2,6 +2,17 @@ import React from 'react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
+import { Zap } from 'lucide-react';
+
+export const Logo = ({ className = "h-6 w-6", iconOnly = false }: { className?: string; iconOnly?: boolean }) => (
+  <div className={cn("flex items-center gap-2", className)}>
+    <div className="p-1.5 bg-primary text-background rounded-lg flex items-center justify-center">
+      <Zap size={18} fill="currentColor" />
+    </div>
+    {!iconOnly && <span className="text-xl font-serif italic tracking-tighter text-foreground">Vyay</span>}
+  </div>
+);
+
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }

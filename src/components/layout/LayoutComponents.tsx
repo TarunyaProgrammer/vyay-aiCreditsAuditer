@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Button } from '../shared/SharedComponents';
-import { Zap, Github, Shield, ArrowRight, Clock, ArrowUpRight } from 'lucide-react';
+import { Button, Logo } from '../shared/SharedComponents';
+import { Github, Shield, ArrowRight, Clock, ArrowUpRight } from 'lucide-react';
 
 export const Navbar = () => {
   const location = useLocation();
@@ -16,7 +16,7 @@ export const Navbar = () => {
           className="flex items-center justify-center rounded-full w-12 h-12 bg-background border border-foreground/5 shadow-sm hover:scale-105 transition-transform overflow-hidden p-2"
           aria-label="Vyay Home"
         >
-          <img src="/logo_light.png" alt="" className="w-full h-full object-contain" aria-hidden="true" width="48" height="48" />
+          <Logo iconOnly className="w-8 h-8" />
         </Link>
 
         {/* Right Pill: Links */}
@@ -113,8 +113,8 @@ export const Footer = () => {
           {/* Tagline */}
           <div className="relative z-10 mt-32 flex flex-col md:flex-row justify-between items-end gap-6 pt-12 border-t border-background/5">
             <div className="space-y-4">
-              <Link to="/" aria-label="Vyay Home" className="focus-visible:ring-2 focus-visible:ring-primary outline-none rounded-lg">
-                <img src="/logo_light.png" alt="" className="h-8 w-auto object-contain opacity-20 hover:opacity-100 transition-opacity" aria-hidden="true" width="80" height="32" loading="lazy" />
+              <Link to="/" aria-label="Vyay Home" className="focus-visible:ring-2 focus-visible:ring-primary outline-none rounded-lg inline-block">
+                <Logo className="opacity-20 hover:opacity-100 transition-opacity" />
               </Link>
               <p className="text-xs opacity-40 max-w-xs leading-relaxed italic">
                 Deterministic AI infrastructure auditing for engineering leadership. Built for the Credex Web Development Internship.
