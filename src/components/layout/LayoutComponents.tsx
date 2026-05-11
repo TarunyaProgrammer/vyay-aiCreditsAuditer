@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '../shared/SharedComponents';
-import { Zap, Github, Shield, ArrowRight, Clock } from 'lucide-react';
+import { Zap, Github, Shield, ArrowRight, Clock, ArrowUpRight } from 'lucide-react';
 
 export const Navbar = () => {
   const location = useLocation();
@@ -57,12 +57,8 @@ export const Footer = () => {
             <div className="lg:col-span-6 space-y-8">
               <div className="space-y-4">
                 <h3 className="text-4xl md:text-5xl font-serif italic tracking-tight">Intelligence</h3>
-                <a 
-                  href="mailto:intelligence@vyay.ai" 
-                  className="text-xl md:text-2xl font-serif italic text-background hover:opacity-80 transition-opacity underline decoration-background/30 underline-offset-8"
-                  aria-label="Contact intelligence team at intelligence@vyay.ai"
-                >
-                  intelligence@vyay.ai ↗
+                <a href="mailto:tarunyak.10@gmail.com" className="text-xl md:text-2xl font-serif italic text-background hover:opacity-80 transition-opacity underline decoration-background/30 underline-offset-8" aria-label="Contact intelligence team at tarunyak.10@gmail.com">
+                  tarunyak.10@gmail.com <ArrowUpRight className="inline-block" size={24} />
                 </a>
               </div>
               
@@ -96,7 +92,8 @@ export const Footer = () => {
               <div className="space-y-6">
                 <h4 className="text-[10px] font-sans uppercase tracking-[0.4em] opacity-40 font-bold">Foundation</h4>
                 <div className="flex flex-col gap-4">
-                  <Link to="/about" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">Methodology</Link>
+                  <Link to="/about" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">About</Link>
+                  <Link to="/methodology" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">Methodology</Link>
                   <Link to="/privacy" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">Privacy</Link>
                   <Link to="/terms" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">Terms</Link>
                 </div>
