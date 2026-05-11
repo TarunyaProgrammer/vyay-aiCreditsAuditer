@@ -11,7 +11,9 @@ import {
 import { LeadCapture } from '../components/LeadCapture';
 import { ShareSection } from '../components/ShareSection';
 import { auditService } from '../services/auditService';
-import { AuditResult } from '../types';
+import { AuditResult, AuditInput } from '../types';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import { PDFReport } from '../components/PDFReport';
 
 const ResultPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -121,13 +123,22 @@ const ResultPage = () => {
         </div>
         <div className="flex flex-wrap items-stretch gap-3">
           <ShareSection publicId={result.publicId} annualSavings={annualSavings} />
-          <Button 
-            size="md" 
-            className="shadow-2xl shadow-primary/20 bg-foreground text-background hover:bg-foreground/90 h-auto py-2"
-            aria-label="Download executive PDF report"
+          <PDFDownloadLink 
+            document={<PDFReport result={result} input={input} />} 
+            fileName={`Vyay_Audit_${(result.publicId || result.id).substring(0, 8)}.pdf`}
           >
-            <Download size={16} aria-hidden="true" /> <span className="whitespace-nowrap">Executive PDF</span>
-          </Button>
+            {({ loading }) => (
+              <Button 
+                size="md" 
+                className="shadow-2xl shadow-primary/20 bg-foreground text-background hover:bg-foreground/90 h-auto py-2"
+                aria-label="Download executive PDF report"
+                disabled={loading}
+              >
+                <Download size={16} aria-hidden="true" /> 
+                <span className="whitespace-nowrap">{loading ? 'Preparing Report...' : 'Executive PDF'}</span>
+              </Button>
+            )}
+          </PDFDownloadLink>
         </div>
       </div>
       

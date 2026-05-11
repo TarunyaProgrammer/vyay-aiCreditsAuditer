@@ -36,7 +36,7 @@ const ExampleAuditCard = () => {
                   <p className="text-[10px] font-sans uppercase tracking-[0.4em] opacity-40 font-bold">Strategic Snapshot</p>
                   <h3 className="text-4xl font-serif italic tracking-tight">Growth Stage Audit</h3>
                 </div>
-                <Logo iconOnly className="h-10 w-10 brightness-0 invert" />
+                <Logo iconOnly className="h-10 w-10" />
               </div>
 ...
 

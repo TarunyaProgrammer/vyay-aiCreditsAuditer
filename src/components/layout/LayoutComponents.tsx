@@ -102,9 +102,9 @@ export const Footer = () => {
               <div className="space-y-6">
                 <h4 className="text-[10px] font-sans uppercase tracking-[0.4em] opacity-40 font-bold">Social</h4>
                 <div className="flex flex-col gap-4">
-                  <a href="#" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">X / Twitter</a>
-                  <a href="#" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">LinkedIn</a>
-                  <a href="#" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">Product Hunt</a>
+                  <a href="https://x.com/TarunyaKesh" target="_blank" rel="noopener noreferrer" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">X / Twitter</a>
+                  <a href="https://www.linkedin.com/in/tarunyakesharwani/" target="_blank" rel="noopener noreferrer" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">LinkedIn</a>
+                  <a href="https://www.instagram.com/heytarunya/" target="_blank" rel="noopener noreferrer" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">Instagram</a>
                 </div>
               </div>
             </div>

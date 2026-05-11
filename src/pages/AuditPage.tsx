@@ -44,11 +44,16 @@ const AuditPage = () => {
   };
 
   const addTool = () => {
+    const defaultToolId = SUPPORTED_TOOLS[0].id;
+    const defaultTier = 'pro';
+    const toolData = SUPPORTED_TOOLS.find(t => t.id === defaultToolId);
+    const plan = toolData?.plans.find(p => p.name.toLowerCase() === defaultTier);
+    
     const newTool: ToolInput = {
-      toolId: SUPPORTED_TOOLS[0].id,
-      tier: 'pro',
+      toolId: defaultToolId,
+      tier: defaultTier,
       userCount: input.teamSize,
-      monthlySpend: 20 * input.teamSize,
+      monthlySpend: (plan?.price || 20) * input.teamSize,
     };
     updateInput({ tools: [...input.tools, newTool] });
   };
@@ -59,7 +64,25 @@ const AuditPage = () => {
 
   const updateTool = (index: number, updates: Partial<ToolInput>) => {
     const newTools = [...input.tools];
-    newTools[index] = { ...newTools[index], ...updates };
+    const currentTool = { ...newTools[index], ...updates };
+    
+    // Auto-calculate spend if toolId, tier, or userCount changes
+    if (updates.toolId || updates.tier || updates.userCount !== undefined) {
+      const toolData = SUPPORTED_TOOLS.find(t => t.id === currentTool.toolId);
+      if (toolData) {
+        // If tool changed, ensure tier is valid
+        if (updates.toolId) {
+          currentTool.tier = toolData.plans[0].name.toLowerCase();
+        }
+        
+        const plan = toolData.plans.find(p => p.name.toLowerCase() === currentTool.tier);
+        if (plan) {
+          currentTool.monthlySpend = plan.price * currentTool.userCount;
+        }
+      }
+    }
+    
+    newTools[index] = currentTool;
     updateInput({ tools: newTools });
   };
 
@@ -152,7 +175,7 @@ const AuditPage = () => {
                   htmlFor="useCase"
                   className="text-xs font-sans uppercase tracking-[0.2em] font-bold text-muted-foreground flex items-center gap-2"
                 >
-                  <Logo iconOnly className="h-4 w-4 mr-1 inline-block" /> Primary Use Case
+                  <Logo iconOnly className="h-4 w-4 mr-1 inline-block text-primary" /> Primary Use Case
                 </label>
                 <select 
                   id="useCase"
@@ -354,7 +377,7 @@ const AuditPage = () => {
                 </div>
               ) : (
                 <div className="flex items-center gap-2">
-                  Execute Strategic Audit <Logo iconOnly className="h-5 w-5 brightness-0 invert" />
+                  Execute Strategic Audit <Logo iconOnly className="h-5 w-5" />
                 </div>
               )}
             </Button>
