@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '../shared/SharedComponents';
-import { Zap, Github, Shield, ArrowRight } from 'lucide-react';
+import { Zap, Github, Shield, ArrowRight, Clock } from 'lucide-react';
 
 export const Navbar = () => {
   const location = useLocation();
