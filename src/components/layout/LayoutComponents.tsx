@@ -59,7 +59,7 @@ export const Footer = () => {
                 <h3 className="text-4xl md:text-5xl font-serif italic tracking-tight">Intelligence</h3>
                 <a 
                   href="mailto:intelligence@vyay.ai" 
-                  className="text-xl md:text-2xl font-serif italic text-primary hover:opacity-80 transition-opacity underline decoration-primary/30 underline-offset-8"
+                  className="text-xl md:text-2xl font-serif italic text-background hover:opacity-80 transition-opacity underline decoration-background/30 underline-offset-8"
                   aria-label="Contact intelligence team at intelligence@vyay.ai"
                 >
                   intelligence@vyay.ai ↗
@@ -81,18 +81,25 @@ export const Footer = () => {
                 </a>
               </div>
             </div>
-...
+
             {/* Links Section */}
-            <div className="lg:col-span-6 flex flex-col justify-between items-start lg:items-end">
-              <div className="text-[10px] font-sans uppercase tracking-[0.4em] opacity-40 font-bold mb-12">
-                © 2026 VYAY STUDIO
+            <div className="lg:col-span-6 grid grid-cols-2 gap-12 lg:gap-24 items-start lg:justify-end text-left lg:text-right">
+              <div className="space-y-6">
+                <h4 className="text-[10px] font-sans uppercase tracking-[0.4em] opacity-40 font-bold">Protocol</h4>
+                <div className="flex flex-col gap-4">
+                  <Link to="/" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">Strategy</Link>
+                  <Link to="/pricing" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">Market Data</Link>
+                  <Link to="/audit" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">Audit Engine</Link>
+                </div>
               </div>
               
-              <div className="flex flex-wrap justify-start lg:justify-end gap-x-8 gap-y-4">
-                <Link to="/pricing" className="text-sm font-medium hover:text-primary transition-colors">Pricing ↗</Link>
-                <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors">Methodology ↗</Link>
-                <Link to="/privacy" className="text-sm font-medium hover:text-primary transition-colors">Privacy ↗</Link>
-                <Link to="/terms" className="text-sm font-medium hover:text-primary transition-colors">Terms ↗</Link>
+              <div className="space-y-6">
+                <h4 className="text-[10px] font-sans uppercase tracking-[0.4em] opacity-40 font-bold">Foundation</h4>
+                <div className="flex flex-col gap-4">
+                  <Link to="/about" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">Methodology</Link>
+                  <Link to="/privacy" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">Privacy</Link>
+                  <Link to="/terms" className="text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">Terms</Link>
+                </div>
               </div>
             </div>
           </div>
@@ -107,11 +114,16 @@ export const Footer = () => {
                 Deterministic AI infrastructure auditing for engineering leadership. Built for the Credex Web Development Internship.
               </p>
             </div>
-            <div className="flex items-center gap-3">
-              <Shield size={14} className="text-primary/40" aria-hidden="true" />
-              <p className="text-[10px] uppercase tracking-widest opacity-40 font-bold">
-                May 09, 2026 Snapshot
-              </p>
+            <div className="flex flex-col items-end gap-2">
+              <div className="text-[10px] font-sans uppercase tracking-[0.4em] opacity-40 font-bold">
+                © 2026 VYAY STUDIO
+              </div>
+              <div className="flex items-center gap-3">
+                <Shield size={14} className="text-primary/40" aria-hidden="true" />
+                <p className="text-[10px] uppercase tracking-widest opacity-40 font-bold">
+                  May 09, 2026 Snapshot
+                </p>
+              </div>
             </div>
           </div>
         </div>
