@@ -104,10 +104,20 @@ export const SUPPORTED_TOOLS: AuditTool[] = [
       { id: 'usage', label: 'Usage Based', monthlyPrice: 0, pricingModel: 'usage-based', officialUrl: 'https://openai.com/api/pricing', verifiedAt: VERIFIED_DATE },
     ],
   },
+  {
+    id: 'gemini-api',
+    name: 'Gemini API',
+    provider: 'Google',
+    category: 'apiProviders',
+    website: 'https://ai.google.dev/pricing',
+    plans: [
+      { id: 'usage', label: 'Usage Based', monthlyPrice: 0, pricingModel: 'usage-based', officialUrl: 'https://ai.google.dev/pricing', verifiedAt: VERIFIED_DATE },
+    ],
+  },
 ];
 
 export const TOOL_CATEGORIES = {
   coding: ['cursor', 'github-copilot', 'windsurf'],
   generalAssistant: ['chatgpt', 'claude', 'gemini'],
-  apiProviders: ['openai-api', 'anthropic-api'],
+  apiProviders: ['openai-api', 'anthropic-api', 'gemini-api'],
 };

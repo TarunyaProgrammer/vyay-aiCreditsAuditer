@@ -17,7 +17,7 @@ Vyay utilizes a deterministic testing suite to ensure the mathematical integrity
 | **TC-01** | Redundancy Detection: Cursor + Copilot | System identifies overlapping IDE capabilities and recommends deactivating GitHub Copilot (Savings: $10/mo). |
 | **TC-02** | Tier Optimization: Claude Team (Underutilized) | In teams < 5, identifies that individual Pro seats are more cost-effective than the Team tier (Savings: $90/mo). |
 | **TC-03** | Redundancy Detection: ChatGPT + Claude | Identifies that maintaining Pro seats on both platforms for the same user is sub-optimal; recommends consolidation based on "Primary Use Case." |
-| **TC-04** | API Substitution Logic | Detects high-volume GPT-4o usage and recommends a 30% saving through GPT-4o-mini or a 70% saving via Gemini 1.5 Flash. |
+| **TC-04** | API Substitution Logic | Detects high-volume GPT-4o usage and recommends a 30% saving through GPT-4o-mini or a 70% saving via Gemini 2.5 Flash. |
 | **TC-05** | Null/Empty State Handling | Ensures that a submission with zero tools results in an "Optimal Spend" status with no erroneous recommendations generated. |
 
 ## 3. Interface and Routing Protocols

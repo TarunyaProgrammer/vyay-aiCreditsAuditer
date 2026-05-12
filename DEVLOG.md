@@ -32,8 +32,8 @@
 
 ## Day 5 2026-05-09
 **Hours worked:** 10
-**What I did:** Integrated Supabase for report storage and Gemini 1.5 Flash for summaries. Configured Resend for transactional emails.
-**What I learned:** Gemini 1.5 Flash is significantly faster than Pro for this specific task, hitting sub-2s response times.
+**What I did:** Integrated Supabase for report storage and Gemini 2.5 Flash for summaries. Configured Resend for transactional emails.
+**What I learned:** Gemini 2.5 Flash is significantly faster than Pro for this specific task, hitting sub-2s response times.
 **Blockers / what I'm stuck on:** Handling rate limits on the Gemini free tier during rapid testing.
 **Plan for tomorrow:** Build shareable report pages and OG tags.
 

@@ -44,7 +44,7 @@ const MethodologyPage = () => {
             <h2 className="text-3xl font-serif italic">3. Stochastic Synthesis (LLM Layer)</h2>
           </div>
           <p className="text-muted-foreground leading-relaxed">
-            We use **Gemini 1.5 Flash** as a secondary layer to provide executive context. The LLM does not perform the calculations; it translates our deterministic results into a strategic narrative for engineering leadership. This "AI-on-Data" approach ensures high authority with zero risk of fiscal error.
+            We use **Gemini 2.5 Flash** as a secondary layer to provide executive context. The LLM does not perform the calculations; it translates our deterministic results into a strategic narrative for engineering leadership. This "AI-on-Data" approach ensures high authority with zero risk of fiscal error.
           </p>
         </section>
 

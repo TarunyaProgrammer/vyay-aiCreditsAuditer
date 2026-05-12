@@ -26,7 +26,7 @@ During the development of Vyay, I prioritized **Time-to-Value** and **Institutio
 
 ## The "Day 7" Launch Readiness Report
 - [x] **Deterministic Audit Engine**: 100% rule-based reasoning for financial defensibility.
-- [x] **Hybrid AI Synthesis**: Gemini 1.5 Flash integration for human-centric executive summaries.
+- [x] **Hybrid AI Synthesis**: Gemini 2.5 Flash integration for human-centric executive summaries.
 - [x] **Zero-Friction Persistence**: Supabase-backed report storage with unique, shareable URLs.
 - [x] **Lead Capture & Distribution**: Transactional email integration via Resend for PDF report delivery.
 - [x] **Operational Transparency**: Comprehensive documentation covering GTM, Economics, and Architecture.

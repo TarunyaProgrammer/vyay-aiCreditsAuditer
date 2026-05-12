@@ -43,8 +43,9 @@ This document serves as the "Source of Truth" for the deterministic audit engine
 
 | Provider | Model Examples | Input/Output Units | Official Source | Verified |
 | :--- | :--- | :--- | :--- | :--- |
-| **OpenAI API** | GPT-5.5, GPT-5.3 Mini | Per 1M Tokens | [openai.com/api/pricing](https://openai.com/api/pricing) | 2026-05-12 |
-| **Anthropic API** | Claude Sonnet, Opus | Per 1M Tokens | [anthropic.com/pricing](https://www.anthropic.com/pricing) | 2026-05-12 |
+| **OpenAI API** | GPT-4o, GPT-4o-mini | Per 1M Tokens | [openai.com/api/pricing](https://openai.com/api/pricing) | 2026-05-12 |
+| **Anthropic API** | Claude 3.5 Sonnet, Opus | Per 1M Tokens | [anthropic.com/pricing](https://www.anthropic.com/pricing) | 2026-05-12 |
+| **Google Cloud** | Gemini 2.5 Flash, 1.5 Pro | Per 1M Tokens | [ai.google.dev/pricing](https://ai.google.dev/pricing) | 2026-05-12 |
 
 ## 4. Deterministic Audit Rules
 
