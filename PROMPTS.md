@@ -1,38 +1,41 @@
-<img src="public/light_banner.png" alt="Vyay Logo" width="100%" />
+# AI Summary Strategy & Prompts
 
-# Prompt Engineering Architecture
+This document outlines the strategic use of AI in Vyay, specifically focusing on the Gemini 2.5 Flash integration for executive summaries while maintaining deterministic integrity for financial recommendations.
 
-Vyay utilizes **Gemini 1.5 Flash** for high-speed synthesis of deterministic audit data. Our prompt strategy focuses on "Analytical Professionalism" and "Actionable Brevity."
+## The "Deterministic First" Philosophy
 
-## 1. System Instruction (The "Analyst" Persona)
-We instruct the model to behave as a senior financial analyst specializing in SaaS infrastructure for high-growth engineering teams.
+At Vyay, we believe that financial audits must be verifiable and consistent. 
+- **Audit Logic**: 100% deterministic (TypeScript). If the same data is input twice, the same recommendations and savings calculations are returned.
+- **AI Utility**: 0% decision making. AI is used exclusively for *narrative synthesis*—taking raw data and turning it into a professional, human-readable executive brief.
 
-**Core Instruction**:
-> "You are the Vyay Executive Analyst. Your task is to synthesize raw AI spend audit data into a single, punchy, high-impact paragraph for a CTO. 
-> - Avoid flowery language or corporate jargon.
-> - Focus on the 'Why' behind the potential savings.
-> - Be blunt about redundancies.
-> - Maintain an professional, analytical, and slightly skeptical tone."
+## Gemini 2.5 Flash System Prompt
 
-## 2. Context Injection (Input Mapping)
-The prompt is dynamically constructed in `src/services/aiService.ts` using the following data points:
-- **Team Size**: To contextualize plan overhead.
-- **Tools List**: Including specific tiers and monthly spend.
-- **Identified Redundancies**: The raw output from our deterministic engine.
-- **Potential Annual Savings**: The "Headline" number.
-
-## 3. Example Prompt Structure
 ```text
-Context: Engineering Team of 15.
-Identified Annual Savings: $4,200.
-Active Tools: ChatGPT Enterprise, Claude Team, Perplexity Pro, Cursor Pro, GitHub Copilot.
-Detected Issues: Dual-reasoning stack (ChatGPT/Claude overlap), Redundant Search Intelligence (Perplexity vs Gemini), and IDE Assistant duplication.
+You are Vyay AI, a Senior Infrastructure Economist specializing in AI stack optimization for high-growth startups. 
 
-Task: Synthesize this into a 2-sentence executive summary.
+TASK:
+Analyze the provided Audit Data and generate a professional, high-impact executive summary (~100 words).
+
+CONSTRAINTS:
+1. Tone: Calm, analytical, objective, and practical. No hype, no generic "AI transformation" language.
+2. Focus: Synthesize the total annualized savings ($[SAVINGS]) and the specific efficiency grade ([GRADE]).
+3. Benchmarking: Incorporate the insight that [BENCHMARK_INSIGHT].
+4. Narrative: Explain *why* these recommendations matter (e.g., capital recovery for growth, vendor sprawl mitigation).
+5. Format: Plain text, single paragraph.
 ```
 
-## 4. Expected Output (The "Vyay Tone")
-> "Your stack is currently saturated with redundant reasoning intelligence, specifically across ChatGPT and Claude, resulting in an estimated $4,200 in annual leakage. Consolidating your IDE assistance to Cursor and rationalizing search-augmented workflows could recover 30% of your AI budget without impacting velocity."
+## Failed Prompt Attempts & Lessons Learned
 
----
-"AI for clarity, not for calculation."
+| Attempt | Issue | Correction |
+| :--- | :--- | :--- |
+| "Write a summary of these savings." | Too generic. sounded like a generic chatbot. | Added the "Senior Infrastructure Economist" persona. |
+| "Tell the user how much they can save with Vyay!" | Sounded too salesy/hype-heavy. | Restricted tone to "Calm, analytical, objective". |
+| "Analyze the tools and suggest new ones." | AI started hallucinating pricing data. | Restricted AI to narrative synthesis only; logic remains in TS. |
+
+## Fallback Strategy
+
+In the event of API latency or failure, Vyay utilizes a **Deterministic Template Engine**:
+```typescript
+`Based on our analysis, your current AI stack demonstrates a potential annualized capital recovery of $${annualSavings}. Our deterministic engine identified ${recommendations.length} key optimization vectors...`
+```
+This ensures the UX never breaks and the user always receives their core value.

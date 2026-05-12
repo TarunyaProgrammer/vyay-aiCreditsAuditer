@@ -51,7 +51,7 @@ During the development of Vyay, I prioritized **Time-to-Value** and **Institutio
 
 ## Core Technology Stack
 - **Frontend**: React 18, Vite, TypeScript, Tailwind CSS
-- **Intelligence**: Gemini 1.5 Flash (Analytical synthesis)
+- **Intelligence**: Gemini 2.5 Flash (Analytical synthesis)
 - **Data/Persistence**: Supabase (PostgreSQL), Zustand (LocalStorage)
 - **Communications**: Resend (Transactional Email)
 - **Infrastructure**: Vercel (Edge Deployment)

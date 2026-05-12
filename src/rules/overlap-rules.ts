@@ -1,49 +1,35 @@
 import { AuditInput, Recommendation } from '../types';
+import { TOOL_CATEGORIES } from '../data/pricing';
 
 export const checkOverlapRules = (input: AuditInput): Recommendation[] => {
   const recommendations: Recommendation[] = [];
   const toolIds = input.tools.map(t => t.toolId);
 
-  // 1. Triple Overlap check: Jab 3 se zyada AI tools use ho rahe hon
-  const reasoningTools = ['chatgpt', 'claude', 'perplexity', 'gemini'];
-  const activeReasoningTools = toolIds.filter(id => reasoningTools.includes(id));
+  // 1. Strategic Stack Saturation: Jab 3 se zyada general assistants use ho rahe hon
+  const activeAssistants = toolIds.filter(id => TOOL_CATEGORIES.generalAssistant.includes(id));
   
-  if (activeReasoningTools.length >= 3) {
-
+  if (activeAssistants.length >= 3) {
     recommendations.push({
       id: `overlap-saturation-${Date.now()}`,
       toolId: 'multiple',
       type: 'alternative',
-      title: 'Stack Saturation Detected',
-      description: `Your team is paying for ${activeReasoningTools.length} general-purpose reasoning tools simultaneously. While each has unique strengths, maintaining 3+ vendors often leads to "subscription sprawl" and reduced tool depth.`,
-      estimatedSavings: 20 * (activeReasoningTools.length - 2), // Recommend cutting at least 1-2
+      title: 'General AI Stack Saturation',
+      description: `Your team is utilizing ${activeAssistants.length} general-purpose reasoning tools (${activeAssistants.join(', ')}). There may be unnecessary overlap between general reasoning and research tooling. We recommend standardizing on 1-2 primary vendors to preserve capital and context.`,
+      estimatedSavings: 20 * (activeAssistants.length - 1),
       confidence: 'medium',
     });
   }
 
-  // 2. ChatGPT aur Claude ka dual overlap check karo
-  if (toolIds.includes('chatgpt') && toolIds.includes('claude')) {
+  // 2. Specific API + Subscription Overlap
+  if (toolIds.includes('openai-api') && toolIds.includes('chatgpt')) {
     recommendations.push({
-      id: `dual-overlap-reasoning-${Date.now()}`,
-      toolId: 'multiple',
-      type: 'alternative',
-      title: 'Rationalize Reasoning Stack',
-      description: 'ChatGPT and Claude have significantly overlapping capability sets. Unless specific internal workflows require both (e.g. Artifacts vs Custom GPTs), consolidating to one primary vendor is recommended.',
-      estimatedSavings: 20,
-      confidence: 'medium',
-    });
-  }
-
-  // 3. Perplexity aur Gemini ka overlap check
-  if (toolIds.includes('perplexity') && toolIds.includes('gemini')) {
-    recommendations.push({
-      id: `search-overlap-${Date.now()}`,
-      toolId: 'perplexity',
+      id: `api-sub-overlap-${Date.now()}`,
+      toolId: 'chatgpt',
       type: 'redundant',
-      title: 'Redundant Search Intelligence',
-      description: 'You are using both Perplexity and Gemini. Since Gemini now includes deep Google Search integration and reasoning capabilities, Perplexity may be redundant for general search-augmented workflows.',
+      title: 'Subscription vs API Redundancy',
+      description: 'You are using both the ChatGPT subscription and the OpenAI API. For many engineering workflows, the API can substitute for individual Plus seats if integrated into internal tooling.',
       estimatedSavings: 20,
-      confidence: 'medium',
+      confidence: 'low',
     });
   }
 

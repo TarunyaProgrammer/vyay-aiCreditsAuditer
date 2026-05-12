@@ -5,6 +5,8 @@ import { checkOverlapRules } from './overlap-rules';
 import { checkRetailOptimization } from './retail-optimization';
 import { checkOptimizedStack } from './optimized-stack';
 
+import { calculateBenchmarks } from './benchmarks';
+
 export const runAudit = (input: AuditInput): AuditResult => {
   // Saare modular rules ko ek ek karke chalao
   const recommendations: Recommendation[] = [
@@ -17,6 +19,9 @@ export const runAudit = (input: AuditInput): AuditResult => {
   // Savings calculate karo
   const totalMonthlySpend = input.tools.reduce((sum, t) => sum + t.monthlySpend, 0);
   const potentialSavings = recommendations.reduce((sum, r) => sum + r.estimatedSavings, 0);
+
+  // Benchmarking
+  const benchmarks = calculateBenchmarks(input);
 
   // Special case: No tools detected
   if (input.tools.length === 0) {
@@ -57,6 +62,8 @@ export const runAudit = (input: AuditInput): AuditResult => {
       highestSpendTool: input.tools.reduce((prev, current) => (prev.monthlySpend > current.monthlySpend) ? prev : current, input.tools[0] || { toolId: 'None', monthlySpend: 0 }).toolId,
       overlapScore,
       efficiencyGrade,
+      benchmarkInsight: benchmarks.insight,
+      percentile: benchmarks.percentile,
     },
   };
 };

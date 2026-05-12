@@ -156,7 +156,7 @@ const ResultPage = () => {
               </div>
             </div>
             
-            <div className="mt-12 flex gap-8 border-t border-background/10 pt-8">
+            <div className="mt-12 flex flex-wrap gap-8 border-t border-background/10 pt-8">
               <div>
                 <p className="text-[10px] font-sans uppercase tracking-[0.3em] opacity-40 mb-1">Monthly Optimization</p>
                 <p className="text-2xl font-serif text-background">${result.potentialSavings.toLocaleString()}</p>
@@ -165,23 +165,77 @@ const ResultPage = () => {
                 <p className="text-[10px] font-sans uppercase tracking-[0.3em] opacity-40 mb-1">Efficiency Grade</p>
                 <p className="text-2xl font-serif text-background italic">{result.metrics.efficiencyGrade}</p>
               </div>
+              <div className="flex-1">
+                <p className="text-[10px] font-sans uppercase tracking-[0.3em] opacity-40 mb-1">Benchmark Position</p>
+                <p className="text-sm font-serif text-background/80 italic">{result.metrics.benchmarkInsight}</p>
+              </div>
             </div>
           </div>
           <div className="absolute -right-24 -bottom-24 w-96 h-96 bg-primary/10 rounded-full blur-[100px] group-hover:bg-primary/20 transition-all duration-700" />
         </Card>
 
-        <Card className="flex flex-col justify-between items-center text-center py-12">
-          <div className="space-y-4">
-            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto">
-              <ShieldCheck size={32} />
+        {result.potentialSavings >= 500 ? (
+          <Card className="bg-primary flex flex-col justify-between items-center text-center py-10 text-background border-none shadow-2xl shadow-primary/40 relative overflow-hidden">
+            <div className="space-y-4 relative z-10">
+              <div className="w-16 h-16 rounded-full bg-background/20 flex items-center justify-center text-background mx-auto">
+                <ShieldCheck size={32} />
+              </div>
+              <h3 className="text-2xl font-serif italic">High Impact Detected</h3>
+              <p className="text-sm text-background/80 px-4">
+                Your savings potential exceeds $500/mo. For complex credit migrations and enterprise optimization, we recommend a direct consultation.
+              </p>
             </div>
-            <h3 className="text-xl font-serif italic">Operational Trust</h3>
-            <p className="text-sm text-muted-foreground px-4">
-              Our audit uses 100% deterministic logic. Recommendations are conservative and financially defensible.
-            </p>
-          </div>
-          <Badge>Verified Market Rates</Badge>
-        </Card>
+            <div className="space-y-3 w-full px-6 relative z-10">
+              <a href="https://credex.ai/consult" target="_blank" rel="noopener noreferrer">
+                <Button size="md" className="w-full bg-background text-primary hover:bg-background/90 font-bold border-none">
+                  Schedule Strategic Call
+                </Button>
+              </a>
+              {input && (
+                <PDFDownloadLink 
+                  document={<PDFReport result={result} input={input} />} 
+                  fileName={`Vyay-Audit-${result.publicId || result.id}.pdf`}
+                  className="block w-full"
+                >
+                  {({ loading }) => (
+                    <Button variant="outline" size="sm" className="w-full border-background/20 text-background hover:bg-background/10" disabled={loading}>
+                      <Download size={14} className="mr-2" /> {loading ? 'Preparing PDF...' : 'Download Executive PDF'}
+                    </Button>
+                  )}
+                </PDFDownloadLink>
+              )}
+            </div>
+            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-background/10 rounded-full blur-2xl" />
+          </Card>
+        ) : (
+          <Card className="flex flex-col justify-between items-center text-center py-12 border-foreground/10">
+            <div className="space-y-4">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto">
+                <ShieldCheck size={32} />
+              </div>
+              <h3 className="text-xl font-serif italic">Operational Trust</h3>
+              <p className="text-sm text-muted-foreground px-4">
+                Our audit uses 100% deterministic logic. Recommendations are conservative and financially defensible.
+              </p>
+            </div>
+            <div className="w-full px-6 space-y-3">
+              <Badge>Verified Market Rates</Badge>
+              {input && (
+                <PDFDownloadLink 
+                  document={<PDFReport result={result} input={input} />} 
+                  fileName={`Vyay-Audit-${result.publicId || result.id}.pdf`}
+                  className="block w-full"
+                >
+                  {({ loading }) => (
+                    <Button variant="outline" size="sm" className="w-full border-foreground/10 hover:bg-foreground/5" disabled={loading}>
+                      <Download size={14} className="mr-2" /> {loading ? 'Preparing PDF...' : 'Download Report PDF'}
+                    </Button>
+                  )}
+                </PDFDownloadLink>
+              )}
+            </div>
+          </Card>
+        )}
       </div>
 
       {/* AI Summary Block */}
@@ -196,7 +250,7 @@ const ResultPage = () => {
           <div className="space-y-2 flex-1">
             <div className="flex items-center gap-2 mb-1">
               <h4 className="font-semibold text-lg font-serif">Executive AI Summary</h4>
-              <Badge variant="primary" className="text-[8px] py-0 px-1">Gemini 1.5 Flash</Badge>
+              <Badge variant="primary" className="text-[8px] py-0 px-1">Gemini 2.5 Flash</Badge>
             </div>
             {result.aiSummary ? (
               <p className="text-foreground/80 leading-relaxed italic text-lg font-serif animate-in fade-in duration-700">
@@ -263,12 +317,19 @@ const ResultPage = () => {
             );
           })
         ) : (
-          <Card className="p-12 text-center space-y-4 border-dashed">
-            <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto text-success">
-              <ShieldCheck size={32} />
+          <Card className="p-16 text-center space-y-6 border-dashed border-2">
+            <div className="w-20 h-20 bg-success/10 rounded-full flex items-center justify-center mx-auto text-success">
+              <ShieldCheck size={40} />
             </div>
-            <h3 className="text-2xl font-serif italic">Stack Fully Optimized</h3>
-            <p className="text-muted-foreground max-w-md mx-auto">Our audit engine found no significant inefficiencies in your current AI tooling stack. You are operating at peak fiscal performance.</p>
+            <div className="space-y-2">
+              <h3 className="text-3xl font-serif italic">Operational Excellence Detected</h3>
+              <p className="text-muted-foreground max-w-md mx-auto text-lg">
+                Your AI infrastructure spend is already highly optimized. Our engine found no significant redundancies or tier mismatches in your current configuration.
+              </p>
+            </div>
+            <div className="pt-4">
+              <Badge variant="success">Grade A Infrastructure</Badge>
+            </div>
           </Card>
         )}
       </div>

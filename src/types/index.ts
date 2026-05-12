@@ -1,15 +1,26 @@
+export type BillingType = 'subscription' | 'usage-based';
+
 export type PlanTier = 'free' | 'pro' | 'team' | 'enterprise' | 'usage-based';
 
 export type ToolCategory = 
+  | 'coding' 
+  | 'generalAssistant' 
+  | 'apiProviders'
   | 'ide' 
   | 'chat' 
   | 'api' 
   | 'infrastructure' 
-  | 'security' 
-  | 'design' 
-  | 'writing' 
-  | 'marketing' 
   | 'other';
+
+export interface ToolPlan {
+  id: string;
+  label: string;
+  monthlyPrice: number | null;
+  pricingModel: BillingType;
+  description?: string;
+  officialUrl: string;
+  verifiedAt: string;
+}
 
 export interface AuditTool {
   id: string;
@@ -18,12 +29,7 @@ export interface AuditTool {
   category: ToolCategory;
   website: string;
   logoUrl?: string;
-  plans: {
-    name: string;
-    price: number; // monthly per user ya phir flat rate
-    billing: 'monthly' | 'yearly';
-    features: string[];
-  }[];
+  plans: ToolPlan[];
 }
 
 export interface ToolInput {
@@ -64,6 +70,8 @@ export interface AuditResult {
     highestSpendTool: string;
     overlapScore: number;
     efficiencyGrade: 'A' | 'B' | 'C' | 'D' | 'F';
+    benchmarkInsight?: string;
+    percentile?: number;
   };
   aiSummary?: string; // Gemini generated summary
 }

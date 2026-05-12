@@ -15,7 +15,7 @@ graph TD
     Results -->|Persistence| Supabase[(Supabase Database)]
     Results -->|Presentation| ResultPage[Reporting Interface]
     
-    AuditEngine -.->|Analytical Processing| Gemini[Gemini 1.5 Flash API]
+    AuditEngine -.->|Analytical Processing| Gemini[Gemini 2.5 Flash API]
     ResultPage -->|Distribution| PublicLink[Public Report URL]
     ResultPage -->|Notification| Resend[Resend Service]
 ```
@@ -23,7 +23,7 @@ graph TD
 ## Data Flow Architecture
 1. **Ingestion Phase**: User inputs tool usage data (subscriptions, seats, tiers) via a multi-stage React form. Form state is persisted locally using Zustand to prevent data loss on browser refresh.
 2. **Analysis Phase**: The **Deterministic Audit Engine** processes inputs against a validated pricing dataset (`src/data/`). It executes a series of logic hooks to identify service redundancies and tier inefficiencies.
-3. **AI Enhancement**: A structured summary of the audit input is transmitted to the **Gemini 1.5 Flash API** to generate a human-centric narrative of the findings.
+3. **AI Enhancement**: A structured summary of the audit input is transmitted to the **Gemini 2.5 Flash API** to generate a human-centric narrative of the findings.
 4. **Persistence Phase**: The resulting audit object is stored in **Supabase**, generating a unique, non-guessable identifier for the public report.
 5. **Distribution Phase**: The reporting interface resolves the report ID to display a high-fidelity, shareable dashboard.
 
@@ -36,7 +36,7 @@ graph TD
 | **State Management** | **Zustand** | Offers a minimalist, high-performance state store without the complexity of Redux, ideal for managing the transient state of an audit form. |
 | **Validation** | **Zod** | Ensures type-safe data handling from form input to database persistence, reducing runtime errors. |
 | **Backend/DB** | **Supabase** | Provides a robust, scalable PostgreSQL infrastructure with built-in row-level security and rapid API generation, minimizing DevOps overhead. |
-| **AI Integration** | **Gemini 1.5 Flash** | Selected for its exceptional performance-to-cost ratio and high speed in generating analytical summaries. |
+| **AI Integration** | **Gemini 2.5 Flash** | Selected for its exceptional performance-to-cost ratio and high speed in generating analytical summaries. |
 
 ## Scaling Strategy: 10,000 Audits Per Day
 
@@ -48,5 +48,22 @@ To support a throughput of 10,000 audits per day (approximately 7 audits per min
 4. **Static Optimization**: The frontend is deployed via Vercel's Global Edge Network, ensuring low-latency delivery of the application shell regardless of the user's geographic location.
 5. **Caching Layer**: Public audit reports are cached at the edge using Vercel's CDN headers, ensuring that repeat views of the same report do not strain the database.
 
-## Authentication Strategy
-Vyay is designed as a high-utility lead-generation asset. Traditional authentication was intentionally bypassed to eliminate entry barriers. Data integrity and privacy are maintained through unique, UUID-based report URLs and strict data-stripping protocols for public views.
+## Social Share Infrastructure
+
+To drive viral growth and high-fidelity social presence, Vyay utilizes a multi-layered sharing architecture:
+
+1. **Deterministic OG Previews**: The platform utilizes a Vercel Edge Function (`/api/og`) to dynamically generate high-resolution Open Graph images. These images incorporate real-time audit metrics (Savings, Recommendations, Grade) to maximize click-through rates on X and LinkedIn.
+2. **Metadata Orchestration**: Every public audit route (`/result/:publicId`) dynamically injects SEO and Social metadata tags based on the persisted audit state, ensuring that link previews are always accurate and visually compelling.
+
+## Referral & Growth System
+
+A lightweight referral engine is integrated into the core service layer:
+- **Generation**: Unique referral codes are generated for strategic partners and early adopters.
+- **Tracking**: Inbound traffic via referral URLs is tracked to measure channel efficiency and reward high-impact advocates.
+- **Economics**: This system feeds directly into the Go-To-Market strategy documented in `GTM.md`.
+
+## Security & Abuse Protection
+
+1. **Honeypot Integration**: Lead capture forms implement a silent "Honeypot" field to filter out automated bot submissions without disrupting the legitimate user experience.
+2. **Rate Limiting**: API interactions with Gemini and Resend are governed by client-side debouncing and server-side rate limits provided by Supabase and Vercel.
+3. **Data Stripping**: Public audit results undergo a "Sanitization Pass" before hydration to ensure that PII (Personally Identifiable Information) such as email addresses or specific company names are never exposed on shareable links.

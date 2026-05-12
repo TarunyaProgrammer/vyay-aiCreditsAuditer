@@ -1,104 +1,113 @@
 import { AuditTool } from '../types';
 
+export const VERIFIED_DATE = '2026-05-12';
+export const PRICING_DISCLAIMER = 'AI tool pricing is subject to frequent updates and regional variations. Values shown are based on official documentation at the time of verification.';
+
 export const SUPPORTED_TOOLS: AuditTool[] = [
   {
     id: 'cursor',
     name: 'Cursor',
     provider: 'Anysphere',
-    category: 'ide',
+    category: 'coding',
     website: 'https://cursor.com/pricing',
     plans: [
-      { name: 'Hobby', price: 0, billing: 'monthly', features: ['Limited completions'] },
-      { name: 'Pro', price: 20, billing: 'monthly', features: ['Unlimited completions', '500 fast requests'] },
-      { name: 'Business', price: 40, billing: 'monthly', features: ['Shared billing', 'Admin controls'] },
-    ],
-  },
-  {
-    id: 'chatgpt',
-    name: 'ChatGPT',
-    provider: 'OpenAI',
-    category: 'chat',
-    website: 'https://chatgpt.com/pricing',
-    plans: [
-      { name: 'Free', price: 0, billing: 'monthly', features: ['Basic access'] },
-      { name: 'Plus', price: 20, billing: 'monthly', features: ['GPT-4o', 'DALL-E'] },
-      { name: 'Team', price: 25, billing: 'monthly', features: ['Shared workspace', 'Admin console'] },
-      { name: 'Enterprise', price: 60, billing: 'monthly', features: ['SSO', 'Advanced Security'] },
-    ],
-  },
-  {
-    id: 'claude',
-    name: 'Claude',
-    provider: 'Anthropic',
-    category: 'chat',
-    website: 'https://claude.ai/pricing',
-    plans: [
-      { name: 'Free', price: 0, billing: 'monthly', features: ['Claude 3.5 Sonnet'] },
-      { name: 'Pro', price: 20, billing: 'monthly', features: ['Priority access', 'Claude 3.5 Opus'] },
-      { name: 'Team', price: 25, billing: 'monthly', features: ['Minimum 5 users', 'Centralized billing'] },
+      { id: 'hobby', label: 'Hobby', monthlyPrice: 0, pricingModel: 'subscription', officialUrl: 'https://cursor.com/pricing', verifiedAt: VERIFIED_DATE },
+      { id: 'pro', label: 'Pro', monthlyPrice: 20, pricingModel: 'subscription', officialUrl: 'https://cursor.com/pricing', verifiedAt: VERIFIED_DATE },
+      { id: 'business', label: 'Business', monthlyPrice: 40, pricingModel: 'subscription', officialUrl: 'https://cursor.com/pricing', verifiedAt: VERIFIED_DATE },
+      { id: 'enterprise', label: 'Enterprise', monthlyPrice: null, pricingModel: 'subscription', officialUrl: 'https://cursor.com/pricing', verifiedAt: VERIFIED_DATE },
     ],
   },
   {
     id: 'github-copilot',
     name: 'GitHub Copilot',
     provider: 'GitHub',
-    category: 'ide',
+    category: 'coding',
     website: 'https://github.com/features/copilot',
     plans: [
-      { name: 'Individual', price: 10, billing: 'monthly', features: ['Autocomplete', 'Chat'] },
-      { name: 'Business', price: 19, billing: 'monthly', features: ['Policy control'] },
-      { name: 'Enterprise', price: 39, billing: 'monthly', features: ['Custom models'] },
+      { id: 'free', label: 'Free', monthlyPrice: 0, pricingModel: 'subscription', officialUrl: 'https://github.com/features/copilot', verifiedAt: VERIFIED_DATE },
+      { id: 'individual', label: 'Individual', monthlyPrice: 10, pricingModel: 'subscription', officialUrl: 'https://github.com/features/copilot', verifiedAt: VERIFIED_DATE },
+      { id: 'business', label: 'Business', monthlyPrice: 19, pricingModel: 'subscription', officialUrl: 'https://github.com/features/copilot', verifiedAt: VERIFIED_DATE },
+      { id: 'enterprise', label: 'Enterprise', monthlyPrice: 39, pricingModel: 'subscription', officialUrl: 'https://github.com/features/copilot', verifiedAt: VERIFIED_DATE },
     ],
   },
   {
-    id: 'perplexity',
-    name: 'Perplexity',
-    provider: 'Perplexity AI',
-    category: 'chat',
-    website: 'https://www.perplexity.ai/pro',
+    id: 'windsurf',
+    name: 'Windsurf',
+    provider: 'Codeium',
+    category: 'coding',
+    website: 'https://windsurf.com/pricing',
     plans: [
-      { name: 'Free', price: 0, billing: 'monthly', features: ['Basic search'] },
-      { name: 'Pro', price: 20, billing: 'monthly', features: ['Advanced models', 'File uploads'] },
+      { id: 'free', label: 'Free', monthlyPrice: 0, pricingModel: 'subscription', officialUrl: 'https://windsurf.com/pricing', verifiedAt: VERIFIED_DATE },
+      { id: 'pro', label: 'Pro', monthlyPrice: 15, pricingModel: 'subscription', officialUrl: 'https://windsurf.com/pricing', verifiedAt: VERIFIED_DATE },
+      { id: 'teams', label: 'Teams', monthlyPrice: 30, pricingModel: 'subscription', officialUrl: 'https://windsurf.com/pricing', verifiedAt: VERIFIED_DATE },
+      { id: 'enterprise', label: 'Enterprise', monthlyPrice: null, pricingModel: 'subscription', officialUrl: 'https://windsurf.com/pricing', verifiedAt: VERIFIED_DATE },
+    ],
+  },
+  {
+    id: 'chatgpt',
+    name: 'ChatGPT',
+    provider: 'OpenAI',
+    category: 'generalAssistant',
+    website: 'https://chatgpt.com/pricing',
+    plans: [
+      { id: 'free', label: 'Free', monthlyPrice: 0, pricingModel: 'subscription', officialUrl: 'https://chatgpt.com/pricing', verifiedAt: VERIFIED_DATE },
+      { id: 'plus', label: 'Plus', monthlyPrice: 20, pricingModel: 'subscription', officialUrl: 'https://chatgpt.com/pricing', verifiedAt: VERIFIED_DATE },
+      { id: 'pro', label: 'Pro', monthlyPrice: 200, pricingModel: 'subscription', officialUrl: 'https://chatgpt.com/pricing', verifiedAt: VERIFIED_DATE },
+      { id: 'team', label: 'Team', monthlyPrice: 30, pricingModel: 'subscription', officialUrl: 'https://chatgpt.com/pricing', verifiedAt: VERIFIED_DATE },
+      { id: 'enterprise', label: 'Enterprise', monthlyPrice: null, pricingModel: 'subscription', officialUrl: 'https://openai.com/contact-sales', verifiedAt: VERIFIED_DATE },
+    ],
+  },
+  {
+    id: 'claude',
+    name: 'Claude',
+    provider: 'Anthropic',
+    category: 'generalAssistant',
+    website: 'https://claude.ai/pricing',
+    plans: [
+      { id: 'free', label: 'Free', monthlyPrice: 0, pricingModel: 'subscription', officialUrl: 'https://claude.ai/pricing', verifiedAt: VERIFIED_DATE },
+      { id: 'pro', label: 'Pro', monthlyPrice: 20, pricingModel: 'subscription', officialUrl: 'https://claude.ai/pricing', verifiedAt: VERIFIED_DATE },
+      { id: 'max-5x', label: 'Max 5x', monthlyPrice: 100, pricingModel: 'subscription', officialUrl: 'https://claude.ai/pricing', verifiedAt: VERIFIED_DATE },
+      { id: 'max-20x', label: 'Max 20x', monthlyPrice: 200, pricingModel: 'subscription', officialUrl: 'https://claude.ai/pricing', verifiedAt: VERIFIED_DATE },
+      { id: 'team', label: 'Team', monthlyPrice: 25, pricingModel: 'subscription', officialUrl: 'https://claude.ai/pricing', verifiedAt: VERIFIED_DATE },
+      { id: 'enterprise', label: 'Enterprise', monthlyPrice: null, pricingModel: 'subscription', officialUrl: 'https://www.anthropic.com/contact-sales', verifiedAt: VERIFIED_DATE },
     ],
   },
   {
     id: 'gemini',
     name: 'Gemini',
     provider: 'Google',
-    category: 'chat',
+    category: 'generalAssistant',
     website: 'https://gemini.google/subscriptions',
     plans: [
-      { name: 'Free', price: 0, billing: 'monthly', features: ['Gemini Pro'] },
-      { name: 'Advanced', price: 20, billing: 'monthly', features: ['Gemini 1.5 Pro', '2TB Storage'] },
-      { name: 'Business', price: 20, billing: 'monthly', features: ['Workspace integration'] },
+      { id: 'free', label: 'Free', monthlyPrice: 0, pricingModel: 'subscription', officialUrl: 'https://gemini.google/subscriptions', verifiedAt: VERIFIED_DATE },
+      { id: 'advanced', label: 'Advanced', monthlyPrice: 20, pricingModel: 'subscription', officialUrl: 'https://gemini.google/subscriptions', verifiedAt: VERIFIED_DATE },
+      { id: 'ultra', label: 'Ultra', monthlyPrice: 250, pricingModel: 'subscription', officialUrl: 'https://gemini.google/subscriptions', verifiedAt: VERIFIED_DATE },
+    ],
+  },
+  {
+    id: 'anthropic-api',
+    name: 'Anthropic API',
+    provider: 'Anthropic',
+    category: 'apiProviders',
+    website: 'https://www.anthropic.com/pricing',
+    plans: [
+      { id: 'usage', label: 'Usage Based', monthlyPrice: 0, pricingModel: 'usage-based', officialUrl: 'https://www.anthropic.com/pricing', verifiedAt: VERIFIED_DATE },
+    ],
+  },
+  {
+    id: 'openai-api',
+    name: 'OpenAI API',
+    provider: 'OpenAI',
+    category: 'apiProviders',
+    website: 'https://openai.com/api/pricing',
+    plans: [
+      { id: 'usage', label: 'Usage Based', monthlyPrice: 0, pricingModel: 'usage-based', officialUrl: 'https://openai.com/api/pricing', verifiedAt: VERIFIED_DATE },
     ],
   },
 ];
 
-// Deterministic logic ke hooks ke liye internal reference
-export const pricingData = {
-  cursor: {
-    hobby: { monthly: 0, seats: 'individual' },
-    pro: { monthly: 20, seats: 'individual' },
-    business: { monthly: 40, seats: 'multi' },
-  },
-  chatgpt: {
-    free: { monthly: 0, seats: 'individual' },
-    plus: { monthly: 20, seats: 'individual' },
-    team: { monthly: 25, seats: 'multi' },
-  },
-  claude: {
-    free: { monthly: 0, seats: 'individual' },
-    pro: { monthly: 20, seats: 'individual' },
-    team: { monthly: 25, seats: 'multi', minSeats: 5 },
-  },
-  'github-copilot': {
-    individual: { monthly: 10, seats: 'individual' },
-    business: { monthly: 19, seats: 'multi' },
-    enterprise: { monthly: 39, seats: 'multi' },
-  },
-  perplexity: {
-    free: { monthly: 0, seats: 'individual' },
-    pro: { monthly: 20, seats: 'individual' },
-  },
+export const TOOL_CATEGORIES = {
+  coding: ['cursor', 'github-copilot', 'windsurf'],
+  generalAssistant: ['chatgpt', 'claude', 'gemini'],
+  apiProviders: ['openai-api', 'anthropic-api'],
 };

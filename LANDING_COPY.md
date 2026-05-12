@@ -1,29 +1,26 @@
-<img src="public/light_banner.png" alt="Vyay Logo" width="100%" />
+# Vyay Landing Copy & Messaging Framework
 
-# Landing Interface Content Specifications
+The landing page copy is designed to be **Calm, Authoritative, and Frictionless**.
 
-## 1. Hero Section
-- **Headline**: **Stop Capital Leakage in Your AI Infrastructure Stack** (8 words)
-- **Subheadline**: **Identify redundant subscriptions and sub-optimal plan tiers with our deterministic audit engine. Recover thousands in monthly spend in under 60 seconds.** (22 words)
-- **Primary Call to Action (CTA)**: **Start Your Free Audit**
+## 1. The "Hero" Section
+- **Headline**: "Rationalize your AI spend in 60 seconds."
+- **Sub-headline**: "A deterministic audit engine for engineering teams. Find redundancies, identify oversized plans, and recapture growth capital without sharing API keys."
+- **Primary CTA**: "Start Free Audit"
+- **Social Proof**: "Auditing $2M+ in monthly AI spend across high-growth startups."
 
-## 2. Institutional Social Proof
-- **Logo Array Placeholder**: [Seed-Stage FinTech Logo] | [Series B E-Commerce Logo] | [Growth-Stage SaaS Logo]
-- **Trust Statement**: "Utilized by engineering leadership at over 50 high-growth startups to optimize operational expenditure."
+## 2. The "Problem" Section
+- **Headline**: "Subscription Sprawl is the new technical debt."
+- **Copy**: "Between Cursor, Copilot, ChatGPT, and API bills, the modern AI stack is leaking capital. Most teams are overpaying by 22% due to overlapping capabilities and administrative tier premiums."
 
-## 3. Strategic Value Propositions
-- **Frictionless Intelligence**: Zero authentication required. Gain immediate visibility into your AI spend without the overhead of another account.
-- **Deterministic Accuracy**: Our logic is based on validated, real-time pricing data from OpenAI, Anthropic, and Google. No "vibes," just math.
-- **Executive Shareability**: Generate a professional report designed to carry weight in boardrooms and CFO Slack channels.
+## 3. The "Methodology" Section
+- **Headline**: "Deterministic Logic. Financial Integrity."
+- **Copy**: "We don't 'guess' your savings. Our engine uses verified market rates and modular audit rules to provide conservative, explainable, and actionable recommendations."
 
-## 4. Frequently Asked Questions (FAQs)
-1. **How is the audit data secured?**
-    - We utilize UUID-based report URLs and strict data-stripping protocols. Your email and company name are never displayed on public-facing report links.
-2. **Does this require access to my billing dashboards?**
-    - No. Vyay utilizes a self-reported data ingestion model to maintain high velocity and zero technical friction.
-3. **How current is the pricing data?**
-    - Our pricing repository is updated weekly and cited directly to official vendor documentation. You can verify every figure in our `PRICING_DATA.md`.
-4. **What tools do you support?**
-    - We currently support Cursor, GitHub Copilot, ChatGPT, Claude, and major APIs including OpenAI, Anthropic, and Gemini.
-5. **How does this generate leads for Credex?**
-    - High-value audits (savings >$500/mo) offer a direct consultation link to our expert team for complex infrastructure optimization.
+## 4. The "Trust" Section
+- **Headline**: "No Auth. No API Keys. No Friction."
+- **Copy**: "Vyay works on manual input. Keep your data private while getting institutional-grade infrastructure insights."
+
+## 5. Visual Tone & Aesthetic
+- **Colors**: Deep Grays, Soft Backgrounds, Vibrant Accents (Primary Green).
+- **Typography**: Serif for headlines (Authority), Sans-serif for data (Precision).
+- **Imagery**: Restrained, industrial minimalism. No "Neon Robot" or "Magic Wand" cliches.

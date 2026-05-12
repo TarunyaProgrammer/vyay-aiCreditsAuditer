@@ -45,15 +45,14 @@ const AuditPage = () => {
 
   const addTool = () => {
     const defaultToolId = SUPPORTED_TOOLS[0].id;
-    const defaultTier = 'pro';
     const toolData = SUPPORTED_TOOLS.find(t => t.id === defaultToolId);
-    const plan = toolData?.plans.find(p => p.name.toLowerCase() === defaultTier);
+    const defaultPlan = toolData?.plans[0];
     
     const newTool: ToolInput = {
       toolId: defaultToolId,
-      tier: defaultTier,
+      tier: defaultPlan?.id || 'pro',
       userCount: input.teamSize,
-      monthlySpend: (plan?.price || 20) * input.teamSize,
+      monthlySpend: (defaultPlan?.monthlyPrice || 20) * input.teamSize,
     };
     updateInput({ tools: [...input.tools, newTool] });
   };
@@ -72,12 +71,15 @@ const AuditPage = () => {
       if (toolData) {
         // If tool changed, ensure tier is valid
         if (updates.toolId) {
-          currentTool.tier = toolData.plans[0].name.toLowerCase();
+          currentTool.tier = toolData.plans[0].id;
         }
         
-        const plan = toolData.plans.find(p => p.name.toLowerCase() === currentTool.tier);
+        const plan = toolData.plans.find(p => p.id === currentTool.tier);
         if (plan) {
-          currentTool.monthlySpend = plan.price * currentTool.userCount;
+          // Subscription models auto-calculate base, usage-based models keep custom input
+          if (plan.pricingModel === 'subscription' && plan.monthlyPrice !== null) {
+            currentTool.monthlySpend = plan.monthlyPrice * currentTool.userCount;
+          }
         }
       }
     }
@@ -226,6 +228,12 @@ const AuditPage = () => {
                 </button>
 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                  {input.tools.filter(t => t.toolId === tool.toolId).length > 1 && (
+                    <div className="md:col-span-4 flex items-center gap-2 text-[10px] text-amber-600 bg-amber-50 p-2 rounded-lg border border-amber-100">
+                      <AlertCircle size={12} />
+                      <span>Duplicate tool entry detected. Consider consolidating seats into a single line item for accurate analysis.</span>
+                    </div>
+                  )}
                   <div className="space-y-2">
                     <label 
                       htmlFor={`tool-${index}`}
@@ -261,7 +269,7 @@ const AuditPage = () => {
                       aria-label="Select tool tier"
                     >
                       {SUPPORTED_TOOLS.find(t => t.id === tool.toolId)?.plans.map(p => (
-                        <option key={p.name} value={p.name.toLowerCase()}>{p.name}</option>
+                        <option key={p.id} value={p.id}>{p.label}</option>
                       ))}
                     </select>
                   </div>
@@ -279,10 +287,16 @@ const AuditPage = () => {
                         id={`spend-${index}`}
                         type="number" 
                         value={tool.monthlySpend}
+                        placeholder={SUPPORTED_TOOLS.find(t => t.id === tool.toolId)?.plans.find(p => p.id === tool.tier)?.price?.toString() || "0"}
                         onChange={(e) => updateTool(index, { monthlySpend: parseFloat(e.target.value) || 0 })}
                         className="w-full bg-background border border-foreground/10 rounded-xl p-3 pl-8 text-sm outline-none focus:border-primary"
                       />
                     </div>
+                    {SUPPORTED_TOOLS.find(t => t.id === tool.toolId)?.plans.find(p => p.id === tool.tier)?.price && (
+                      <p className="text-[9px] text-muted-foreground italic">
+                        Standard rate: ${SUPPORTED_TOOLS.find(t => t.id === tool.toolId)?.plans.find(p => p.id === tool.tier)?.price}/seat
+                      </p>
+                    )}
                   </div>
 
                   <div className="space-y-2">
@@ -345,7 +359,9 @@ const AuditPage = () => {
               <p className="text-[10px] font-sans uppercase tracking-widest text-muted-foreground font-bold">Inventory Summary</p>
               <div className="flex flex-wrap gap-2">
                 {input.tools.map((t, i) => (
-                  <Badge key={i} variant="primary">{t.toolId} · {t.tier}</Badge>
+                  <Badge key={i} variant="primary">
+                    {SUPPORTED_TOOLS.find(st => st.id === t.toolId)?.name || t.toolId} · {t.tier}
+                  </Badge>
                 ))}
               </div>
             </div>

@@ -10,27 +10,28 @@ export const aiService = {
     }
 
     try {
-      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash-latest' });
+      const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
       const prompt = `
         You are Vyay AI, a Senior Infrastructure Economist specializing in AI stack optimization for high-growth startups. 
 
         TASK:
-        Analyze the provided Audit Data and generate a professional, high-impact summary (~100 words).
+        Analyze the provided Audit Data and generate a professional, high-impact executive summary (~100 words).
 
         CONSTRAINTS:
-        1. Tone: Corporate, analytical, objective, and practical. Avoid hype words like "revolutionary" or "game-changing".
-        2. Focus: Highlight the total annualized savings of $${(result.potentialSavings * 12).toLocaleString()} and the primary areas of inefficiency.
-        3. Call to Action: Subtly suggest that complex optimizations like credits migration require expert consultation.
-        4. Format: Plain text, single paragraph.
+        1. Tone: Calm, analytical, objective, and practical. No hype, no generic "AI transformation" language.
+        2. Focus: Synthesize the total annualized savings ($${(result.potentialSavings * 12).toLocaleString()}) and the specific efficiency grade (${result.metrics.efficiencyGrade}).
+        3. Benchmarking: Incorporate the insight that ${result.metrics.benchmarkInsight}.
+        4. Narrative: Explain *why* these recommendations matter (e.g., capital recovery for growth, vendor sprawl mitigation).
+        5. Format: Plain text, single paragraph.
 
         INPUT DATA:
         ${JSON.stringify({
           totalMonthlySpend: result.totalMonthlySpend,
-          potentialMonthlySavings: result.potentialSavings,
           potentialAnnualSavings: result.potentialSavings * 12,
           recommendationCount: result.recommendations.length,
           efficiencyGrade: result.metrics.efficiencyGrade,
+          benchmarkInsight: result.metrics.benchmarkInsight,
           recommendations: result.recommendations.map(r => r.title)
         }, null, 2)}
       `;
