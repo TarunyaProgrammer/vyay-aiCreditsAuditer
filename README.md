@@ -36,11 +36,18 @@ During the development of Vyay, I prioritized **Time-to-Value** and **Institutio
 
 | Document | Description |
 | :--- | :--- |
-| [**ARCHITECTURE.md**](file:///Users/tarunyakesh/Desktop/Internships/credex/PreinternTask1/ARCHITECTURE.md) | Technical deep-dive, Mermaid diagrams, and scaling strategy. |
-| [**GTM.md**](file:///Users/tarunyakesh/Desktop/Internships/credex/PreinternTask1/GTM.md) | Go-to-market strategy and organic growth blueprint. |
-| [**ECONOMICS.md**](file:///Users/tarunyakesh/Desktop/Internships/credex/PreinternTask1/ECONOMICS.md) | Unit economics, LTV/CAC math, and the $1M ARR roadmap. |
-| [**REFLECTION.md**](file:///Users/tarunyakesh/Desktop/Internships/credex/PreinternTask1/REFLECTION.md) | Philosophical analysis on deterministic logic vs AI hype. |
-| [**DEVLOG.md**](file:///Users/tarunyakesh/Desktop/Internships/credex/PreinternTask1/DEVLOG.md) | Day-by-day technical narrative following strict Credex formatting. |
+| [**ARCHITECTURE.md**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/ARCHITECTURE.md) | Mermaid system diagrams, data flow, stack justification, and scaling strategy. |
+| [**DEVLOG.md**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/DEVLOG.md) | Day-by-day technical narrative and project progression log. |
+| [**REFLECTION.md**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/REFLECTION.md) | Philosophical analysis on deterministic logic vs AI hype and technical reflections. |
+| [**TESTS.md**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/TESTS.md) | Automated test suite documentation and audit engine coverage. |
+| [**PRICING_DATA.md**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/PRICING_DATA.md) | Verified vendor pricing data with official citation URLs. |
+| [**PROMPTS.md**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/PROMPTS.md) | Complete LLM prompts used, rationale, and iteration history. |
+| [**GTM.md**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/GTM.md) | Go-to-market strategy, user acquisition blueprint, and traction metrics. |
+| [**ECONOMICS.md**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/ECONOMICS.md) | Unit economics, LTV/CAC analysis, and $1M ARR roadmap. |
+| [**USER_INTERVIEWS.md**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/USER_INTERVIEWS.md) | Real-world insights from engineering leadership and founders. |
+| [**LANDING_COPY.md**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/LANDING_COPY.md) | High-fidelity messaging, CTAs, and social proof orchestration. |
+| [**METRICS.md**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/METRICS.md) | North Star metric, instrumentation plan, and pivot triggers. |
+| [**CI Workflow**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/.github/workflows/ci.yml) | GitHub Actions configuration for automated linting and testing. |
 
 ## Core Technology Stack
 - **Frontend**: React 18, Vite, TypeScript, Tailwind CSS
