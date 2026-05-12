@@ -47,6 +47,7 @@ During the development of Vyay, I prioritized **Time-to-Value** and **Institutio
 | [**USER_INTERVIEWS.md**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/USER_INTERVIEWS.md) | Real-world insights from engineering leadership and founders. |
 | [**LANDING_COPY.md**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/LANDING_COPY.md) | High-fidelity messaging, CTAs, and social proof orchestration. |
 | [**METRICS.md**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/METRICS.md) | North Star metric, instrumentation plan, and pivot triggers. |
+| [**PRODUCT_SPEC.md**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/PRODUCT_SPEC.md) | Comprehensive product specification and implementation vision. |
 | [**CI Workflow**](https://github.com/TarunyaProgrammer/vyay-aiCreditsAuditer/blob/main/.github/workflows/ci.yml) | GitHub Actions configuration for automated linting and testing. |
 
 ## Core Technology Stack
