@@ -5,7 +5,7 @@ import { runAudit } from '../rules';
 import { SUPPORTED_TOOLS } from '../data/pricing';
 import { Button, Card, SectionHeading, Badge, Logo } from '../components/shared/SharedComponents';
 import { AuditInputSchema } from '../lib/validation';
-import { ArrowRight, ArrowLeft, Plus, Trash2, Info, Calculator, Users } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Plus, Trash2, Info, Calculator, Users, AlertCircle } from 'lucide-react';
 import { ToolInput } from '../types';
 
 const AuditPage = () => {
@@ -287,14 +287,14 @@ const AuditPage = () => {
                         id={`spend-${index}`}
                         type="number" 
                         value={tool.monthlySpend}
-                        placeholder={SUPPORTED_TOOLS.find(t => t.id === tool.toolId)?.plans.find(p => p.id === tool.tier)?.price?.toString() || "0"}
+                        placeholder={SUPPORTED_TOOLS.find(t => t.id === tool.toolId)?.plans.find(p => p.id === tool.tier)?.monthlyPrice?.toString() || "0"}
                         onChange={(e) => updateTool(index, { monthlySpend: parseFloat(e.target.value) || 0 })}
                         className="w-full bg-background border border-foreground/10 rounded-xl p-3 pl-8 text-sm outline-none focus:border-primary"
                       />
                     </div>
-                    {SUPPORTED_TOOLS.find(t => t.id === tool.toolId)?.plans.find(p => p.id === tool.tier)?.price && (
+                    {SUPPORTED_TOOLS.find(t => t.id === tool.toolId)?.plans.find(p => p.id === tool.tier)?.monthlyPrice && (
                       <p className="text-[9px] text-muted-foreground italic">
-                        Standard rate: ${SUPPORTED_TOOLS.find(t => t.id === tool.toolId)?.plans.find(p => p.id === tool.tier)?.price}/seat
+                        Standard rate: ${SUPPORTED_TOOLS.find(t => t.id === tool.toolId)?.plans.find(p => p.id === tool.tier)?.monthlyPrice}/seat
                       </p>
                     )}
                   </div>

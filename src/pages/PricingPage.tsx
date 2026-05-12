@@ -68,7 +68,7 @@ const PricingPage = () => {
               {SUPPORTED_TOOLS.map((tool) => (
                 <React.Fragment key={tool.id}>
                   {tool.plans.map((plan, idx) => (
-                    <tr key={`${tool.id}-${plan.name}`} className="group hover:bg-primary/[0.01] transition-colors">
+                    <tr key={`${tool.id}-${plan.id}`} className="group hover:bg-primary/[0.01] transition-colors">
                       {idx === 0 && (
                         <td className="p-8 align-top border-r border-foreground/5" rowSpan={tool.plans.length}>
                           <div className="space-y-1">
@@ -79,25 +79,25 @@ const PricingPage = () => {
                       )}
                       <td className="p-8">
                         <div className="flex items-center gap-3">
-                          <span className="text-lg font-serif">{plan.name}</span>
-                          {plan.name === 'Enterprise' && <Badge variant="primary">Contact Required</Badge>}
+                          <span className="text-lg font-serif">{plan.label}</span>
+                          {plan.label === 'Enterprise' && <Badge variant="primary">Contact Required</Badge>}
                         </div>
                       </td>
                       <td className="p-8">
                         <p className="text-lg font-serif">
-                          ${plan.price} <span className="text-xs text-muted-foreground opacity-60">/ {plan.billing}</span>
+                          ${plan.monthlyPrice || '0'} <span className="text-xs text-muted-foreground opacity-60">/ {plan.pricingModel}</span>
                         </p>
                       </td>
                       <td className="p-8">
                         <div className="flex items-center gap-2">
                           <div className={`w-2 h-2 rounded-full ${
-                            plan.price === 0 ? 'bg-success' : 
-                            plan.price >= 30 ? 'bg-orange-500' : 
+                            (plan.monthlyPrice || 0) === 0 ? 'bg-success' : 
+                            (plan.monthlyPrice || 0) >= 30 ? 'bg-orange-500' : 
                             'bg-primary'
                           }`} aria-hidden="true" />
                           <span className="text-sm opacity-60">
-                            {plan.price === 0 ? 'Fully Optimized' : 
-                             plan.price >= 30 ? 'High Optimization Potential' : 
+                            {(plan.monthlyPrice || 0) === 0 ? 'Fully Optimized' : 
+                             (plan.monthlyPrice || 0) >= 30 ? 'High Optimization Potential' : 
                              'Standard Efficiency'}
                           </span>
                         </div>
