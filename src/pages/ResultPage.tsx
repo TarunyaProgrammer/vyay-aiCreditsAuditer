@@ -78,7 +78,7 @@ const ResultPage = () => {
       document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
       
       // Dynamic OG Image URL (placeholder for now, would be handled by /api/og/:id)
-      const ogImageUrl = `${window.location.origin}/api/og/${result.publicId || result.id}`;
+      const ogImageUrl = `${window.location.origin}/api/og?savings=${result.potentialSavings * 12}&count=${result.recommendations.length}&grade=${result.metrics.efficiencyGrade}`;
       document.querySelector('meta[property="og:image"]')?.setAttribute('content', ogImageUrl);
     }
   }, [result]);

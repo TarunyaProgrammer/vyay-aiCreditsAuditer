@@ -1,16 +1,10 @@
-/* 
-  Conceptual Vercel Edge Function for Dynamic OG Images
-  This would be deployed as a Vercel Function at /api/og
-*/
-
 import { ImageResponse } from '@vercel/og';
-import { NextRequest } from 'next/server';
 
 export const config = {
   runtime: 'edge',
 };
 
-export default async function handler(req: NextRequest) {
+export default async function handler(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
 
