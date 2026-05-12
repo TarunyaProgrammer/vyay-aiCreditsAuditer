@@ -91,7 +91,7 @@
       <div id="vyay-preview-area" class="vyay-savings-preview">
         <p style="margin-bottom: 4px">Est. Annual Savings</p>
         <div class="amount" id="vyay-amount">$0</div>
-        <a href="https://vyaytarunya.vercel.app/audit" target="_blank" style="color: #F59E0B; font-size: 12px; text-decoration: none; font-weight: bold;">Get Full Audit →</a>
+        <a href="https://vyay.ai/audit" target="_blank" style="color: #F59E0B; font-size: 12px; text-decoration: none; font-weight: bold;">Get Full Audit →</a>
       </div>
     </div>
   `;

@@ -388,6 +388,47 @@ const ResultPage = () => {
         </Card>
       </div>
 
+      {/* Widget Embed Section */}
+      <div className="mb-24">
+        <SectionHeading 
+          title="Embed the Intelligence" 
+          subtitle="Add the Vyay audit preview to your own blog or engineering portal."
+          align="left"
+        />
+        <Card className="mt-8 border-foreground/10 bg-background overflow-hidden">
+          <div className="p-8 space-y-6">
+            <div className="flex items-center gap-4 text-primary">
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <ShieldCheck size={20} />
+              </div>
+              <h4 className="font-serif italic text-xl text-foreground">Zero-Dependency Widget</h4>
+            </div>
+            <p className="text-muted-foreground">
+              Copy and paste this snippet into your site's HTML to provide an instant savings preview to your readers.
+            </p>
+            <div className="relative group">
+              <pre className="bg-foreground text-background p-6 rounded-xl overflow-x-auto text-sm font-mono leading-relaxed">
+                {`<!-- Vyay Audit Widget -->\n<div id="vyay-audit-widget"></div>\n<script src="${window.location.origin}/widget.js" defer></script>`}
+              </pre>
+              <button 
+                onClick={() => {
+                  navigator.clipboard.writeText(`<!-- Vyay Audit Widget -->\n<div id="vyay-audit-widget"></div>\n<script src="${window.location.origin}/widget.js" defer></script>`);
+                  alert('Widget code copied to clipboard');
+                }}
+                className="absolute top-4 right-4 p-2 bg-background/10 hover:bg-background/20 rounded-lg text-background transition-all opacity-0 group-hover:opacity-100"
+              >
+                Copy Code
+              </button>
+            </div>
+            <div className="flex gap-4 text-[10px] font-sans uppercase tracking-widest opacity-40 font-bold">
+              <span>✓ Responsive</span>
+              <span>✓ < 2KB Payload</span>
+              <span>✓ Dark Mode Ready</span>
+            </div>
+          </div>
+        </Card>
+      </div>
+
       {/* Footer Actions */}
       <div className="pt-24 border-t border-foreground/10 text-center space-y-8">
         <h3 className="text-3xl font-serif italic">Operational Recalibration</h3>
