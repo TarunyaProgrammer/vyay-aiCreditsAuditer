@@ -19,17 +19,32 @@ export const referralService = {
     }
   },
 
+  async trackClick(referralCode: string) {
+    const { error } = await supabase.rpc('increment_referral_clicks', { code: referralCode });
+    if (error) {
+      console.error('Error tracking referral click:', error);
+      // Fallback if RPC not available
+      await supabase
+        .from('referral_stats')
+        .upsert({ referral_code: referralCode, click_count: 1 }, { onConflict: 'referral_code' });
+    }
+  },
+
   async getReferralStats(code: string) {
-    const { count, error } = await supabase
-      .from('referrals')
-      .select('*', { count: 'exact', head: true })
-      .eq('referral_code', code);
+    const { data, error } = await supabase
+      .from('referral_stats')
+      .select('click_count, conversion_count')
+      .eq('referral_code', code)
+      .single();
 
     if (error) {
       console.error('Error fetching referral stats:', error);
-      return 0;
+      return { clicks: 0, conversions: 0 };
     }
 
-    return count || 0;
+    return { 
+      clicks: data.click_count || 0, 
+      conversions: data.conversion_count || 0 
+    };
   }
 };

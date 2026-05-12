@@ -48,19 +48,26 @@ To support a throughput of 10,000 audits per day (approximately 7 audits per min
 4. **Static Optimization**: The frontend is deployed via Vercel's Global Edge Network, ensuring low-latency delivery of the application shell regardless of the user's geographic location.
 5. **Caching Layer**: Public audit reports are cached at the edge using Vercel's CDN headers, ensuring that repeat views of the same report do not strain the database.
 
-## Social Share Infrastructure
-
-To drive viral growth and high-fidelity social presence, Vyay utilizes a multi-layered sharing architecture:
+## Social Share & Asset Generation
 
 1. **Deterministic OG Previews**: The platform utilizes a Vercel Edge Function (`/api/og`) to dynamically generate high-resolution Open Graph images. These images incorporate real-time audit metrics (Savings, Recommendations, Grade) to maximize click-through rates on X and LinkedIn.
-2. **Metadata Orchestration**: Every public audit route (`/result/:publicId`) dynamically injects SEO and Social metadata tags based on the persisted audit state, ensuring that link previews are always accurate and visually compelling.
+2. **Executive PDF Export**: High-fidelity report generation is handled via `@react-pdf/renderer` on the client side. This ensures that sensitive financial data never leaves the browser environment for PDF processing.
+   - **Performance**: Heavy font assets (Inter, Playfair) are pre-loaded to minimize generation latency.
+   - **Security**: Deterministic values are passed directly from the audit state to the document template.
+
+## Widget Architecture: Embeddable Intelligence
+
+The Vyay widget is a zero-dependency JavaScript payload (`/public/widget.js`) designed for cross-origin embedding.
+- **Isolation**: Uses a custom namespace and scoped CSS to prevent collision with the host site's styling.
+- **Dynamic Configuration**: Supports `data-theme` and `data-compact` attributes for aesthetic alignment with host blogs/platforms.
+- **Lite Input Model**: Collects minimal engineering metrics (e.g., headcount) to generate a "Savings Preview" before deep-linking the user into the full audit experience.
 
 ## Referral & Growth System
 
 A lightweight referral engine is integrated into the core service layer:
 - **Generation**: Unique referral codes are generated for strategic partners and early adopters.
 - **Tracking**: Inbound traffic via referral URLs is tracked to measure channel efficiency and reward high-impact advocates.
-- **Economics**: This system feeds directly into the Go-To-Market strategy documented in `GTM.md`.
+- **Atomic Operations**: Click and conversion counters are managed via Supabase RPC functions to ensure data consistency during concurrent access.
 
 ## Security & Abuse Protection
 

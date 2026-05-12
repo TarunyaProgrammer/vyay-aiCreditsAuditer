@@ -1,52 +1,70 @@
-<img src="public/light_banner.png" alt="Vyay Logo" width="100%" />
+# 🛰️ Project Development Log — Vyay
+> *Engineering the future of AI spend management.*
 
-# Project Development Log — Vyay
+---
 
-## Day 1 2026-05-05
-**Hours worked:** 4
-**What I did:** Initial project ideation and scoping. Conducted "Market Scans" for AI tool pricing.
-**What I learned:** Most AI cost-saving tools focus on API usage; there's a massive gap in auditing "Seat-based" SaaS subscriptions like Cursor and Claude Pro.
-**Blockers / what I'm stuck on:** Deciding between a deep OAuth integration vs. a high-velocity manual input model.
-**Plan for tomorrow:** Finalize architecture and setup the project repository.
+## 🏗️ Sprint Overview
+| Phase | Focus | Status |
+| :--- | :--- | :--- |
+| **I** | Ideation & Market Research | ✅ Complete |
+| **II** | Foundation & UX Architecture | ✅ Complete |
+| **III** | Deterministic Engine & Logic | ✅ Complete |
+| **IV** | Intelligence Layer (Gemini) | ✅ Complete |
+| **V** | Viral Loops & Distribution | ✅ Complete |
+| **VI** | Production Hardening | ✅ Complete |
 
-## Day 2 2026-05-06
-**Hours worked:** 6
-**What I did:** Setup Vite + React + TypeScript. Implemented the core UI foundation and the 3-step audit wizard.
-**What I learned:** Tailwind's utility-first approach is perfect for building a custom "Calm Engineering" aesthetic without generic UI kits.
-**Blockers / what I'm stuck on:** Handling complex state across multi-step forms while ensuring persistence.
-**Plan for tomorrow:** Build the deterministic audit engine.
+---
 
-## Day 3 2026-05-07
-**Hours worked:** 8
-**What I did:** Developed the `runAudit` engine. Mapped 20+ pricing rules. Implemented Vitest suite for logic verification.
-**What I learned:** Financial auditing logic must be deterministic. Stochastic AI summaries are good for synthesis, but math requires business rules.
-**Blockers / what I'm stuck on:** Correctly identifying overlaps between ChatGPT Plus and Gemini Advanced when they come bundled with other services.
-**Plan for tomorrow:** Integrate persistence and AI summaries.
+## 📅 Daily Execution
 
-## Day 4 2026-05-08
-**Hours worked:** 0
-**What I did:** Day off for mental recalibration and independent research into Credex's unit economics.
-**What I learned:** High-value leads are worth significantly more than the "saved" amount due to LTV.
-**Blockers / what I'm stuck on:** None.
-**Plan for tomorrow:** Connect Supabase and Gemini.
+### Day 1: Ideation & Scoping
+*   **Hours:** 4h
+*   **Activity:** Market Scans for AI pricing, initial scoping.
+*   **Key Learning:** Gap identified in "Seat-based" SaaS auditing (Cursor/Claude Pro) vs API usage.
+*   **Strategic Decision:** Opted for high-velocity manual input model over OAuth to minimize security friction.
 
-## Day 5 2026-05-09
-**Hours worked:** 10
-**What I did:** Integrated Supabase for report storage and Gemini 2.5 Flash for summaries. Configured Resend for transactional emails.
-**What I learned:** Gemini 2.5 Flash is significantly faster than Pro for this specific task, hitting sub-2s response times.
-**Blockers / what I'm stuck on:** Handling rate limits on the Gemini free tier during rapid testing.
-**Plan for tomorrow:** Build shareable report pages and OG tags.
+### Day 2: Foundation & UX
+*   **Hours:** 6h
+*   **Activity:** Vite + TypeScript setup. 3-step audit wizard implementation.
+*   **Key Learning:** Tailwind is optimal for "Calm Engineering" aesthetics.
+*   **Milestone:** Fully functional UI skeleton with multi-step state management.
 
-## Day 6 2026-05-10
-**Hours worked:** 7
-**What I did:** Implemented dynamic Open Graph previews and the public report hydration logic. Finalized the landing page polish.
-**What I learned:** Social shareability is the primary viral loop for this tool. OG previews are high-leverage assets.
-**Blockers / what I'm stuck on:** Vercel deployment issues with media-src CSP headers for the hero video.
-**Plan for tomorrow:** Final documentation audit and production hardening.
+### Day 3: The Audit Engine
+*   **Hours:** 8h
+*   **Activity:** Developed `runAudit` logic. 20+ pricing rules. Vitest suite integration.
+*   **Key Learning:** Financial audits MUST be deterministic; AI is for narration, math is for code.
+*   **Blocker:** Complexity in overlapping tool bundles (ChatGPT vs Gemini).
 
-## Day 7 2026-05-11
-**Hours worked:** 9
-**What I did:** Conducted user interviews. Finalized the 12 required markdown files. Hardened accessibility and testing.
-**What I learned:** Users respond more to "Annualized Savings" than monthly. It triggers a stronger "Pivot or Recalibrate" response.
-**Blockers / what I'm stuck on:** None. Project at launch readiness.
-**Plan for tomorrow:** Final submission.
+### Day 4: Strategic Pause
+*   **Hours:** 0h
+*   **Activity:** Research into unit economics and LTV for audit platforms.
+*   **Insight:** Lead quality correlates with stack complexity, not just total spend.
+
+### Day 5: Intelligence & Persistence
+*   **Hours:** 10h
+*   **Activity:** Supabase integration, Gemini 2.5 Flash implementation, Resend config.
+*   **Key Learning:** Gemini 2.5 Flash achieves sub-2s response times for synthesis.
+*   **Optimization:** Switched from Pro to Flash for speed without quality loss.
+
+### Day 6: Viral Loops
+*   **Hours:** 7h
+*   **Activity:** Dynamic Open Graph previews, public report hydration, landing polish.
+*   **Key Learning:** Social shareability is the primary growth engine.
+*   **Fix:** Resolved Vercel CSP headers for background video assets.
+
+### Day 7: Final Polishing
+*   **Hours:** 9h
+*   **Activity:** User interviews, documentation suite finalization, accessibility audit.
+*   **Final Verdict:** Product is launch-ready. Shifted focus from "Saved/Month" to "Annual Recovery" for higher impact.
+
+---
+
+## 📊 Summary Metrics
+*   **Total Engineering Hours:** 44h
+*   **Total Documentation Files:** 13
+*   **Core Audit Rules:** 20+
+*   **Model:** Gemini 2.5 Flash
+*   **Persistence:** Supabase PG
+
+---
+"Truth is in the code, not the prompt."

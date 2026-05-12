@@ -34,5 +34,16 @@ Vyay operates on a **Freemium Audit** model:
 - Goal: $85k MRR.
 - Mix: 60% consultancy retainers, 20% premium audits, 20% affiliate/referral revenue.
 
+## 4. Benchmark Assumptions (2026 Standards)
+Our deterministic engine uses the following internal benchmarks to calculate efficiency percentiles:
+
+| Team Size | Efficient Spend/Seat | Target Annual AI Cap |
+| :--- | :--- | :--- |
+| **1–5 Eng** | $35/mo | $2,100 |
+| **5–15 Eng** | $60/mo | $10,800 |
+| **15–50 Eng** | $100/mo | $60,000 |
+
+*Note: Benchmarks include combined costs of coding assistants (Cursor/Copilot), Reasoning LLMs (ChatGPT/Claude), and average API infrastructure usage.*
+
 ---
 "Capturing capital, one audit at a time."

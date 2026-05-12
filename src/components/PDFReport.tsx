@@ -276,8 +276,14 @@ export const PDFReport = ({ result, input: _input }: { result: AuditResult; inpu
 
       {/* Footer */}
       <View style={styles.footer}>
-        <Text style={styles.footerText}>© 2026 Vyay Studio · Deterministic AI Auditing</Text>
-        <Text style={styles.footerText}>Verified Snapshot: {new Date().toLocaleDateString()}</Text>
+        <View>
+          <Text style={styles.footerText}>© 2026 Vyay Studio · Deterministic AI Auditing</Text>
+          <Text style={styles.footerText}>Report ID: {(result.publicId || result.id).substring(0, 12)}</Text>
+        </View>
+        <View style={{ alignItems: 'flex-end' }}>
+          <Text style={styles.footerText}>Verified Snapshot: {new Date().toLocaleDateString()}</Text>
+          <Text style={[styles.footerText, { color: '#F59E0B' }]}>vyaytarunya.vercel.app/result/{result.publicId || result.id}</Text>
+        </View>
       </View>
     </Page>
   </Document>

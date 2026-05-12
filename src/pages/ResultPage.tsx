@@ -11,6 +11,7 @@ import {
 import { LeadCapture } from '../components/LeadCapture';
 import { ShareSection } from '../components/ShareSection';
 import { auditService } from '../services/auditService';
+import { referralService } from '../services/referralService';
 import { AuditResult } from '../types';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { PDFReport } from '../components/PDFReport';
@@ -21,6 +22,7 @@ const ResultPage = () => {
   const [result, setResult] = useState<AuditResult | null>(storeResult);
   const [isLoading, setIsLoading] = useState(!storeResult && !!id);
   const [error, setError] = useState<string | null>(null);
+  const [referralStats, setReferralStats] = useState({ clicks: 0, conversions: 0 });
 
   useEffect(() => {
     const fetchAudit = async () => {
@@ -51,6 +53,17 @@ const ResultPage = () => {
 
     fetchAudit();
   }, [id, storeResult]);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      const code = result?.publicId || result?.id;
+      if (code) {
+        const stats = await referralService.getReferralStats(code);
+        setReferralStats(stats);
+      }
+    };
+    if (result) fetchStats();
+  }, [result]);
 
   // Update dynamic OG tags (Client-side only, for social share crawlers we'd need SSR)
   useEffect(() => {
@@ -339,6 +352,42 @@ const ResultPage = () => {
         <LeadCapture auditId={result.publicId || result.id} result={result} />
       </div>
 
+      {/* Referral Program */}
+      <div className="mb-24">
+        <SectionHeading 
+          title="Viral Growth Loop" 
+          subtitle="Share your audit results and track how many other teams you've helped optimize."
+          align="left"
+        />
+        <Card className="bg-foreground text-background mt-8 overflow-hidden relative">
+          <div className="relative z-10 p-8 flex flex-col md:flex-row justify-between items-center gap-12">
+            <div className="space-y-4 flex-1">
+              <Badge variant="primary">Ambassador Link</Badge>
+              <h3 className="text-4xl font-serif italic">Share the Intelligence</h3>
+              <p className="text-background/60 max-w-md">
+                Help other engineering leads rationalize their AI spend. For every audit generated through your link, we improve our global benchmark accuracy.
+              </p>
+              
+              <div className="flex gap-8 pt-4">
+                <div>
+                  <p className="text-[10px] font-sans uppercase tracking-widest opacity-40 mb-1">Audit Clicks</p>
+                  <p className="text-3xl font-serif text-primary">{referralStats.clicks}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] font-sans uppercase tracking-widest opacity-40 mb-1">Conversions</p>
+                  <p className="text-3xl font-serif text-primary">{referralStats.conversions}</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="w-full md:w-auto">
+              <ShareSection publicId={result.publicId || result.id} annualSavings={annualSavings} />
+            </div>
+          </div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        </Card>
+      </div>
+
       {/* Footer Actions */}
       <div className="pt-24 border-t border-foreground/10 text-center space-y-8">
         <h3 className="text-3xl font-serif italic">Operational Recalibration</h3>
@@ -346,9 +395,11 @@ const ResultPage = () => {
           <Link to="/audit" onClick={resetAudit}>
             <Button variant="outline" size="xl"><RefreshCw size={20} /> Recalibrate Audit</Button>
           </Link>
-          <Button size="xl" className="shadow-2xl shadow-primary/20 bg-foreground text-background hover:bg-foreground/90">
-            Download Full Audit Log
-          </Button>
+          <a href="https://credex.ai" target="_blank" rel="noopener noreferrer">
+            <Button size="xl" className="shadow-2xl shadow-primary/20 bg-foreground text-background hover:bg-foreground/90">
+              Visit Parent Platform
+            </Button>
+          </a>
         </div>
       </div>
     </main>
