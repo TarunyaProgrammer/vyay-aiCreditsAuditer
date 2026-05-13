@@ -1,22 +1,56 @@
-# User Interviews & Qualitative Feedback
+## Interview 1 — Archit Jain
 
-To build a "believable startup product," we interviewed 3 early-stage founders and 2 engineering leads.
+**Role:** Freelance frontend developer + CS student
+**Company stage:** Solo/freelance projects + hackathon teams
 
-## Interview 1: CTO, 15-person Fintech Startup
-- **Pain Point**: "I have no idea how many people actually use Claude vs ChatGPT. We're paying for both for everyone."
-- **Feedback on Vyay**: "The 'Duplicate Tooling' alert is exactly what I need to show my board. It makes the decision to cut seats data-driven rather than vibes-based."
-- **Desired Feature**: "Give me a PDF I can Slack to the CEO."
+### Context
 
-## Interview 2: Founder, 3-person AI Agency
-- **Pain Point**: "API spend is variable. I never know if I'm being efficient or just burning cash."
-- **Feedback on Vyay**: "I like that it doesn't ask for my API keys. I can just put in my monthly average and see if I'm in the 'danger zone' for my team size."
-- **Decision Pivot**: Led to the implementation of the "Usage-Based Input" over complex token-tracking.
+I spoke with Archit over Discord while he was working on a freelance dashboard project and preparing for a hackathon. The conversation focused on how small dev teams end up accumulating overlapping AI subscriptions without intentionally planning their stack.
 
-## Interview 3: Head of Engineering, 50-person SaaS
-- **Pain Point**: "Enterprise tiers are a black hole. We pay for SSO but the per-seat markup is insane."
-- **Feedback on Vyay**: "The 'Enterprise Mismatch' rule is bold. Most tools won't tell you to downgrade. That builds a lot of trust for me."
+### Direct Quotes
 
-## Key Synthesis
-1. **Trust > Automation**: Users prefer manual input they control over "Magic" scraping that requires permissions.
-2. **Actionable > Informative**: A Grade (A-F) is more useful than a raw number.
-3. **Speed is everything**: If it takes more than 2 minutes, they'll close the tab.
+> “I keep subscribing to tools for one specific feature and then forget to cancel them.”
+
+> “Cursor genuinely helps me code faster, but I still open ChatGPT out of habit.”
+
+> “I honestly don’t know if I’m getting enough value from paying for both Claude and ChatGPT at the same time.”
+
+> “Most of the time I don’t optimize AI costs because the amounts feel individually small, but together they probably add up.”
+
+### Most Surprising Thing
+
+The surprising part was how little intentional decision-making existed behind his tooling stack. Most subscriptions were added reactively during hackathons, freelance work, or after seeing recommendations on X/YouTube, but almost none were reevaluated afterward. He also mentioned that AI spending psychologically feels “less serious” than traditional SaaS spending, even when the monthly total becomes meaningful.
+
+### What Changed In The Product
+
+This conversation reinforced the need for overlap detection and consolidation recommendations instead of simply recommending “cheaper alternatives.” It also influenced the decision to make the audit results visually shareable and simple enough to screenshot quickly, because smaller teams are unlikely to read long optimization reports.
+
+
+
+
+## Interview 2 — Rakshit Yadav
+
+**Role:** Engineering student + indie project builder
+**Company stage:** Small side-project team (2–4 collaborators)
+
+### Context
+
+I spoke with Rakshit during a late-night coding session where he was actively switching between Gemini, GitHub Copilot, and Perplexity while working on an AI-assisted side project. The discussion focused more on workflow fragmentation and trust in AI tooling recommendations.
+
+### Direct Quotes
+
+> “I use different AI tools for different moods, which probably makes no financial sense.”
+
+> “Perplexity replaced Google for me, but I still wouldn’t pay enterprise pricing for research tools.”
+
+> “Copilot feels useful inside the editor, but outside coding I default back to ChatGPT.”
+
+> “I’d trust an audit tool more if it explained *why* a recommendation was being made instead of just saying something is cheaper.”
+
+### Most Surprising Thing
+
+The most surprising insight was that his decisions were driven more by workflow familiarity than actual capability differences. Even when two tools solved similar problems, he continued paying for both because switching contexts felt mentally expensive. He was also skeptical of AI-generated optimization advice and repeatedly emphasized explainability over “smartness.”
+
+### What Changed In The Product
+
+This conversation directly influenced the decision to build deterministic recommendation logic with confidence scoring instead of using LLM-generated audit recommendations. It also pushed the product toward calmer, more financially grounded language rather than aggressive “save thousands instantly” positioning.

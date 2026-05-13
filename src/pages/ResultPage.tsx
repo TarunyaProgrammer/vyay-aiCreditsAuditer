@@ -422,7 +422,7 @@ const ResultPage = () => {
             </div>
             <div className="flex gap-4 text-[10px] font-sans uppercase tracking-widest opacity-40 font-bold">
               <span>✓ Responsive</span>
-              <span>✓ < 2KB Payload</span>
+              <span>✓ &lt; 2KB Payload</span>
               <span>✓ Dark Mode Ready</span>
             </div>
           </div>
